@@ -1,0 +1,1444 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Zyra Automation Test Report</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css">.brand-logo { display: none; }
+.navbar-brand {
+font-size: 18px;
+font-weight: bold;
+color: #4CAF50 !important;
+}
+</style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Zyra Referral System Automation</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Apr 22, 2026 12:40:03 am</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('author-view')">
+<a id="nav-author" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-user"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('device-view')">
+<a id="nav-device" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tablet"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Apr 22, 2026 12:40:03 am</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Apr 22, 2026 12:40:48 am</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">APIs Passed</p>
+<h3>13</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">APIs Failed</p>
+<h3>0</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">APIs</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'>
+<b>13</b> APIs passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> APIs failed, <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">API Status</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>13</b> APIs passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> APIs failed, <b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">API Overview</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>13</b> passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">API Events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>13</b> events passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> events failed, <b data-tooltip='0%'>0</b> others</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"executeProdSanityPhase1":44.268
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 author-container">
+<div class="card">
+<div class="card-header"><p>Author</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead>
+<tbody>
+<tr>
+<td>Mukesh</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>ProdSanityAPIs</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>APIRegression</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>APIAutomation</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 device-container">
+<div class="card">
+<div class="card-header"><p>Device</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead>
+<tbody>
+<tr>
+<td>APISuite</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>Author</td>
+<td>Mukesh</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>Project Name</td>
+<td>Zyra</td>
+</tr>
+<tr>
+<td>System</td>
+<td>API Suite</td>
+</tr>
+<tr>
+<td>Java Version</td>
+<td>22.0.2</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Mac OS X</td>
+</tr>
+<tr>
+<td>OS Version</td>
+<td>15.6.1</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Production</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>https://zyra-facade.heyzyra.ai</td>
+</tr>
+<tr>
+<td>Public Report URL</td>
+<td><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260421-1754/" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260421-1754/</a></td>
+</tr>
+<tr>
+<td>Test Type</td>
+<td>Prod Sanity API Regression</td>
+</tr>
+<tr>
+<td>Execution Date</td>
+<td>Apr 22, 2026</td>
+</tr>
+<tr>
+<td>Execution Time</td>
+<td>00:40:03</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Production</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>https://zyra-facade.heyzyra.ai</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 13,
+passParent: 13,
+failParent: 0,
+warningParent: 0,
+skipParent: 0,
+childCount: 13,
+passChild: 13,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 13,
+passGrandChild: 13,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 13,
+passEvents: 13,
+failEvents: 0,
+warningEvents: 0,
+skipEvents: 0,
+infoEvents: 0
+};
+</script><div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+<ul id="author-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">Mukesh</a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">ProdSanityAPIs</a><a class="dropdown-item" href="#">APIRegression</a><a class="dropdown-item" href="#">APIAutomation</a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tablet"></i></a>
+<ul id="device-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">APISuite</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author="Mukesh"
+          tag="APIAutomation APIRegression ProdSanityAPIs"
+          device="APISuite">
+          <div class="test-detail">
+            <p class="name">Prod Sanity Phase 1 - 13 APIs</p>
+            <p class="text-sm">
+              <span>12:40:03 am</span> / <span>00:00:44:268</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Prod Sanity Phase 1 - 13 APIs</h5>
+<span class='badge badge-success'>04.22.2026 12:40:03 am</span>
+<span class='badge badge-danger'>04.22.2026 12:40:48 am</span>
+<span class='badge badge-default'>00:00:44:268</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Mukesh</span>
+<span class="badge badge-pill badge-default">ProdSanityAPIs</span>
+<span class="badge badge-pill badge-default">APIAutomation</span>
+<span class="badge badge-pill badge-default">APIRegression</span>
+<span class="badge badge-pill badge-default">APISuite</span></div>
+<div class="m-t-10 m-l-5">Prod sanity phase 1 using selected auth and profile APIs in fixed sequence</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          🚀 Test Execution Started: executeProdSanityPhase1
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          📝 Description: Prod sanity phase 1 using selected auth and profile APIs in fixed sequence
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          ⏰ Start Time: 00:40:03
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          🏷️ Test Categories: API Automation, API Regression, Prod Sanity APIs
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          ⚡ Priority: 0
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          📍 Test Class: com.zyra.Regression.ProdSanity.ProdSanityRegressionPhase1Test
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          🔧 Test Method: executeProdSanityPhase1
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          🌐 Test Environment Details:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+             └─ Platform: Web
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+             └─ Project: Zyra
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+             └─ Author: Mukesh
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+             └─ System: API Suite
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+             └─ Execution Mode: Automated
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          ✅ Test Completed Successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          ⏱️ Execution Time: 44.195s
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          🎉 All automation steps completed without errors
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          ⏰ End Time: 00:40:47
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          📊 Test Execution Summary:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ├─ Status: PASSED ✅
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ├─ Duration: 44.195s
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ├─ Method: executeProdSanityPhase1
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ├─ Class: com.zyra.Regression.ProdSanity.ProdSanityRegressionPhase1Test
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ├─ Groups: prod-sanity, phase1, regression, smoke
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             └─ Priority: 0
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          🏆 Test execution completed successfully with all validations passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          📋 Final Test Results:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ✅ All assertions passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ✅ No exceptions thrown
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ✅ Performance within acceptable limits
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+             ✅ Data integrity maintained
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          <div style='border:1px solid #3c4b64;border-radius:8px;padding:16px;background:#1d2636;'><div style='font-size:16px;font-weight:700;margin-bottom:10px;'>Prod Sanity API Totals</div><div style='margin-bottom:12px;color:#c7d2e0;'>Source log: <code>src/test/resources/Regression/ProdSanity/Phase1_RequestResponse.txt</code></div><div style='margin-bottom:12px;color:#c7d2e0;'>Environment: <b>Production</b> | Base URL: <b>https://zyra-facade.heyzyra.ai</b></div><div style='display:flex;gap:12px;flex-wrap:wrap;'><div style='background:#243043;padding:10px 14px;border-radius:6px;'><b>Total APIs:</b> 13</div><div style='background:#1f5132;padding:10px 14px;border-radius:6px;'><b>Passed:</b> 13</div><div style='background:#5a1f24;padding:10px 14px;border-radius:6px;'><b>Failed:</b> 0</div></div><div style='margin-top:12px;'><a href='https://mukeshgromo.github.io/zyra-prod-sanity-report-20260421-1754/api-details/ProdSanityRegressionPhase1Test_2026-04-22_00-40-47_ApiDetails.html' target='_blank' rel='noopener' style='color:#6cb6ff;font-weight:700;text-decoration:none;'>Open shareable API details page</a></div><div style='margin-top:8px;color:#c7d2e0;'>Public URL: <code>https://mukeshgromo.github.io/zyra-prod-sanity-report-20260421-1754/api-details/ProdSanityRegressionPhase1Test_2026-04-22_00-40-47_ApiDetails.html</code></div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:47 am</td>
+        <td>
+          <div style='margin-top:14px;border:1px solid #3c4b64;border-radius:10px;padding:16px;background:#101722;color:#e6edf3;'><div style='font-size:18px;font-weight:700;margin-bottom:10px;'>Merged API Execution Details</div><div style='margin-bottom:8px;color:#c7d2e0;'>Environment: <b>Production</b> | Base URL: <b>https://zyra-facade.heyzyra.ai</b></div><div style='margin-bottom:14px;color:#c7d2e0;'>Total APIs: <b>13</b> | Passed: <b style='color:#7ef0b1;'>13</b> | Failed: <b style='color:#ff9ca0;'>0</b></div><div style='margin-bottom:16px;color:#9fb0c3;'>Everything below is embedded in this same Extent report. No second page is required.</div><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>01. Final valid: 01 otp/generate <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:03.846
+Scenario: Final valid: 01 otp/generate | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+{"purpose":"login","authMethod":"email_otp","email":"[REDACTED]"}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:05.063
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-04-21T19:10:04.964Z","resendBlockedUntil":null,"otpFor":"email","deliveryStatus":"sent","otpId":"[REDACTED]","otpValidTill":"2026-04-21T19:15:05.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-04-21T19:10:04.975Z","updatedAt":"2026-04-21T19:10:04.975Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>02. Final valid: 02 otp/submit <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:38.059
+Scenario: Final valid: 02 otp/submit | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+{"otpId":"[REDACTED]","purpose":"login","otp":"[REDACTED]"}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:38.915
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"[REDACTED]","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T07:02:51.948Z","updatedAt":"2026-04-14T04:14:35.000Z","userId":"[REDACTED]","username":null,"email":"[REDACTED]","primaryMobile":"[REDACTED]","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":"referral","utmData":"[REDACTED]","platform":null,"referralId":"[REDACTED]","socialId":"[REDACTED]","authPrimaryMethod":"google","lastLoginMethod":"email_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":3,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-13T10:57:58.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-04-21T18:20:55.000Z","zScoreLastAttemptAt":"2026-04-21T18:17:23.000Z","zScoreLastAttemptError":null},"tokenId":"[REDACTED]","expiresAt":"2027-04-21T19:10:38.857Z","tokenMetadata":null,"id":10723,"createdAt":"2026-04-21T19:10:38.858Z","updatedAt":"2026-04-21T19:10:38.858Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"c****@gmail.com","linkedEmail":"[REDACTED]","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]}}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>03. Final valid: 03 tnc/user/consent-status <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:38.924
+Scenario: Final valid: 03 tnc/user/consent-status | api: /api/v1/tnc/user/consent-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+{"channel":"web"}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:39.183
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"data":{"accepted":true,"docId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25","docVersionId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25-v1-69b4eb15","contentType":"HTML","content":"&lt;html&gt;&lt;head&gt;&lt;title&gt;Terms and Conditions&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Terms and Conditions v1.0&lt;/h1&gt;&lt;p&gt;Welcome to our service. By using our platform, you agree to these terms and conditions.&lt;/p&gt;&lt;h2&gt;Key Points:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;User Responsibilities&lt;/li&gt;&lt;li&gt;Privacy Protection&lt;/li&gt;&lt;li&gt;Service Availability&lt;/li&gt;&lt;li&gt;Account Termination&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Last updated: August 20, 2025&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"},"message":"User consent status retrieved successfully"}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>04. Final valid: 04 user/settings/email-sync/list <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:39.323
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+&lt;empty&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:40.331
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"[REDACTED]","provider":"gmail","emailId":"[REDACTED]","lastSyncedAt":"2026-04-15T17:36:32.000Z","nextScanAt":"2026-04-22T12:06:33","createdAt":"2026-04-01T11:15:24","updatedAt":"2026-04-15T12:06:33","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null},{"accountId":"[REDACTED]","provider":"gmail","emailId":"[REDACTED]","lastSyncedAt":"2026-04-14T10:40:30.000Z","nextScanAt":"2026-05-14T05:10:30","createdAt":"2025-12-01T07:04:38","updatedAt":"2026-04-14T05:10:30","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>05. Final valid: 05 events/pending <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/events/pending</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:40.333
+Scenario: Final valid: 05 events/pending | api: /api/v1/events/pending | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+{}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:40.758
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"events":[],"count":0}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>06. Final valid: 06 profile/home/insights <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:40.766
+Scenario: Final valid: 06 profile/home/insights | api: /api/v1/profile/home/insights | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+&lt;empty&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:41.229
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"insights":[{"title":"Recommendation","description":"Ensure continuous renewal of the Niva Bupa ReAssure policy to complete the remaining 2 months of the 36-month PED waiting period.","cta":{"type":"POLICY_INSIGHTS","id":"c4a81888-ec61-453e-b901-5c3b699ad154"}},{"title":"Recommendation","description":"Consider adding a separate maternity cover, as the Aditya Birla Activ One Max policy completely excludes maternity benefits.","cta":{"type":"POLICY_INSIGHTS","id":"5815ad7f-c5f1-40a3-8ad6-97ef2f0e2a25"}},{"title":"Recommendation","description":"\"Purchase a standalone critical illness policy or add a comprehensive critical illness rider.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Recommendation","description":"\"Consider adding a premium waiver rider to protect the policy against unforeseen disabilities.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Review","description":"This person is marked as 'Self' on policy 5600 but does not match your profile (C MUKESH, DOB 1995-07-26). Please confirm whether SHIVANGI PATEL is you or someone else; currently kept as notSure from your Family List.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Review","description":"Policy 5644 lists a different 'Self' (SHUBHAM PATEL, DOB 1993-07-09) than your profile. If this policy belongs to you, align the insured/proposer name and DOB to avoid claim issues.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Payment","description":"Your renewal for Care Health Care Supreme is due on 30 May, 2026.","cta":{"type":"POLICY_INSIGHTS","id":"cafdcba6-1dbe-4bb8-9493-363562851382"}},{"title":"Pending","description":"Your profile is incomplete. Complete profile now for personalised insurance advice","cta":{"type":"GO_TO_PROFILE"}}],"zScore":756,"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>07. Final valid: 07 profile/analysis-history <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:41.237
+Scenario: Final valid: 07 profile/analysis-history | api: /api/v1/profile/analysis-history | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+&lt;empty&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:41.723
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"entries":[{"jobId":"85745c74-9d3e-46a1-91be-01d4a4c2c957","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-04-22 00:39:08","finishedAt":"2026-04-22 00:39:08","startedAt":"2026-04-22 00:39:08","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"aca4dda1-e748-40dd-a935-f94970327b57","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-04-22 00:17:42","finishedAt":"2026-04-22 00:17:42","startedAt":"2026-04-22 00:17:42","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"a94cc099-77c2-4a61-abd1-deca896bae0f","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-04-21 23:44:29","finishedAt":"2026-04-21 23:46:52","startedAt":"2026-04-21 23:44:29","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"e707c8fc-b185-4869-9aa0-3489ec8c5433","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-04-21 19:31:12","finishedAt":"2026-04-21 19:31:12","startedAt":"2026-04-21 19:31:12","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"92219646-084c-4413-b61e-0f497057ff24","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-04-21 19:04:46","finishedAt":"2026-04-21 19:04:46","startedAt":"2026-04-21 19:04:46","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false}]}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>08. Final valid: 08 actions/pending <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:41.724
+Scenario: Final valid: 08 actions/pending | api: /api/v1/actions/pending | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+&lt;empty&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.013
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"slides":[]}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>09. Final valid: 09 profile/analysis-progress <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.014
+Scenario: Final valid: 09 profile/analysis-progress | api: /api/v1/profile/analysis-progress | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+&lt;empty&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.470
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"jobs":[{"jobId":"a94cc099-77c2-4a61-abd1-deca896bae0f","type":"UPLOAD","fileName":"Care Health_66871045.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; ZScore","startedAt":"2026-04-21T18:14:29"},{"jobId":"bd313081-2088-443a-be36-400fc5646df5","type":"UPLOAD","fileName":"Aditya Birla Health_31-25-0463302-00.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; ZScore","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; ZScore","startedAt":"2026-04-21T13:13:37"}]}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>10. Final valid: 10 profile/list/all <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.471
+Scenario: Final valid: 10 profile/list/all | api: /api/v1/profile/list/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+{}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.703
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"details":[{"heading":"Your Details","data":[{"image":"https://fastly.picsum.photos/id/741/800/800.jpg?hmac=_wL7TULpLEfY9nHYHolqnVd3Z0xR6QKRq-dtapzx8lw","title":"Personal Details","cta":"personal-profile"},{"image":"https://fastly.picsum.photos/id/654/800/800.jpg?hmac=gi-ImBCSXApw0arnugXoCa9IJ2qcmdxleEjzIcUNHfw","title":"Health Details","cta":"health-profile"}]},{"heading":"Insurance Details","data":[{"image":"https://fastly.picsum.photos/id/723/800/800.jpg?hmac=o6MKSQPG7pqW1sxulI8DTJdvZHfus6qztbn0rffBuXU","title":"All Policies","cta":"policy-list"},{"image":"https://fastly.picsum.photos/id/921/800/800.jpg?hmac=yj41mzuAAUkiyrVna4OwSQyF6UuBgiviPPcNq4EV4UY","title":"Family Members","cta":"family-member-list"}]}],"fullName":"[REDACTED]","completionPercentage":75,"pendingVerifications":[{"title":"Financial Details","subTitle":"Add your financial details to complete your profile","cta":{"type":"FINANCIAL_DETAILS"},"type":"user-profile"}],"gender":"male","userId":"[REDACTED]"}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>11. Final valid: 11 profile/get <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/profile/get</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.705
+Scenario: Final valid: 11 profile/get | api: /api/v1/profile/get | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+{}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.950
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"basicProfile":{"fullName":"[REDACTED]","dob":"[REDACTED]","age":30,"email":"[REDACTED]","phone":"[REDACTED]","phoneVerified":true,"gender":"male","married":false,"pincode":"[REDACTED]","panNumber":"[REDACTED]"},"financialProfile":{"annualIncome":0,"occupation":""},"healthProfile":{"alcohol":true,"smoker":true,"alcoholFrequency":"frequent_in_past","smokerFrequency":"frequent_in_past","diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":true,"displayName":"Other","value":"Asthma"}]}}}</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>12. Final valid: 12 profile/health <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>201 Created</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/profile/health</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>201 Created</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:42.975
+Scenario: Final valid: 12 profile/health | api: /api/v1/profile/health | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+
+Headers:
+Content-Type: application/json
+authorization: [REDACTED]
+
+Body:
+{"alcohol":true,"smoker":true,"chronicDiseasesJson":["Asthma"],"smokerFrequency":"frequent_in_past","alcoholFrequency":"frequent_in_past"}</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:43.190
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+Status: 201 Created
+
+Body:
+&lt;empty&gt;</pre></details></details><details style='margin-bottom:12px;border:1px solid #223047;border-radius:8px;background:#162131;padding:12px;'><summary style='cursor:pointer;font-weight:700;color:#e6edf3;'>13. Final valid: 13 user/insurance/upload/policy/document <span style="background:#153b27;color:#7ef0b1;padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px;">PASSED</span> <span style='color:#9fb0c3;margin-left:8px;'>200 OK</span></summary><div style='margin-top:12px;color:#c7d2e0;'>Request: <b>POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</b></div><div style='margin-top:6px;margin-bottom:10px;color:#c7d2e0;'>Status: <b>200 OK</b></div><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Request</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:43.256
+Scenario: Final valid: 13 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=UbkC3Mjok2XRgP2zizLf_pvZA-px2tZAKzhXq
+authorization: [REDACTED]
+
+Body:
+&lt;binary body: 514869 bytes; content-type=multipart/form-data;boundary=UbkC3Mjok2XRgP2zizLf_pvZA-px2tZAKzhXq&gt;</pre></details><details style='margin-top:8px;'><summary style='cursor:pointer;font-weight:600;'>Show Response</summary><pre style='margin-top:10px;background:#0a111a;color:#dde7f2;padding:14px;border-radius:8px;white-space:pre-wrap;word-break:break-word;'>Timestamp: 2026-04-22 00:40:47.897
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}</pre></details></details></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+          📊 Test Execution Summary:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+             Total Tests: 1
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+             Passed: 1
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+             Failed: 0
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+             Skipped: 0
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+             Success Rate: 100.0%
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+  <div class="mt-4">  <div class="accordion" role="tablist">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li><span class='badge badge-default'>30:44:244</span></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <a class="node " id="2"><span>📋 Detailed Workflow Execution</span></a>
+            <div class="node-attr">
+<span class="badge badge-pill badge-default">Mukesh</span>
+<span class="badge badge-pill badge-default">ProdSanityAPIs</span>
+<span class="badge badge-pill badge-default">APIAutomation</span>
+<span class="badge badge-pill badge-default">APIRegression</span>
+<span class="badge badge-pill badge-default">APISuite</span>            </div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:03 am</td>
+        <td>
+          This section contains the detailed step-by-step workflow execution with console output
+        </td>
+      </tr>
+  </tbody>
+</table>
+          </div>
+        </div>
+  <div class="accordion" role="tablist">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li><span class='badge badge-default'>30:00:011</span></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <a class="node " id="3"><span>📋 Terminal Console Output</span></a>
+            <div class="node-attr">
+<span class="badge badge-pill badge-default">Mukesh</span>
+<span class="badge badge-pill badge-default">ProdSanityAPIs</span>
+<span class="badge badge-pill badge-default">APIAutomation</span>
+<span class="badge badge-pill badge-default">APIRegression</span>
+<span class="badge badge-pill badge-default">APISuite</span>            </div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+          <div style='background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+           color: #ecf0f1;
+           padding: 20px;
+           border-radius: 10px;
+           font-family: "Courier New", monospace;
+           white-space: pre-wrap;
+           margin: 15px 0;
+           border-left: 5px solid #3498db;
+           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+           overflow-x: auto;'>
+    <div style='color: #3498db; font-weight: bold; margin-bottom: 10px; font-size: 14px;'>
+        🖥️ Console Output: Terminal Console Output
+    </div>
+    <div style='background-color: rgba(0,0,0,0.3);
+               padding: 15px;
+               border-radius: 5px;
+               border: 1px solid #4a4a4a;'>
+        <span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> ExtentReports: Test Started with workflow node - executeProdSanityPhase1
+
+────────────────────────────────────────────────────────────
+<span style='color:#3498db;font-weight:bold;font-size:16px;'>🚀</span> TEST STARTED: executeProdSanityPhase1
+📋 Class: com.zyra.Regression.ProdSanity.ProdSanityRegressionPhase1Test
+📝 Description: Prod sanity phase 1 using selected auth and profile APIs in fixed sequence
+<span style='color:#fd7e14;font-weight:bold;font-size:16px;'>⏰</span> Start Time: 2026-04-22 00:40:03.764
+────────────────────────────────────────────────────────────
+Configuration loaded successfully from: src/test/resources/Regression/ProdRegression.json
+Active environment: prod
+Base URL: https://zyra-facade.heyzyra.ai
+
+╔════════════════════════════════════════════════════════╗
+║               PROD SANITY PHASE 1                     ║
+╠════════════════════════════════════════════════════════╣
+║ Environment: PROD                                     ║
+║ Email: [REDACTED]
+╚════════════════════════════════════════════════════════╝
+
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> otp/generate -&gt; 200 OK
+Configuration loaded successfully from: src/test/resources/Regression/ProdRegression.json
+Active Environment: PROD
+Base URL: https://zyra-facade.heyzyra.ai
+Using Temp Mail: true
+╔════════════════════════════════════════════════════════╗
+║           RANDOM PROFILE DATA GENERATED                ║
+╠════════════════════════════════════════════════════════╣
+║  First Name:  Anika                                    ║
+║  Last Name:   Bhat                                     ║
+║  Date of Birth: 2003-09-08                             ║
+║  Pincode:     525387                                   ║
+╚════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════╗
+║              🤖 AUTOMATIC OTP RETRIEVAL                ║
+╠════════════════════════════════════════════════════════╣
+║  <span style='color:#9b59b6;font-weight:bold;font-size:16px;'>📧</span> Email: [REDACTED]
+║  🔍 Checking DB-decrypted OTP first...                 ║
+╚════════════════════════════════════════════════════════╝
+
+⏳ Waiting 30 seconds before DB OTP lookup for Email: [REDACTED]
+console.log(decryptData("[REDACTED]")) =&gt; "[REDACTED]"
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> Email OTP retrieved from DB on attempt 1/4
+
+╔════════════════════════════════════════════════════════╗
+║           <span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> OTP RETRIEVED FROM DB (DECRYPTED)         ║
+╠════════════════════════════════════════════════════════╣
+║  <span style='color:#f39c12;font-weight:bold;font-size:16px;'>🔑</span> OTP: [REDACTED]                                         ║
+║  🗄️ Source: encrypted_otp via AES/CBC decrypt         ║
+╚════════════════════════════════════════════════════════╝
+
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> otp/submit -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> tnc/user/consent-status -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> user/settings/email-sync/list -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> events/pending -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/home/insights -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/analysis-history -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> actions/pending -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/analysis-progress -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/list/all -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/get -&gt; 200 OK
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> profile/health -&gt; 201 CREATED
+<span style='color:#6c757d;font-weight:bold;font-size:16px;'>📄</span> Selected policy PDF for prod sanity phase 1: Care Health_55971852.pdf
+📁 Source directory: target/test-classes/Z Score Update Policies
+╔════════════════════════════════════════════════════════╗
+║   CONFIGURATION LOADED - PolicyDocumentUploaderForRef ║
+╠════════════════════════════════════════════════════════╣
+║  Active Environment: PROD                               ║
+║  Base URL: https://zyra-facade.heyzyra.ai             ║
+║  Upload URL: https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document║
+╚════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════╗
+║        UPLOADING HEALTH          DOCUMENT              ║
+╠════════════════════════════════════════════════════════╣
+║  File Name:     Care Health_55971852.pdf              ║
+║  File Size:     502.58 KB                             ║
+║  Email: [REDACTED]
+║  Type:          Health                                ║
+╚════════════════════════════════════════════════════════╝
+
+📤 Uploading Health: Care Health_55971852.pdf
+⏳ Please wait...
+
+╔════════════════════════════════════════════════════════╗
+║  ✓ HEALTH          DOCUMENT UPLOADED SUCCESSFULLY     ║
+╠════════════════════════════════════════════════════════╣
+║  File Name:     Care Health_55971852.pdf              ║
+║  Status:        200 OK                                ║
+║  Email: [REDACTED]
+╚════════════════════════════════════════════════════════╝
+
+<span style='color:#6c757d;font-weight:bold;font-size:16px;'>📄</span> Response: {"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> user/insurance/upload/policy/document -&gt; 200 OK
+<span style='color:#6c757d;font-weight:bold;font-size:16px;'>📄</span> Selected policy PDF for prod sanity phase 1: Care Health_56854696.pdf
+📁 Source directory: target/test-classes/Z Score Update Policies
+
+═══════════════════════════════════════════════════════
+  PROD SANITY PHASE 1 COMPLETED SUCCESSFULLY
+═══════════════════════════════════════════════════════
+Email: [REDACTED]
+OtpId      : [REDACTED]
+AccessToken: [REDACTED]
+═══════════════════════════════════════════════════════
+
+<span style='color:#27ae60;font-weight:bold;font-size:16px;'>✅</span> TEST PASSED: executeProdSanityPhase1
+⏱️ Duration: 44.178s
+<span style='color:#28a745;font-weight:bold;font-size:16px;'>🎉</span> Status: SUCCESS
+
+    </div>
+</div>
+
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+          📝 Plain Text Version:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>12:40:48 am</td>
+        <td>
+          <pre style='background-color: #f8f9fa; padding: 10px; border-radius: 5px; color: #333;'>✅ ExtentReports: Test Started with workflow node - executeProdSanityPhase1
+
+────────────────────────────────────────────────────────────
+🚀 TEST STARTED: executeProdSanityPhase1
+📋 Class: com.zyra.Regression.ProdSanity.ProdSanityRegressionPhase1Test
+📝 Description: Prod sanity phase 1 using selected auth and profile APIs in fixed sequence
+⏰ Start Time: 2026-04-22 00:40:03.764
+────────────────────────────────────────────────────────────
+Configuration loaded successfully from: src/test/resources/Regression/ProdRegression.json
+Active environment: prod
+Base URL: https://zyra-facade.heyzyra.ai
+
+╔════════════════════════════════════════════════════════╗
+║               PROD SANITY PHASE 1                     ║
+╠════════════════════════════════════════════════════════╣
+║ Environment: PROD                                     ║
+║ Email: [REDACTED]
+╚════════════════════════════════════════════════════════╝
+
+✅ otp/generate -&gt; 200 OK
+Configuration loaded successfully from: src/test/resources/Regression/ProdRegression.json
+Active Environment: PROD
+Base URL: https://zyra-facade.heyzyra.ai
+Using Temp Mail: true
+╔════════════════════════════════════════════════════════╗
+║           RANDOM PROFILE DATA GENERATED                ║
+╠════════════════════════════════════════════════════════╣
+║  First Name:  Anika                                    ║
+║  Last Name:   Bhat                                     ║
+║  Date of Birth: 2003-09-08                             ║
+║  Pincode:     525387                                   ║
+╚════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════╗
+║              🤖 AUTOMATIC OTP RETRIEVAL                ║
+╠════════════════════════════════════════════════════════╣
+║  📧 Email: [REDACTED]
+║  🔍 Checking DB-decrypted OTP first...                 ║
+╚════════════════════════════════════════════════════════╝
+
+⏳ Waiting 30 seconds before DB OTP lookup for Email: [REDACTED]
+console.log(decryptData("[REDACTED]")) =&gt; "[REDACTED]"
+✅ Email OTP retrieved from DB on attempt 1/4
+
+╔════════════════════════════════════════════════════════╗
+║           ✅ OTP RETRIEVED FROM DB (DECRYPTED)         ║
+╠════════════════════════════════════════════════════════╣
+║  🔑 OTP: [REDACTED]                                         ║
+║  🗄️ Source: encrypted_otp via AES/CBC decrypt         ║
+╚════════════════════════════════════════════════════════╝
+
+✅ otp/submit -&gt; 200 OK
+✅ tnc/user/consent-status -&gt; 200 OK
+✅ user/settings/email-sync/list -&gt; 200 OK
+✅ events/pending -&gt; 200 OK
+✅ profile/home/insights -&gt; 200 OK
+✅ profile/analysis-history -&gt; 200 OK
+✅ actions/pending -&gt; 200 OK
+✅ profile/analysis-progress -&gt; 200 OK
+✅ profile/list/all -&gt; 200 OK
+✅ profile/get -&gt; 200 OK
+✅ profile/health -&gt; 201 CREATED
+📄 Selected policy PDF for prod sanity phase 1: Care Health_55971852.pdf
+📁 Source directory: target/test-classes/Z Score Update Policies
+╔════════════════════════════════════════════════════════╗
+║   CONFIGURATION LOADED - PolicyDocumentUploaderForRef ║
+╠════════════════════════════════════════════════════════╣
+║  Active Environment: PROD                               ║
+║  Base URL: https://zyra-facade.heyzyra.ai             ║
+║  Upload URL: https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document║
+╚════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════╗
+║        UPLOADING HEALTH          DOCUMENT              ║
+╠════════════════════════════════════════════════════════╣
+║  File Name:     Care Health_55971852.pdf              ║
+║  File Size:     502.58 KB                             ║
+║  Email: [REDACTED]
+║  Type:          Health                                ║
+╚════════════════════════════════════════════════════════╝
+
+📤 Uploading Health: Care Health_55971852.pdf
+⏳ Please wait...
+
+╔════════════════════════════════════════════════════════╗
+║  ✓ HEALTH          DOCUMENT UPLOADED SUCCESSFULLY     ║
+╠════════════════════════════════════════════════════════╣
+║  File Name:     Care Health_55971852.pdf              ║
+║  Status:        200 OK                                ║
+║  Email: [REDACTED]
+╚════════════════════════════════════════════════════════╝
+
+📄 Response: {"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}
+✅ user/insurance/upload/policy/document -&gt; 200 OK
+📄 Selected policy PDF for prod sanity phase 1: Care Health_56854696.pdf
+📁 Source directory: target/test-classes/Z Score Update Policies
+
+═══════════════════════════════════════════════════════
+  PROD SANITY PHASE 1 COMPLETED SUCCESSFULLY
+═══════════════════════════════════════════════════════
+Email: [REDACTED]
+OtpId      : [REDACTED]
+AccessToken: [REDACTED]
+═══════════════════════════════════════════════════════
+
+✅ TEST PASSED: executeProdSanityPhase1
+⏱️ Duration: 44.178s
+🎉 Status: SUCCESS
+</pre>
+        </td>
+      </tr>
+  </tbody>
+</table>
+          </div>
+        </div>
+      </div>
+  </div>
+      </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">API Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">3</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">ProdSanityAPIs</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>ProdSanityAPIs</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>00:40:03 am</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Prod Sanity Phase 1 - 13 APIs</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">APIRegression</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>APIRegression</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>00:40:03 am</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Prod Sanity Phase 1 - 13 APIs</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">APIAutomation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>APIAutomation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>00:40:03 am</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Prod Sanity Phase 1 - 13 APIs</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view author-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Author</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">Mukesh</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>Mukesh</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>00:40:03 am</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Prod Sanity Phase 1 - 13 APIs</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view device-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Device</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">APISuite</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>APISuite</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>00:40:03 am</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Prod Sanity Phase 1 - 13 APIs</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
