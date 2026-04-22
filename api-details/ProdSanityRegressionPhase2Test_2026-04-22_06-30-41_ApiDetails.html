@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase2Test API Details</title>
+  <style>
+    body { background:#0f1722; color:#e5edf5; font-family:Arial,sans-serif; margin:0; }
+    .topbar { background:#111927; border-bottom:1px solid #27364d; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:18px; font-weight:700; color:#7c9cff; }
+    .topbar-badge { background:#5865f2; color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .page { max-width:1400px; margin:0 auto; padding:24px; }
+    .header { margin-bottom:24px; }
+    .title { font-size:28px; font-weight:700; margin-bottom:8px; }
+    .subtitle { color:#9fb0c3; margin-bottom:6px; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:24px 0; }
+    .info-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:16px; }
+    .info-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .info-card .value { font-size:18px; font-weight:700; word-break:break-word; }
+    .info-card .value a { color:#86b7ff; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:15px; line-height:1.5; }
+    .summary { display:flex; gap:16px; flex-wrap:wrap; margin:24px 0; }
+    .summary-card { min-width:180px; background:#182334; border:1px solid #2c3d55; border-radius:10px; padding:16px; }
+    .summary-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .summary-card .value { font-size:28px; font-weight:700; }
+    .pass { color:#6ee7a8; }
+    .fail { color:#ff8b8b; }
+    .status-chip { display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; background:#1f5132; color:#89f0ba; }
+    .api-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:18px; margin-bottom:16px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .api-title { font-size:18px; font-weight:700; }
+    .badge { padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#153b27; color:#7ef0b1; }
+    .badge-fail { background:#4a1f25; color:#ff9ca0; }
+    .meta { color:#9fb0c3; font-size:13px; margin-bottom:10px; }
+    details { margin-top:10px; background:#0e1622; border:1px solid #223047; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:700; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#0a111a; color:#dde7f2; padding:14px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Automation API Details</div>
+    <div class="topbar-badge">Apr 22, 2026 06:30:41 am</div>
+  </div>
+  <div class="page">
+    <div class="header">
+      <div class="title">ProdSanityRegressionPhase2Test API Details</div>
+      <div class="subtitle">Source log: /Users/mukesh.ali/Desktop/zyra-qa/src/test/resources/Regression/ProdSanity/Phase2_RequestResponse.txt</div>
+      <div class="subtitle"><span class="status-chip">https://zyra-facade.heyzyra.ai</span></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Started</div><div class="value">2026-04-22 00:43:55.332</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase2/api-details/ProdSanityRegressionPhase2Test_2026-04-22_06-30-41_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase2/api-details/ProdSanityRegressionPhase2Test_2026-04-22_06-30-41_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <div class="summary">
+      <div class="summary-card"><div class="label">Total APIs</div><div class="value">19</div></div>
+      <div class="summary-card"><div class="label">Passed</div><div class="value pass">18</div></div>
+      <div class="summary-card"><div class="label">Failed</div><div class="value fail">1</div></div>
+    </div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 user/insurance/portfolio/summary</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:55.332
+Scenario: Final valid: 01 user/insurance/portfolio/summary | api: /api/v1/user/insurance/portfolio/summary | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:43:57.057
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"in_progress","isScanning":false,"passwordProtectedFiles":[],"assetCount":"-","healthCovered":"₹59.13 lakh","insuranceScore":"756/900","isZScoreGenerate":true,"zScoreUpdatedAt":"2026-04-21T18:20:54.000Z","insuredMemberCount":"8/8","lifeCovered":"₹1 crore","policies":[{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","updatedAt":"2026-04-21T19:13:16.000Z","insuredPersonName":"N/a","insurer":"Niva Bupa","claimRatio":91.93,"claimIncurredRatio":61.22,"product":"Reassure","policyNumber":"33232084202502","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹10 lakh","insuredMembers":["Mr. Suresh Pal Singh Rawat","Mrs. Vineeta Rawat","Mr. Kritarth Rawat"],"insuranceType":"Health","status":"ACTIVE","raiseClaimEmail":"customercare@nivabupa.com","showSharePolicy":true,"familyMemberCovered":"3/8","raiseClaim":{"type":"OPEN_URL","url":"mailto:customercare@nivabupa.com"},"totalSumInsured":"₹21.13 lakh","deductible":null,"policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","productTypeId":"2652","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"score":"93","rating":"4.7","verdict":"Niva Bupa's ReAssure is a robust policy for this family, offering excellent core benefits like unlimited restoration and a 50% NCB. While the 36-month PED wait is a key limitation, its near completion makes this a well-suited plan, enhanced by the valuable Safeguard rider.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Niva Bupa's ReAssure policy offers an unlimited restoration of the sum insured for any illness, providing a crucial safety net for multiple hospitalizations.","The policy includes a strong 50% No-Claim Bonus (Booster Benefit) for each claim-free year, effectively doubling the base sum insured in two years.","With 60 days pre- and 180 days post-hospitalization coverage, this ReAssure policy provides one of the most extensive recovery periods in the market.","The availed Safeguard rider is a key advantage, covering costs of non-payable items and protecting the No-Claim Bonus from small claims."]},"cons":{"title":"Cons","data":["The 36-month waiting period for pre-existing diseases in the Niva Bupa ReAssure policy is a significant drawback, creating a long initial coverage gap.","This ReAssure policy has a sub-limit of ₹1 lakh on certain robotic surgeries, which could lead to high out-of-pocket expenses for advanced treatments.","Coverage for organ donor expenses under the Niva Bupa ReAssure policy is limited, as it excludes the donor's pre- and post-hospitalization care."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"The base sum insured of ₹10 lakh meets the minimum threshold for a non-metro city, providing adequate financial protection.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"The policy provides comprehensive in-patient coverage with no caps on room rent or major expenses, though some robotic surgeries have a sub-limit.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers a wide range of diseases, although the 36-month waiting period for pre-existing diseases is longer than ideal.","grade":"good"},{"title":"Restoration Benefit","subTitle":"The policy provides unlimited automatic restoration of the base sum insured for any illness, applicable unlimited times per year.","grade":"good"},{"title":"No Claim Bonus","subTitle":"The policy offers an excellent 50% cumulative bonus for each claim-free year, up to a maximum of 100% of the base sum insured.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"The policy offers guaranteed lifelong renewability, ensuring continuous coverage regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless treatment is available at over 10,000 network hospitals across India, providing extensive access to care.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"The policy provides excellent coverage of 60 days for pre-hospitalization and 180 days for post-hospitalization expenses.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All day-care procedures are covered up to the sum insured, ensuring coverage for treatments that do not require 24-hour hospitalization.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization is covered up to the sum insured, which is beneficial if hospital admission is not possible.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"The policy covers expenses for organ harvesting surgery but excludes the donor's pre- and post-hospitalization costs.","grade":"average"},{"title":"Mental Healthcare","subTitle":"In-patient treatment for mental illness is covered as per regulatory mandates, but out-patient consultations are not included.","grade":"average"},{"title":"Ayush Benefits","subTitle":"The policy covers in-patient AYUSH treatments up to the full sum insured, offering flexibility for alternative therapies.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A free health check-up is provided annually with a generous limit of up to ₹5,000 per policy.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age profile, as the female member is 58 years old.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Niva Bupa has a Claim Settlement Ratio of 92.39% for FY 2024-25, which is a solid but average performance.","grade":"average"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹50,650 is affordable, representing approximately 4.2% of the estimated annual income of ₹12 lakh.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for over 2 years.","grade":"good"},{"title":"Grace Period","subTitle":"The policy offers a 30-day grace period for premium payment, ensuring continuity of coverage.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"The policy has a 36-month waiting period for pre-existing diseases, which is longer than the 24-month industry best.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has more than 8 permanent exclusions beyond the standard IRDAI list, including dental and refractive error treatments.","grade":"poor"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no mandatory co-payment or deductible, ensuring full payment of admissible claims.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a complimentary annual health check-up on a cashless basis, with a limit of up to ₹5,000.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy includes a 'Live Healthy' benefit that offers renewal premium discounts based on steps taken.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"Information not available in policy documentation.","grade":"poor"},{"title":"Recovery Benefits Convalescence","subTitle":"Information not available in policy documentation.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["The 36-month PED waiting period
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">02. Final valid: 02 user/insurance/score/summary</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/score/summary</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:57.076
+Scenario: Final valid: 02 user/insurance/score/summary | api: /api/v1/user/insurance/score/summary | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/score/summary
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:43:57.306
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/score/summary
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"in_progress","healthScore":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Aggregated base sum insured of ₹27 lakh comfortably exceeds the ₹10 lakh threshold for non-metro areas.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"All policies provide comprehensive in-patient coverage up to the full sum insured with no major sub-limits.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"While the stated PED waiting period is 36 months across policies, the Care Health policy has already completed this duration, ensuring immediate coverage for its members.","grade":"good"},{"title":"Restoration Benefit","subTitle":"All policies offer unlimited restoration or recharge benefits, providing a strong safety net for multiple claims.","grade":"good"},{"title":"No Claim Bonus","subTitle":"Excellent cumulative bonus features, with Aditya Birla and Care Health offering up to a 100% increase in sum insured per claim-free year.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"All policies offer explicit lifelong renewability regardless of age.","grade":"good"},{"title":"Cashless Network Facilities","subTitle":"Combined access to over 10,000 network hospitals ensures excellent cashless treatment availability.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"Aditya Birla's Activ One Max provides an extensive 90 days of pre-hospitalization and 180 days of post-hospitalization coverage.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All recognized day-care procedures are comprehensively covered across the policies.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization is covered up to the full sum insured across all policies.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Organ donor expenses are covered up to the full sum insured without sub-limits.","grade":"good"},{"title":"Mental Healthcare","subTitle":"Mental healthcare is covered up to the sum insured in accordance with standard regulations.","grade":"good"},{"title":"Ayush Benefits","subTitle":"AYUSH treatments are fully covered up to the sum insured across the policies.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"Annual comprehensive health check-ups are provided free of cost.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity expenses are completely excluded across all policies, creating a significant gap for the young female members.","grade":"poor"},{"title":"Claim Settlement Ratio Csr","subTitle":"The weighted average Claim Settlement Ratio of approximately 93% indicates moderate to good insurer reliability.","grade":"average"},{"title":"Insurance Premium Affordability","subTitle":"The combined annual premium of ₹73,449 represents a moderate portion of the estimated family income.","grade":"average"},{"title":"Free Lookup Period","subTitle":"Free-look period is not applicable as all policies are past the initial 30-day window.","grade":"good"},{"title":"Grace Period","subTitle":"A standard 30-day grace period is available for policy renewals.","grade":"good"},{"title":"Longer Waiting Periods","subTitle":"A standard 36-month waiting period applies for pre-existing diseases, though some policies have already completed this tenure.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"Only standard IRDAI permanent exclusions apply, with no extensive additional disease exclusions.","grade":"good"},{"title":"High Deductibles Co Pays","subTitle":"There are no mandatory co-pays or deductibles across the policies.","grade":"good"},{"title":"Free Annual Medical Checkup","subTitle":"Annual preventive health check-ups are included.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"Active wellness programs offering premium discounts are available through Care Health and Aditya Birla.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"Care Health provides unlimited tele-consultations with general physicians.","grade":"good"},{"title":"Recovery Benefits Convalescence","subTitle":"No significant lump-sum recovery or convalescence benefits are available for prolonged hospital stays.","grade":"poor"}],"lifeScore":[{"title":"Sum Assured","subTitle":"The total sum assured of ₹1 crore meets the recommended coverage threshold.","grade":"good"},{"title":"Policy Term And Coverage Duration","subTitle":"The policy term of 36 years provides long-term coverage through your primary working years.","grade":"good"},{"title":"Accidental Death Coverage","subTitle":"The accidental death benefit of ₹5 lakhs is only 5% of the base sum assured.","grade":"average"},{"title":"Critical Illness Coverage","subTitle":"There is no critical illness coverage included in the policy.","grade":"poor"},{"title":"Premium Waiver Rider","subTitle":"The policy lacks a premium waiver rider for disability or critical illness.","grade":"poor"},{"title":"Income Benefit Rider","subTitle":"There is no income benefit rider to provide monthly payouts to dependents.","grade":"poor"},{"title":"Permanent And Partial Disability Rider","subTitle":"The disability coverage of ₹2 lakhs is inadequate compared to the base sum assured.","grade":"poor"},{"title":"Terminal Illness Rider","subTitle":"The policy includes a terminal illness benefit that accelerates 50% of the base sum assured.","grade":"average"},{"title":"Child Term Rider","subTitle":"No child term insurance rider is included.","grade":"poor"},{"title":"Hospital Care Rider","subTitle":"The hospital care rider provides ₹750 per day, which is below the recommended ₹1,000 daily benefit.","grade":"poor"},{"title":"Insurers Claim Settlement Ratio","subTitle":"The insurer has an excellent claim settlement ratio of 99.41%.","grade":"good"},{"title":"Premium Affordability","subTitle":"The annual premium of ₹10,140 is highly affordable at less than 1% of your income.","grade":"good"},{"title":"Tax Benefits Comprehensiveness","subTitle":"The policy offers comprehensive tax benefits under Sections 80C and 10(10D).","grade":"good"},{"title":"Grace Period","subTitle":"The policy provides a standard 15-day grace period for monthly premium payments.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The policy offers a standard free-look period of 15 to 30 days.","grade":"good"}],"userInsuranceProfile":{"id":"90","userId":"85970c16-8e3d-49f6-80fe-c9ea24b9407c","totalHealthSi":5913200,"totalLifeSa":10000000,"healthGap":0,"lifeGap":0,"insuranceScore":756,"scoreBreakdownJson":{"chatId":1731409,"zScore":756,"verdict":"Your Z-Score of 756 is solid, but your lower life score is pulling it down compared to your excellent health score. Focusing on improving your life coverage by adding critical illness and premium waiver riders would create a more balanced portfolio.","lifeWeight":0.5,"healthWeight":0.5,"zScoreReason":"As an earning individual with financial dependents, both health and life insurance are equally vital for your family's comprehensive financial security. Compared to your previous Z-Score of 774, your score has adjusted; while your health score slightly improved from 92 to 93 and your life score remained steady at 75, the recent addition of dependents to your profile has shifted your insurance needs, placing equal importance on life and health coverage.","lifePolicyScore":75,"healthPolicyScore":93},"verdict":"Your Z-Score of 756 is solid, but your lower life score is pulling it down compared to your excellent health score. Focusing on improving your life coverage by adding critical illness and premium waiver riders would create a more balanced portfolio.","lastCalculatedDate":"2026-04-21T18:20:54.000Z","version":7,"reportS3Key":null,"createdAt":"2025-12-03T11:31:22.503Z","updatedAt":"2026-04-21T18:20:54.229Z"}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">03. Final valid: 03 user/jobs</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:57.309
+Scenario: Final valid: 03 user/jobs | api: /api/v1/user/jobs | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:43:57.809
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"message":"Jobs retrieved successfully","jobs":[{"jobId":"da39ba6f-e3cb-429d-9e0d-471e6f984f4a","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-22 00:43:15","scanFailedParts":null,"createdAt":"2026-04-22 00:40:48","updatedAt":"2026-04-22 00:43:15","finishedAt":"2026-04-22 00:43:15","items":[{"attachmentId":"275478_7d6074ec5bf62cf7f81284f2769501131cdd106d95d5928df14cea77cb21f5fb","fileName":"Care Health_55971852.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-22 00:40:48","updatedAt":"2026-04-22 00:43:15","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:02","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"85745c74-9d3e-46a1-91be-01d4a4c2c957","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-22 00:39:08","updatedAt":"2026-04-22 00:39:08","finishedAt":"2026-04-22 00:39:08","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"aca4dda1-e748-40dd-a935-f94970327b57","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-22 00:17:42","updatedAt":"2026-04-22 00:17:42","finishedAt":"2026-04-22 00:17:42","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"a94cc099-77c2-4a61-abd1-deca896bae0f","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-21 23:46:52","scanFailedParts":null,"createdAt":"2026-04-21 23:44:29","updatedAt":"2026-04-21 23:46:52","finishedAt":"2026-04-21 23:46:52","items":[{"attachmentId":"275326_a50e29151cffa7b098835a4bbaddc835fafb58ac8ea21b946040c5f9053ff895","fileName":"Care Health_66871045.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-21 23:44:29","updatedAt":"2026-04-21 23:46:52","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:02","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"e707c8fc-b185-4869-9aa0-3489ec8c5433","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 19:31:12","updatedAt":"2026-04-21 19:31:12","finishedAt":"2026-04-21 19:31:12","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"92219646-084c-4413-b61e-0f497057ff24","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 19:04:46","updatedAt":"2026-04-21 19:04:46","finishedAt":"2026-04-21 19:04:46","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"2c55dfe1-51b5-41ed-b011-6fee38894137","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 18:51:24","updatedAt":"2026-04-21 18:51:24","finishedAt":"2026-04-21 18:51:24","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"5d883135-579e-451e-8591-c5aba7d63373","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 18:50:59","updatedAt":"2026-04-21 18:50:59","finishedAt":"2026-04-21 18:50:59","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"bd313081-2088-443a-be36-400fc5646df5","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-21 18:47:25","scanFailedParts":null,"createdAt":"2026-04-21 18:43:37","updatedAt":"2026-04-21 18:47:25","finishedAt":"2026-04-21 18:47:25","items":[{"attachmentId":"274283_c455ad0ba77a4ce4c9489c353a8afa39175a233b61ecb19f3247a32c54069d5f","fileName":"Aditya Birla Health_31-25-0463302-00.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-21 18:43:37","updatedAt":"2026-04-21 18:47:25","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:03","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"c474b576-17b5-396c-b31a-b7f925e7ff17","accountId":"103555405517828864475","type":"EMAIL_SYNC","status":"Skipped","statusCode":"NO_POLICY_FOUND","failureReason":"No insurance policy documents found in scanned emails","zscoreTriggeredAt":null,"scanFailedParts":0,"createdAt":"2026-04-15 17:15:00","updatedAt":"2026-04-15 17:36:33","finishedAt":"2026-04-15 17:36:33","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"520903d1-388e-435d-943b-ca4173e9f13b","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Failed","statusCode":"FAILED","failureReason":"Job failed due to errors in 1 item(s): NivaBupa_Fresh_Policy_2023-24_33232084202301.pdf: Policy has expired and cannot be analyzed","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-14 11:33:43","updatedAt":"2026-04-14 11:34:21","finishedAt":"2026-04-14 11:34:21","items":[{"attachmentId":"249621_a603f70e56534ec29f9f968758feeb9f796f5920bddfc8f1c500c67f5e923df7","fileName":"NivaBupa_Fresh_Policy_2023-24_33232084202301.pdf","status":"Failed","statusCode":"ERROR","errorStage":"ANALYZING","errorMessage":"File processing failed - unsupported format or not recognized as an insurance policy","createdAt":"2026-04-14 11:33:43","updatedAt":"2026-04-14 11:34:21","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":null,"signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":0,"errorItems":1,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"db4b0f69-37ef-3c6a-ae57-0d26a4c2f822","accountId":"117807414505834481952","type":"EMAIL_SYNC","status":"Skipped","statusCode":"NO_POLICY_FOUND","failureReason":"No insurance policy documents found in scanned emails","zscoreTriggeredAt":null,"scanFailedParts":0,"createdAt":"2026-04-14 10:40:27","updatedAt":"2026
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">04. Final valid: 04 user/settings/email-sync/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:57.811
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:43:57.977
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"103555405517828864475","provider":"gmail","emailId":"shaik.ali@heyzyra.ai","lastSyncedAt":"2026-04-15T17:36:32.000Z","nextScanAt":"2026-04-22T12:06:33","createdAt":"2026-04-01T11:15:24","updatedAt":"2026-04-15T12:06:33","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null},{"accountId":"117807414505834481952","provider":"gmail","emailId":"cmukesh391@gmail.com","lastSyncedAt":"2026-04-14T10:40:30.000Z","nextScanAt":"2026-05-14T05:10:30","createdAt":"2025-12-01T07:04:38","updatedAt":"2026-04-14T05:10:30","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">05. Final valid: 05 user/insurance/portfolio/summary/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:57.980
+Scenario: Final valid: 05 user/insurance/portfolio/summary/all | api: /api/v1/user/insurance/portfolio/summary/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:43:58.704
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"in_progress","isScanning":false,"passwordProtectedFiles":[],"assetCount":"-","healthCovered":"₹59.13 lakh","insuranceScore":"756/900","isZScoreGenerate":true,"zScoreUpdatedAt":"2026-04-21T18:20:54.000Z","insuredMemberCount":"8/8","lifeCovered":"₹1 crore","insuranceTypeChips":[{"title":"All","count":5},{"title":"Health","count":4},{"title":"Life","count":1}],"success":true,"FAMILY_POLICY":{"title":"My Policy","count":5,"totalCoverage":"₹1.42 crore","healthCoverage":"₹42 lakh","lifeCoverage":"₹1 crore","insuranceTypeChips":[{"title":"All","count":5},{"title":"Health","count":4},{"title":"Life","count":1}],"policies":[{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","updatedAt":"2026-04-21T19:13:16.000Z","insuredPersonName":"N/a","insurer":"Niva Bupa","claimRatio":91.93,"claimIncurredRatio":61.22,"product":"Reassure","policyNumber":"33232084202502","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹10 lakh","insuredMembers":["Mr. Suresh Pal Singh Rawat","Mrs. Vineeta Rawat","Mr. Kritarth Rawat"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A08%3A58Z&amp;se=2026-04-21T20%3A13%3A58Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A08%3A58Z&amp;ske=2026-04-21T20%3A13%3A58Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=dvUlnlP7%2BvxTtMve9hagpbB83eTfNAHlTwsBMqif0Rk%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":"https://zyra-insurer-documents.s3.ap-south-1.amazonaws.com/niva/Reassure/brochure.pdf"}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://rules.nivabupa.com/hospital-network/"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1860-500-8888\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:customercare@nivabupa.com"}}],"showSharePolicy":true,"familyMemberCovered":"3/8","totalSumInsured":"₹21.13 lakh","deductible":null,"policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","productTypeId":"2652","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"score":"93","rating":"4.7","verdict":"Niva Bupa's ReAssure is a robust policy for this family, offering excellent core benefits like unlimited restoration and a 50% NCB. While the 36-month PED wait is a key limitation, its near completion makes this a well-suited plan, enhanced by the valuable Safeguard rider.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Niva Bupa's ReAssure policy offers an unlimited restoration of the sum insured for any illness, providing a crucial safety net for multiple hospitalizations.","The policy includes a strong 50% No-Claim Bonus (Booster Benefit) for each claim-free year, effectively doubling the base sum insured in two years.","With 60 days pre- and 180 days post-hospitalization coverage, this ReAssure policy provides one of the most extensive recovery periods in the market.","The availed Safeguard rider is a key advantage, covering costs of non-payable items and protecting the No-Claim Bonus from small claims."]},"cons":{"title":"Cons","data":["The 36-month waiting period for pre-existing diseases in the Niva Bupa ReAssure policy is a significant drawback, creating a long initial coverage gap.","This ReAssure policy has a sub-limit of ₹1 lakh on certain robotic surgeries, which could lead to high out-of-pocket expenses for advanced treatments.","Coverage for organ donor expenses under the Niva Bupa ReAssure policy is limited, as it excludes the donor's pre- and post-hospitalization care."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"The base sum insured of ₹10 lakh meets the minimum threshold for a non-metro city, providing adequate financial protection.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"The policy provides comprehensive in-patient coverage with no caps on room rent or major expenses, though some robotic surgeries have a sub-limit.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers a wide range of diseases, although the 36-month waiting period for pre-existing diseases is longer than ideal.","grade":"good"},{"title":"Restoration Benefit","subTitle":"The policy provides unlimited automatic restoration of the base sum insured for any illness, applicable unlimited times per year.","grade":"good"},{"title":"No Claim Bonus","subTitle":"The policy offers an excellent 50% cumulative bonus for each claim-free year, up to a maximum of 100% of the base sum insured.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"The policy offers guaranteed lifelong renewability, ensuring continuous coverage regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless treatment is available at over 10,000 network hospitals across India, providing extensive access to care.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"The policy provides excellent coverage of 60 days for pre-hospitalization and 180 days for post-hospitalization expenses.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All day-care procedures are covered up to the sum insured, ensuring coverage for treatments that do not require 24-hour hospitalization.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization is covered up to the sum insured, which is beneficial if hospital admission is not possible.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"The policy covers expenses for organ harvesting surgery but excludes the donor's pre- and post-hospitalization costs.","grade":"average"},{"title":"Mental Healthcare","subTitle":"In-patient treatment for mental illness is covered as per regulatory mandates, but out-patient consultations are not included.","grade":"average"},{"title":"Ayush Benefits","subTitle":"The policy covers in-patient AYUSH treatments up to the full sum insured, offering flexibility for alternative therapies.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A free health check-up is provided annually with a generous limit of up to ₹5,000 per policy.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age profile, as the female member is 58 years old.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Niva Bupa has a Claim Settlement Ratio of 92.39% for FY 2024-25, which is a solid but average performance.","grade":"average"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹50,650 is affordable, representing approximately 4.2% of the estimated annual income of ₹12 lakh.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for over 2 years.","grade":"good"},{"title":"Grace Period","subTitle":"The policy offers a 30-day grace period for premium payment, ensuring continuity of coverage.","
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">06. Final valid: 06 profile/report/z-score/generate</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/report/z-score/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:43:58.725
+Scenario: Final valid: 06 profile/report/z-score/generate | api: /api/v1/profile/report/z-score/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/report/z-score/generate
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:01.128
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/report/z-score/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"downloadUrl":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/reports/z_score/z_score_report_1776798840946.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A01Z&amp;se=2026-04-21T20%3A14%3A01Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A01Z&amp;ske=2026-04-21T20%3A14%3A01Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=NERkuW9U6iJhNdvuUqP05lma496TZumEwIJ8U2EYOss%3D&amp;rscd=attachment%3B%20filename%3D%22z_score_report_1776798840946.pdf%22"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">07. Final valid: 07 events/mark-fired</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/mark-fired</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:01.146
+Scenario: Final valid: 07 events/mark-fired | api: /api/v1/events/mark-fired | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/mark-fired
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{"eventIds":[]}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:01.381
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/mark-fired
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"updatedCount":0}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">08. Final valid: 08 user/insurance/policy/insights</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/insights</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:01.384
+Scenario: Final valid: 08 user/insurance/policy/insights | api: /api/v1/user/insurance/policy/insights | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/insights
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:01.625
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"policyDetails":{"logo":null,"name":"Niva Bupa","product":"Reassure","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","insuranceType":"health","policyNumber":"33232084202502","insuredPeople":["Sures Pal Singh Rawat","Vineeta Rawat","Kritarth Rawat"],"nominee":"Kritarth Rawat","familyMember":[{"id":"286","name":"Sures Pal Singh Rawat","relationship":"Father","age":"60"},{"id":"287","name":"Vineeta Rawat","relationship":"Mother","age":"59"},{"id":"288","name":"Kritarth Rawat","relationship":"Brother","age":"28"}],"sharedWith":[],"sumInsured":"₹10 lakh","totalSumInsured":"₹21.13 lakh","deductible":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","productTypeId":"2652","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A01Z&amp;se=2026-04-21T20%3A14%3A01Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A01Z&amp;ske=2026-04-21T20%3A14%3A01Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=C7TnoEQbDLugxrfxZOQaZvrSmV0QCt7Zw9606k%2BW8R8%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":"https://zyra-insurer-documents.s3.ap-south-1.amazonaws.com/niva/Reassure/brochure.pdf"}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://rules.nivabupa.com/hospital-network/"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1860-500-8888\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:customercare@nivabupa.com"}}],"isRenewalDue":false,"expiryDate":"2026-06-25T00:00:00.000Z"},"score":"93","rating":"4.7","verdict":"Niva Bupa's ReAssure is a robust policy for this family, offering excellent core benefits like unlimited restoration and a 50% NCB. While the 36-month PED wait is a key limitation, its near completion makes this a well-suited plan, enhanced by the valuable Safeguard rider.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Niva Bupa's ReAssure policy offers an unlimited restoration of the sum insured for any illness, providing a crucial safety net for multiple hospitalizations.","The policy includes a strong 50% No-Claim Bonus (Booster Benefit) for each claim-free year, effectively doubling the base sum insured in two years.","With 60 days pre- and 180 days post-hospitalization coverage, this ReAssure policy provides one of the most extensive recovery periods in the market.","The availed Safeguard rider is a key advantage, covering costs of non-payable items and protecting the No-Claim Bonus from small claims."]},"cons":{"title":"Cons","data":["The 36-month waiting period for pre-existing diseases in the Niva Bupa ReAssure policy is a significant drawback, creating a long initial coverage gap.","This ReAssure policy has a sub-limit of ₹1 lakh on certain robotic surgeries, which could lead to high out-of-pocket expenses for advanced treatments.","Coverage for organ donor expenses under the Niva Bupa ReAssure policy is limited, as it excludes the donor's pre- and post-hospitalization care."]}},"recommendations":{"title":"Recommendations","data":["Ensure continuous renewal of your Niva Bupa ReAssure policy to complete the remaining 7 months of the 36-month PED waiting period.","Before undergoing any advanced procedure, verify if it falls under the ReAssure policy's ₹1 lakh sub-limit for robotic surgeries to anticipate potential costs.","Given the members' ages, consider purchasing a critical illness rider or a top-up plan to supplement the Niva Bupa ReAssure policy for major health events."]},"risks":{"title":"Risks","data":["The 36-month PED waiting period on the Niva Bupa ReAssure policy poses a financial risk, as any un-disclosed condition would not be covered for another 7 months.","For advanced procedures, the ₹1 lakh sub-limit on some robotic surgeries in the ReAssure policy could result in substantial out-of-pocket costs for the family.","In the event of a transplant, the family could face high costs for the organ donor's care, as Niva Bupa's ReAssure policy excludes their pre/post-op expenses."]},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"The base sum insured of ₹10 lakh meets the minimum threshold for a non-metro city, providing adequate financial protection.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"The policy provides comprehensive in-patient coverage with no caps on room rent or major expenses, though some robotic surgeries have a sub-limit.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers a wide range of diseases, although the 36-month waiting period for pre-existing diseases is longer than ideal.","grade":"good"},{"title":"Restoration Benefit","subTitle":"The policy provides unlimited automatic restoration of the base sum insured for any illness, applicable unlimited times per year.","grade":"good"},{"title":"No Claim Bonus","subTitle":"The policy offers an excellent 50% cumulative bonus for each claim-free year, up to a maximum of 100% of the base sum insured.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"The policy offers guaranteed lifelong renewability, ensuring continuous coverage regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless treatment is available at over 10,000 network hospitals across India, providing extensive access to care.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"The policy provides excellent coverage of 60 days for pre-hospitalization and 180 days for post-hospitalization expenses.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All day-care procedures are covered up to the sum insured, ensuring coverage for treatments that do not require 24-hour hospitalization.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization is covered up to the sum insured, which is beneficial if hospital admission is not possible.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"The policy covers expenses for organ harvesting surgery but excludes the donor's pre- and post-hospitalization costs.","grade":"average"},{"title":"Mental Healthcare","subTitle":"In-patient treatment for mental illness is covered as per regulatory mandates, but out-patient consultations are not included.","grade":"average"},{"title":"Ayush Benefits","subTitle":"The policy covers in-patient AYUSH treatments up to the full sum insured, offering flexibility for alternative therapies.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A free health check-up is provided annually with a generous limit of up to ₹5,000 per policy.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age profile, as the female member is 58 years old.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Niva Bupa has a Claim Settlement Ratio of 92.39% for FY 2024-25, which is a solid but average performance.","grade":"average"},{"title":"Insurance Premium Aff
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">09. Final valid: 09 user/family/lists/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/family/lists/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:01.627
+Scenario: Final valid: 09 user/family/lists/all | api: /api/v1/user/family/lists/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/family/lists/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:02.236
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/family/lists/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"FAMILY_MEMBER":{"title":"Family Member","count":6,"members":[{"id":286,"memberId":"ff5500c2-a518-4234-90e8-007e11280bc2","email":null,"name":"Sures Pal Singh Rawat","message":null,"status":"pending","relation":"father","dob":"1965-06-25T00:00:00.000Z","age":60,"gender":"male","policyCount":1,"diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":false,"displayName":"Other"}],"totalHealthCover":2113200,"totalLifeCover":0,"userId":null,"insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"policies":[{"memberSumInsured":"₹21.13 lakh","policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","insurerId":"6","policyNumber":"33232084202502","downloadLink":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A01Z&amp;se=2026-04-21T20%3A14%3A01Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A01Z&amp;ske=2026-04-21T20%3A14%3A01Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=C7TnoEQbDLugxrfxZOQaZvrSmV0QCt7Zw9606k%2BW8R8%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22","insuranceType":"health","productTypeId":"2652","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","sumInsured":2113200,"nominees":"Kritarth Rawat","insurerName":"Niva Bupa","productName":"Reassure","totalSumInsured":"₹21.13 lakh","deductible":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null}],"totalPolicies":1,"source":null},{"id":287,"memberId":"19326788-d90d-4062-9991-8edc40c9642c","email":null,"name":"Vineeta Rawat","message":null,"status":"pending","relation":"mother","dob":"1967-03-12T00:00:00.000Z","age":59,"gender":"female","policyCount":1,"diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":false,"displayName":"Other"}],"totalHealthCover":2113200,"totalLifeCover":0,"userId":null,"insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"policies":[{"memberSumInsured":"₹21.13 lakh","policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","insurerId":"6","policyNumber":"33232084202502","downloadLink":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A01Z&amp;se=2026-04-21T20%3A14%3A01Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A01Z&amp;ske=2026-04-21T20%3A14%3A01Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=C7TnoEQbDLugxrfxZOQaZvrSmV0QCt7Zw9606k%2BW8R8%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22","insuranceType":"health","productTypeId":"2652","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","sumInsured":2113200,"nominees":"Kritarth Rawat","insurerName":"Niva Bupa","productName":"Reassure","totalSumInsured":"₹21.13 lakh","deductible":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null}],"totalPolicies":1,"source":null},{"id":288,"memberId":"dc07a5ea-e4ed-48ca-a8d0-26c0169e531d","email":null,"name":"Kritarth Rawat","message":null,"status":"verified","relation":"brother","dob":"1997-05-21T00:00:00.000Z","age":28,"gender":"male","policyCount":2,"diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":false,"displayName":"Other"}],"totalHealthCover":2113200,"totalLifeCover":10000000,"userId":null,"insuranceTypeChips":[{"title":"All","count":2},{"title":"Health","count":1},{"title":"Life","count":1}],"policies":[{"memberSumInsured":"₹21.13 lakh","policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","insurerId":"6","policyNumber":"33232084202502","downloadLink":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A01Z&amp;se=2026-04-21T20%3A14%3A01Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A01Z&amp;ske=2026-04-21T20%3A14%3A01Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=C7TnoEQbDLugxrfxZOQaZvrSmV0QCt7Zw9606k%2BW8R8%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22","insuranceType":"health","productTypeId":"2652","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","sumInsured":2113200,"nominees":"Kritarth Rawat","insurerName":"Niva Bupa","productName":"Reassure","totalSumInsured":"₹21.13 lakh","deductible":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null},{"memberSumInsured":"₹1 crore","policyId":"4b7a1e5f-8841-45ae-b594-9141e76747ca","insurerId":"52","policyNumber":"C267321399","downloadLink":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/TATA AIA Life Insurance_C267321399.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-04-21T19%3A09%3A02Z&amp;se=2026-04-21T20%3A14%3A02Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-04-21T19%3A09%3A02Z&amp;ske=2026-04-21T20%3A14%3A02Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=WDMeL5skRIzjCbjWdafxqKSKUa308lWKXH2FULyjXuA%3D&amp;rscd=attachment%3B%20filename%3D%22TATA%20AIA%20Life%20Insurance_C267321399.pdf%22","insuranceType":"life","productTypeId":"2653","policyStartDate":"2021-10-17T00:00:00.000Z","policyEndDate":"2057-10-17T00:00:00.000Z","sumInsured":10000000,"nominees":"VINEETA RAWAT, SURES PAL SINGH RAWAT","insurerName":"Tata Aia","productName":"Sampoorna Raksha Supreme","totalSumInsured":"₹1 crore","deductible":null,"issueDate":"2021-10-18T00:00:00.000Z","originalInceptionDate":"2021-10-17T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":1,"policyCoverBaseType":"individual","policyTermYears":36,"premiumPaymentTerm":30,"premiumAmount":null,"premiumCycle":null}],"totalPolicies":2,"source":null},{"id":7560,"memberId":"7618381e-454f-4b45-b9b0-7869a09bfdc8","email":null,"name":"Chandra Kiran Patel","message":null,"status":"pending","relation":"mother","dob":null,"age":null,"gender":null,"policyCount":0,"diseases":[{"nam
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">10. Final valid: 10 user/insurance/policy/share</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:02.239
+Scenario: Final valid: 10 user/insurance/policy/share | api: /api/v1/user/insurance/policy/share | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","emailId":["shaikmukeshali01@gmail.com","shaik.ali@gromo.in"]}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:10.243
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":""}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">11. Final valid: 11 user/insurance/policy/share/bulk</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share/bulk</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:10.248
+Scenario: Final valid: 11 user/insurance/policy/share/bulk | api: /api/v1/user/insurance/policy/share/bulk | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share/bulk
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{"policyIds":["c4a81888-ec61-453e-b901-5c3b699ad154"],"emailId":["shaikmukeshali01@gmail.com","shaik.ali@gromo.in"]}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:10.455
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/share/bulk
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"totalPolicies":1,"totalRecipients":2,"totalTuples":2,"results":[{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","recipientEmail":"shaikmukeshali01@gmail.com","status":"existing"},{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","recipientEmail":"shaik.ali@gromo.in","status":"existing"}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">12. Final valid: 12 user/jobs</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:10.457
+Scenario: Final valid: 12 user/jobs | api: /api/v1/user/jobs | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:10.845
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/jobs
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"message":"Jobs retrieved successfully","jobs":[{"jobId":"da39ba6f-e3cb-429d-9e0d-471e6f984f4a","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-22 00:43:15","scanFailedParts":null,"createdAt":"2026-04-22 00:40:48","updatedAt":"2026-04-22 00:43:15","finishedAt":"2026-04-22 00:43:15","items":[{"attachmentId":"275478_7d6074ec5bf62cf7f81284f2769501131cdd106d95d5928df14cea77cb21f5fb","fileName":"Care Health_55971852.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-22 00:40:48","updatedAt":"2026-04-22 00:43:15","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:02","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"85745c74-9d3e-46a1-91be-01d4a4c2c957","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-22 00:39:08","updatedAt":"2026-04-22 00:39:08","finishedAt":"2026-04-22 00:39:08","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"aca4dda1-e748-40dd-a935-f94970327b57","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-22 00:17:42","updatedAt":"2026-04-22 00:17:42","finishedAt":"2026-04-22 00:17:42","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"a94cc099-77c2-4a61-abd1-deca896bae0f","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-21 23:46:52","scanFailedParts":null,"createdAt":"2026-04-21 23:44:29","updatedAt":"2026-04-21 23:46:52","finishedAt":"2026-04-21 23:46:52","items":[{"attachmentId":"275326_a50e29151cffa7b098835a4bbaddc835fafb58ac8ea21b946040c5f9053ff895","fileName":"Care Health_66871045.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-21 23:44:29","updatedAt":"2026-04-21 23:46:52","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:02","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"e707c8fc-b185-4869-9aa0-3489ec8c5433","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 19:31:12","updatedAt":"2026-04-21 19:31:12","finishedAt":"2026-04-21 19:31:12","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"92219646-084c-4413-b61e-0f497057ff24","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 19:04:46","updatedAt":"2026-04-21 19:04:46","finishedAt":"2026-04-21 19:04:46","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"2c55dfe1-51b5-41ed-b011-6fee38894137","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 18:51:24","updatedAt":"2026-04-21 18:51:24","finishedAt":"2026-04-21 18:51:24","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"5d883135-579e-451e-8591-c5aba7d63373","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-21 18:50:59","updatedAt":"2026-04-21 18:50:59","finishedAt":"2026-04-21 18:50:59","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"bd313081-2088-443a-be36-400fc5646df5","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Completed","statusCode":"COMPLETED","failureReason":"All files processed successfully","zscoreTriggeredAt":"2026-04-21 18:47:25","scanFailedParts":null,"createdAt":"2026-04-21 18:43:37","updatedAt":"2026-04-21 18:47:25","finishedAt":"2026-04-21 18:47:25","items":[{"attachmentId":"274283_c455ad0ba77a4ce4c9489c353a8afa39175a233b61ecb19f3247a32c54069d5f","fileName":"Aditya Birla Health_31-25-0463302-00.pdf","status":"Success","statusCode":"COMPLETED_SUCCESS","errorStage":null,"errorMessage":"File processed successfully","createdAt":"2026-04-21 18:43:37","updatedAt":"2026-04-21 18:47:25","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":"00:03","signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":1,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"c474b576-17b5-396c-b31a-b7f925e7ff17","accountId":"103555405517828864475","type":"EMAIL_SYNC","status":"Skipped","statusCode":"NO_POLICY_FOUND","failureReason":"No insurance policy documents found in scanned emails","zscoreTriggeredAt":null,"scanFailedParts":0,"createdAt":"2026-04-15 17:15:00","updatedAt":"2026-04-15 17:36:33","finishedAt":"2026-04-15 17:36:33","items":[],"progress":{"totalItems":0,"completedItems":0,"successfulItems":0,"errorItems":0,"skippedItems":0,"duplicateItems":0,"progressPercentage":0}},{"jobId":"520903d1-388e-435d-943b-ca4173e9f13b","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","type":"UPLOAD","status":"Failed","statusCode":"FAILED","failureReason":"Job failed due to errors in 1 item(s): NivaBupa_Fresh_Policy_2023-24_33232084202301.pdf: Policy has expired and cannot be analyzed","zscoreTriggeredAt":null,"scanFailedParts":null,"createdAt":"2026-04-14 11:33:43","updatedAt":"2026-04-14 11:34:21","finishedAt":"2026-04-14 11:34:21","items":[{"attachmentId":"249621_a603f70e56534ec29f9f968758feeb9f796f5920bddfc8f1c500c67f5e923df7","fileName":"NivaBupa_Fresh_Policy_2023-24_33232084202301.pdf","status":"Failed","statusCode":"ERROR","errorStage":"ANALYZING","errorMessage":"File processing failed - unsupported format or not recognized as an insurance policy","createdAt":"2026-04-14 11:33:43","updatedAt":"2026-04-14 11:34:21","subject":null,"insurerName":null,"passwordFormat":null,"policyCompletion":null,"signedUrl":null}],"progress":{"totalItems":1,"completedItems":1,"successfulItems":0,"errorItems":1,"skippedItems":0,"duplicateItems":0,"progressPercentage":100}},{"jobId":"db4b0f69-37ef-3c6a-ae57-0d26a4c2f822","accountId":"117807414505834481952","type":"EMAIL_SYNC","status":"Skipped","statusCode":"NO_POLICY_FOUND","failureReason":"No insurance policy documents found in scanned emails","zscoreTriggeredAt":null,"scanFailedParts":0,"createdAt":"2026-04-14 10:40:27","updatedAt":"2026
+...&lt;truncated&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">13. Final valid: 13 user/insurance/policy/shared/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:13.445
+Scenario: Final valid: 13 user/insurance/policy/shared/list | api: /api/v1/user/insurance/policy/shared/list | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...A7hk
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:13.907
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"pendingPolicies":[{"id":141,"policyId":"219","policyUuid":"c4a81888-ec61-453e-b901-5c3b699ad154","recipientEmail":"shaikmukeshali01@gmail.com","status":"pending","policy":{"id":219,"createdAt":"2025-12-03T11:27:37.601Z","updatedAt":"2026-04-21T19:13:16.000Z","policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","userId":"85970c16-8e3d-49f6-80fe-c9ea24b9407c","insurerId":"6","policyNumber":"33232084202502","s3Key":"85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf","uploadedAt":"2025-12-03T11:27:38.000Z","isDeleted":0,"isOwner":1,"ownerPolicyId":null,"originalPolicyId":null,"docType":"HI_RENEWAL_POLICY","jobId":null,"jobItemId":null,"policyState":"ACTIVE","trustLevel":4,"previousPolicyId":null,"dataCompletenessScore":null,"missingDataFlags":null,"enrichmentStatus":null,"classificationConfidence":null,"isSourceOfTruth":1,"tpaDetected":0,"tpaName":null,"chainId":null,"policyType":"FAMILY_POLICY","syncJobId":null,"syncJobItemId":null,"insurerDetails":{"id":6,"createdAt":"2025-08-13T08:42:51.385Z","updatedAt":"2026-01-19T18:12:24.852Z","name":"Niva Bupa","insuranceType":"health","logo":null,"website":"https://www.nivabupa.com/","notes":null,"claimRatio":91.93,"claimIncurredRatio":61.22,"claimUrl":"https://www.nivabupa.com/claims/health-insurance-claims.html","claimEmail":"customercare@nivabupa.com","claimPhone":"1860-500-8888\t","contactEmail":"wecare@nivabupa.com","contactPhone":"1860-500-8888\t","cashlessHospitalNetworkUrl":"https://rules.nivabupa.com/hospital-network/","legalFullName":"Niva Bupa Health Insurance Co Ltd.","oldNames":"Max Bupa Health Insurance"},"details":{"id":202,"createdAt":"2025-12-03T11:27:37.613Z","updatedAt":"2025-12-03T11:27:37.613Z","policyId":"219","insuranceType":"health","insuranceCategory":null,"productTypeId":"2652","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","sumInsured":1000000,"totalSumInsured":2113200,"deductible":null,"reportS3Key":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"previousPolicyNumber":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"installmentAmount":null,"eIANumber":null,"insuranceRepositoryName":null,"sumInsuredBreakup":null,"ulipData":null,"annuityData":null,"planVariant":null}},"createdAt":"2026-04-21T19:14:02.484Z","activeShareLink":{"shortCode":"MO905L6R","shortUrl":"https://zyra-fe.heyzyra.ai/onboarding?shortCode=MO905L6R","expiresAt":"2026-05-21T19:14:02.000Z"},"ownerName":"C Mukesh"}],"acceptedPolicies":[]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">14. Final valid: 14 user/insurance/policy/shared/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:15.704
+Scenario: Final valid: 14 user/insurance/policy/shared/list | api: /api/v1/user/insurance/policy/shared/list | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...6bMs
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:16.146
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"pendingPolicies":[{"id":142,"policyId":"219","policyUuid":"c4a81888-ec61-453e-b901-5c3b699ad154","recipientEmail":"shaik.ali@gromo.in","status":"pending","policy":{"id":219,"createdAt":"2025-12-03T11:27:37.601Z","updatedAt":"2026-04-21T19:13:16.000Z","policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","userId":"85970c16-8e3d-49f6-80fe-c9ea24b9407c","insurerId":"6","policyNumber":"33232084202502","s3Key":"85970c16-8e3d-49f6-80fe-c9ea24b9407c/policies/Niva Bupa Health Insurance_33232084202502.pdf","uploadedAt":"2025-12-03T11:27:38.000Z","isDeleted":0,"isOwner":1,"ownerPolicyId":null,"originalPolicyId":null,"docType":"HI_RENEWAL_POLICY","jobId":null,"jobItemId":null,"policyState":"ACTIVE","trustLevel":4,"previousPolicyId":null,"dataCompletenessScore":null,"missingDataFlags":null,"enrichmentStatus":null,"classificationConfidence":null,"isSourceOfTruth":1,"tpaDetected":0,"tpaName":null,"chainId":null,"policyType":"FAMILY_POLICY","syncJobId":null,"syncJobItemId":null,"insurerDetails":{"id":6,"createdAt":"2025-08-13T08:42:51.385Z","updatedAt":"2026-01-19T18:12:24.852Z","name":"Niva Bupa","insuranceType":"health","logo":null,"website":"https://www.nivabupa.com/","notes":null,"claimRatio":91.93,"claimIncurredRatio":61.22,"claimUrl":"https://www.nivabupa.com/claims/health-insurance-claims.html","claimEmail":"customercare@nivabupa.com","claimPhone":"1860-500-8888\t","contactEmail":"wecare@nivabupa.com","contactPhone":"1860-500-8888\t","cashlessHospitalNetworkUrl":"https://rules.nivabupa.com/hospital-network/","legalFullName":"Niva Bupa Health Insurance Co Ltd.","oldNames":"Max Bupa Health Insurance"},"details":{"id":202,"createdAt":"2025-12-03T11:27:37.613Z","updatedAt":"2025-12-03T11:27:37.613Z","policyId":"219","insuranceType":"health","insuranceCategory":null,"productTypeId":"2652","policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","sumInsured":1000000,"totalSumInsured":2113200,"deductible":null,"reportS3Key":null,"issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"previousPolicyNumber":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"installmentAmount":null,"eIANumber":null,"insuranceRepositoryName":null,"sumInsuredBreakup":null,"ulipData":null,"annuityData":null,"planVariant":null}},"createdAt":"2026-04-21T19:14:06.398Z","activeShareLink":{"shortCode":"MO905O7E","shortUrl":"https://zyra-fe.heyzyra.ai/onboarding?shortCode=MO905O7E","expiresAt":"2026-05-21T19:14:06.000Z"},"ownerName":"C Mukesh"}],"acceptedPolicies":[]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">15. Final valid: 15 user/insurance/policy/shared/update-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:18.198
+Scenario: Final valid: 15 user/insurance/policy/shared/update-status | api: /api/v1/user/insurance/policy/shared/update-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...A7hk
+
+Body:
+{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","status":"accept"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:18.715
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"status":"success","message":"Policy accepted successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">16. Final valid: 16 user/insurance/policy/shared/update-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:20.678
+Scenario: Final valid: 16 user/insurance/policy/shared/update-status | api: /api/v1/user/insurance/policy/shared/update-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...6bMs
+
+Body:
+{"policyId":"c4a81888-ec61-453e-b901-5c3b699ad154","status":"reject"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:20.917
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/policy/shared/update-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"status":"success","message":"Policy rejected successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">17. Final valid: 17 user/insurance/upload/policy/document</div>
+    <div class="badge badge-fail">FAILED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</div>
+  <div class="meta">Status: 422 Unprocessable Entity</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:44:21.000
+Scenario: Final valid: 17 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=IA2U968o8WoOcv1kCm7m5oToe5i50xTLQYjs
+authorization: eyJhbG...OJJo
+
+Body:
+&lt;binary body: 834907 bytes; content-type=multipart/form-data;boundary=IA2U968o8WoOcv1kCm7m5oToe5i50xTLQYjs&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:44:29.833
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 422 Unprocessable Entity
+
+Body:
+{"msg":"File is password protected and requires unlock before processing","message":"File is password protected and requires unlock before processing","success":false,"data":{"status":"PASSWORD_PROTECTED","message":"File is password protected and requires unlock before processing"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">18. Final valid: 18 user/insurance/portfolio/protected-attachments/grouped</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/protected-attachments/grouped</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:56:57.551
+Scenario: Final valid: 18 user/insurance/portfolio/protected-attachments/grouped | api: /api/v1/user/insurance/portfolio/protected-attachments/grouped | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/protected-attachments/grouped
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:56:58.594
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/protected-attachments/grouped
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Protected attachments retrieved and grouped successfully","errorCode":null,"insurers":[{"insurerName":"Unknown","count":1,"attachments":[{"attachmentId":"275479_8b1ac4bd0440a0cdc98d6d6f4acd1a5fe906eb038d2796c5d3033a2a02d9081a_e756180f-46f0-4366-92e3-388e1af3707e","attachmentIdNumeric":275479,"jobItemId":131680,"jobId":"e756180f-46f0-4366-92e3-388e1af3707e","accountId":"95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0","sizeBytes":834695,"mimeType":"application/pdf","lastSeen":"2026-04-21T19:14:30","unlockStatus":"PENDING","unlockAttempts":0,"lastAttempted":null,"createdAt":"2026-04-21T19:14:30","s3Key":"85970c16-8e3d-49f6-80fe-c9ea24b9407c/95d2f1b1-7748-45f0-b4d6-7326cfcf1dc0/protected_1776798869836.pdf","fileName":"Protected.pdf","subject":null,"insurerName":null,"passwordFormat":null}]}],"totalCount":1}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">19. Final valid: 19 user/insurance/portfolio/file/unlock</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/file/unlock</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-04-22 00:56:58.604
+Scenario: Final valid: 19 user/insurance/portfolio/file/unlock | api: /api/v1/user/insurance/portfolio/file/unlock | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/file/unlock
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...OJJo
+
+Body:
+{"password":"HeyZyra","attachmentId":"275479_8b1ac4bd0440a0cdc98d6d6f4acd1a5fe906eb038d2796c5d3033a2a02d9081a_e756180f-46f0-4366-92e3-388e1af3707e"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-04-22 00:56:58.993
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/file/unlock
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"message":"PDF unlocked and start processing.","attachmentId":"275479_8b1ac4bd0440a0cdc98d6d6f4acd1a5fe906eb038d2796c5d3033a2a02d9081a_e756180f-46f0-4366-92e3-388e1af3707e","unlockStatus":"SUCCESS","retriesRemaining":null,"errorCode":null}}</pre></details>
+</div>
+
+  </div>
+</body>
+</html>
