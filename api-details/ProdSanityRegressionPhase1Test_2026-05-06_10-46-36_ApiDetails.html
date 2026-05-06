@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase1Test API Details</title>
+  <style>
+    body { background:#0f1722; color:#e5edf5; font-family:Arial,sans-serif; margin:0; }
+    .topbar { background:#111927; border-bottom:1px solid #27364d; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:18px; font-weight:700; color:#7c9cff; }
+    .topbar-badge { background:#5865f2; color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .page { max-width:1400px; margin:0 auto; padding:24px; }
+    .header { margin-bottom:24px; }
+    .title { font-size:28px; font-weight:700; margin-bottom:8px; }
+    .subtitle { color:#9fb0c3; margin-bottom:6px; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:24px 0; }
+    .info-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:16px; }
+    .info-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .info-card .value { font-size:18px; font-weight:700; word-break:break-word; }
+    .info-card .value a { color:#86b7ff; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:15px; line-height:1.5; }
+    .summary { display:flex; gap:16px; flex-wrap:wrap; margin:24px 0; }
+    .summary-card { min-width:180px; background:#182334; border:1px solid #2c3d55; border-radius:10px; padding:16px; }
+    .summary-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .summary-card .value { font-size:28px; font-weight:700; }
+    .pass { color:#6ee7a8; }
+    .fail { color:#ff8b8b; }
+    .status-chip { display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; background:#1f5132; color:#89f0ba; }
+    .api-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:18px; margin-bottom:16px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .api-title { font-size:18px; font-weight:700; }
+    .badge { padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#153b27; color:#7ef0b1; }
+    .badge-fail { background:#4a1f25; color:#ff9ca0; }
+    .meta { color:#9fb0c3; font-size:13px; margin-bottom:10px; }
+    details { margin-top:10px; background:#0e1622; border:1px solid #223047; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:700; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#0a111a; color:#dde7f2; padding:14px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Automation API Details</div>
+    <div class="topbar-badge">May 06, 2026 10:46:36 am</div>
+  </div>
+  <div class="page">
+    <div class="header">
+      <div class="title">ProdSanityRegressionPhase1Test API Details</div>
+      <div class="subtitle">Source log: /Users/mukesh.ali/Desktop/zyra-qa/src/test/resources/Regression/ProdSanity/Phase1_RequestResponse.txt</div>
+      <div class="subtitle"><span class="status-chip">https://zyra-facade.heyzyra.ai</span></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Started</div><div class="value">2026-05-06 10:45:56.563</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_10-46-36_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_10-46-36_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <div class="summary">
+      <div class="summary-card"><div class="label">Total APIs</div><div class="value">13</div></div>
+      <div class="summary-card"><div class="label">Passed</div><div class="value pass">12</div></div>
+      <div class="summary-card"><div class="label">Failed</div><div class="value fail">1</div></div>
+    </div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 otp/generate</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:45:56.563
+Scenario: Final valid: 01 otp/generate | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"purpose":"login","authMethod":"email_otp","email":"cmukesh391@gmail.com"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:45:57.697
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-06T05:16:01.262Z","resendBlockedUntil":null,"otpFor":"email","deliveryStatus":"sent","otpId":"b39127e6-0261-4b49-ab16-4c288a4ac0d2","otpValidTill":"2026-05-06T05:21:01.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-06T05:16:01.270Z","updatedAt":"2026-05-06T05:16:01.270Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">02. Final valid: 02 otp/submit</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:28.938
+Scenario: Final valid: 02 otp/submit | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"b39127e6-0261-4b49-ab16-4c288a4ac0d2","purpose":"login","otp":"745734"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:29.259
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4NTk3MGMxNi04ZTNkLTQ5ZjYtODBmZS1jOWVhMjRiOTQwN2MiLCJ0aW1lc3RhbXAiOjE3NzgwNDQ1OTI4MDEsImlhdCI6MTc3ODA0NDU5Mn0.PsT_EsGWme1F2D5UrMtDeQ3R63ldiu06LzNAhjK_ZuA","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T07:02:51.948Z","updatedAt":"2026-04-14T04:14:35.000Z","userId":"85970c16-8e3d-49f6-80fe-c9ea24b9407c","username":null,"email":"cmukesh391@gmail.com","primaryMobile":"9000778885","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":"referral","utmData":"DAOYQYQI","platform":"web","referralId":"YXHY7HSI","socialId":"117807414505834481952","authPrimaryMethod":"google","lastLoginMethod":"email_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":3,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-13T10:57:58.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-04-21T19:47:11.000Z","zScoreLastAttemptAt":"2026-04-21T19:45:13.000Z","zScoreLastAttemptError":null},"tokenId":"a247c05b-b4a2-49e0-a7d9-8f668f671682","expiresAt":"2027-05-06T05:16:32.805Z","tokenMetadata":null,"id":13307,"createdAt":"2026-05-06T05:16:32.805Z","updatedAt":"2026-05-06T05:16:32.805Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"c****@gmail.com","linkedEmail":"cmukesh391@gmail.com","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">03. Final valid: 03 tnc/user/consent-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:29.262
+Scenario: Final valid: 03 tnc/user/consent-status | api: /api/v1/tnc/user/consent-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+{"channel":"web"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:29.449
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"data":{"accepted":true,"docId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25","docVersionId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25-v1-69b4eb15","contentType":"HTML","content":"&lt;html&gt;&lt;head&gt;&lt;title&gt;Terms and Conditions&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Terms and Conditions v1.0&lt;/h1&gt;&lt;p&gt;Welcome to our service. By using our platform, you agree to these terms and conditions.&lt;/p&gt;&lt;h2&gt;Key Points:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;User Responsibilities&lt;/li&gt;&lt;li&gt;Privacy Protection&lt;/li&gt;&lt;li&gt;Service Availability&lt;/li&gt;&lt;li&gt;Account Termination&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Last updated: August 20, 2025&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"},"message":"User consent status retrieved successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">04. Final valid: 04 user/settings/email-sync/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:29.451
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:29.621
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"103555405517828864475","provider":"gmail","emailId":"shaik.ali@heyzyra.ai","lastSyncedAt":"2026-04-22T17:45:08.000Z","nextScanAt":"2026-05-22T12:15:09","createdAt":"2026-04-01T11:15:24","updatedAt":"2026-04-22T12:15:08","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null},{"accountId":"117807414505834481952","provider":"gmail","emailId":"cmukesh391@gmail.com","lastSyncedAt":"2026-04-26T20:36:51.000Z","nextScanAt":"2026-05-26T15:06:52","createdAt":"2025-12-01T07:04:38","updatedAt":"2026-04-26T15:06:52","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">05. Final valid: 05 events/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:29.622
+Scenario: Final valid: 05 events/pending | api: /api/v1/events/pending | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:29.776
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"events":[],"count":0}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">06. Final valid: 06 profile/home/insights</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:29.781
+Scenario: Final valid: 06 profile/home/insights | api: /api/v1/profile/home/insights | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:30.466
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"insights":[{"title":"Recommendation","description":"For Care Supreme, immediately declare Asthma to Care Health Insurance to rectify the PED mismatch and avoid potential claim rejections.","cta":{"type":"POLICY_INSIGHTS","id":"cafdcba6-1dbe-4bb8-9493-363562851382"}},{"title":"Recommendation","description":"For Care Supreme, utilize the unlimited E-consultations and Care OPD benefits for routine medical needs to maximize policy value.","cta":{"type":"POLICY_INSIGHTS","id":"50c247ef-6803-4b89-b042-77564eda49b8"}},{"title":"Recommendation","description":"\"Purchase a standalone critical illness policy or add a comprehensive critical illness rider of at least ₹25 lakhs.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Recommendation","description":"\"Consider adding a waiver of premium rider to ensure the policy remains active during financial hardships caused by disability.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Review","description":"Policy marks Shubham Jayendra Patel as 'Self', but your user profile is 'C Mukesh' (1995-07-26). Please confirm whether this policy belongs to you or to another account member.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Review","description":"Nominee relation is 'Sibling' but we cannot determine brother vs sister without gender/DOB or a confirmed family link. Please confirm Ravish Sangwan's relationship (brother/sister).","cta":{"type":"GO_TO_FAMILY"}},{"title":"Payment","description":"Your renewal for Care Health Care Supreme is due on 30 May, 2026.","cta":{"type":"POLICY_INSIGHTS","id":"cafdcba6-1dbe-4bb8-9493-363562851382"}},{"title":"Pending","description":"Your profile is incomplete. Complete profile now for personalised insurance advice","cta":{"type":"GO_TO_PROFILE"}}],"zScore":788,"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">07. Final valid: 07 profile/analysis-history</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:30.476
+Scenario: Final valid: 07 profile/analysis-history | api: /api/v1/profile/analysis-history | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:31.018
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"entries":[{"jobId":"abc0b45a-9fa6-36cb-8c0e-bebab5b9b15d","jobType":"EMAIL_SYNC","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-26 20:36:49","finishedAt":"2026-04-26 20:36:52","startedAt":"2026-04-26 20:36:49","steps":[{"id":"scanning","label":"Reading from Gmail","status":"completed"},{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"d0c5ca42-185f-30cd-bffe-72a2f84dc2a5","jobType":"EMAIL_SYNC","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-22 17:45:03","finishedAt":"2026-04-22 17:45:08","startedAt":"2026-04-22 17:45:03","steps":[{"id":"scanning","label":"Reading from Gmail","status":"completed"},{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"e756180f-46f0-4366-92e3-388e1af3707e","jobType":"UPLOAD","fileName":"Protected.pdf","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-22 00:44:30","finishedAt":"2026-04-22 00:44:30","startedAt":"2026-04-22 00:44:30","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"da39ba6f-e3cb-429d-9e0d-471e6f984f4a","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-04-22 00:40:48","finishedAt":"2026-04-22 00:43:15","startedAt":"2026-04-22 00:40:48","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"85745c74-9d3e-46a1-91be-01d4a4c2c957","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-04-22 00:39:08","finishedAt":"2026-04-22 00:39:08","startedAt":"2026-04-22 00:39:08","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">08. Final valid: 08 actions/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:31.021
+Scenario: Final valid: 08 actions/pending | api: /api/v1/actions/pending | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:31.369
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"slides":[]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">09. Final valid: 09 profile/analysis-progress</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:31.373
+Scenario: Final valid: 09 profile/analysis-progress | api: /api/v1/profile/analysis-progress | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:31.684
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"jobs":[{"jobId":"da39ba6f-e3cb-429d-9e0d-471e6f984f4a","type":"UPLOAD","fileName":"Care Health_55971852.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-04-21T19:10:48"},{"jobId":"a94cc099-77c2-4a61-abd1-deca896bae0f","type":"UPLOAD","fileName":"Care Health_66871045.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-04-21T18:14:29"}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">10. Final valid: 10 profile/list/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:31.686
+Scenario: Final valid: 10 profile/list/all | api: /api/v1/profile/list/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:31.849
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"details":[{"heading":"Your Details","data":[{"image":"https://fastly.picsum.photos/id/741/800/800.jpg?hmac=_wL7TULpLEfY9nHYHolqnVd3Z0xR6QKRq-dtapzx8lw","title":"Personal Details","cta":"personal-profile"},{"image":"https://fastly.picsum.photos/id/654/800/800.jpg?hmac=gi-ImBCSXApw0arnugXoCa9IJ2qcmdxleEjzIcUNHfw","title":"Health Details","cta":"health-profile"}]},{"heading":"Insurance Details","data":[{"image":"https://fastly.picsum.photos/id/723/800/800.jpg?hmac=o6MKSQPG7pqW1sxulI8DTJdvZHfus6qztbn0rffBuXU","title":"All Policies","cta":"policy-list"},{"image":"https://fastly.picsum.photos/id/921/800/800.jpg?hmac=yj41mzuAAUkiyrVna4OwSQyF6UuBgiviPPcNq4EV4UY","title":"Family Members","cta":"family-member-list"}]}],"fullName":"C Mukesh","completionPercentage":75,"pendingVerifications":[{"title":"Financial Details","subTitle":"Add your financial details to complete your profile","cta":{"type":"FINANCIAL_DETAILS"},"type":"user-profile"}],"gender":"male","userId":"85970c16-8e3d-49f6-80fe-c9ea24b9407c"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">11. Final valid: 11 profile/get</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:31.850
+Scenario: Final valid: 11 profile/get | api: /api/v1/profile/get | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:32.008
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"hasBasicProfile":true,"basicProfile":{"fullName":"C Mukesh","dob":"1995-07-26T00:00:00.000Z","age":30,"email":"cmukesh391@gmail.com","emailVerified":true,"phone":"9000778885","phoneVerified":true,"gender":"male","married":false,"pincode":"155008","panNumber":"GZSPS4052M","hasHealthInsurance":null,"hasLifeInsurance":null,"referralCode":"DAOYQYQI"},"financialProfile":{"annualIncome":0,"occupation":""},"healthProfile":{"alcohol":true,"smoker":true,"alcoholFrequency":"frequent_in_past","smokerFrequency":"frequent_in_past","diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":true,"displayName":"Other","value":"Asthma"}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">12. Final valid: 12 profile/health</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health</div>
+  <div class="meta">Status: 201 Created</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:32.010
+Scenario: Final valid: 12 profile/health | api: /api/v1/profile/health | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG..._ZuA
+
+Body:
+{"alcohol":true,"smoker":true,"chronicDiseasesJson":["Asthma"],"smokerFrequency":"frequent_in_past","alcoholFrequency":"frequent_in_past"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:32.165
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+Status: 201 Created
+
+Body:
+&lt;empty&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">13. Final valid: 13 user/insurance/upload/policy/document</div>
+    <div class="badge badge-fail">FAILED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</div>
+  <div class="meta">Status: 409 Conflict</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 10:46:32.213
+Scenario: Final valid: 13 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=nHcvR-Dkk3bkAbOdb_kZfQpX06Aa5JCqia5XWoA
+authorization: eyJhbG..._ZuA
+
+Body:
+&lt;binary body: 1502731 bytes; content-type=multipart/form-data;boundary=nHcvR-Dkk3bkAbOdb_kZfQpX06Aa5JCqia5XWoA&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 10:46:36.287
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 409 Conflict
+
+Body:
+{"msg":"File already exists for this account","message":"File already exists for this account","success":false,"data":{"status":"DUPLICATE","message":"File already exists for this account"}}</pre></details>
+</div>
+
+  </div>
+</body>
+</html>
