@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase1Test API Details</title>
+  <style>
+    body { background:#0f1722; color:#e5edf5; font-family:Arial,sans-serif; margin:0; }
+    .topbar { background:#111927; border-bottom:1px solid #27364d; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:18px; font-weight:700; color:#7c9cff; }
+    .topbar-badge { background:#5865f2; color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .page { max-width:1400px; margin:0 auto; padding:24px; }
+    .header { margin-bottom:24px; }
+    .title { font-size:28px; font-weight:700; margin-bottom:8px; }
+    .subtitle { color:#9fb0c3; margin-bottom:6px; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:24px 0; }
+    .info-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:16px; }
+    .info-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .info-card .value { font-size:18px; font-weight:700; word-break:break-word; }
+    .info-card .value a { color:#86b7ff; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:15px; line-height:1.5; }
+    .summary { display:flex; gap:16px; flex-wrap:wrap; margin:24px 0; }
+    .summary-card { min-width:180px; background:#182334; border:1px solid #2c3d55; border-radius:10px; padding:16px; }
+    .summary-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; }
+    .summary-card .value { font-size:28px; font-weight:700; }
+    .pass { color:#6ee7a8; }
+    .fail { color:#ff8b8b; }
+    .status-chip { display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; background:#1f5132; color:#89f0ba; }
+    .api-card { background:#162131; border:1px solid #27364d; border-radius:12px; padding:18px; margin-bottom:16px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .api-title { font-size:18px; font-weight:700; }
+    .badge { padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#153b27; color:#7ef0b1; }
+    .badge-fail { background:#4a1f25; color:#ff9ca0; }
+    .meta { color:#9fb0c3; font-size:13px; margin-bottom:10px; }
+    details { margin-top:10px; background:#0e1622; border:1px solid #223047; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:700; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#0a111a; color:#dde7f2; padding:14px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Automation API Details</div>
+    <div class="topbar-badge">May 06, 2026 03:15:09 pm</div>
+  </div>
+  <div class="page">
+    <div class="header">
+      <div class="title">ProdSanityRegressionPhase1Test API Details</div>
+      <div class="subtitle">Source log: /Users/mukesh.ali/Desktop/zyra-qa/src/test/resources/Regression/ProdSanity/Phase1_RequestResponse.txt</div>
+      <div class="subtitle"><span class="status-chip">https://zyra-facade.heyzyra.ai</span></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Started</div><div class="value">2026-05-06 15:14:32.082</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_15-15-09_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_15-15-09_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <div class="summary">
+      <div class="summary-card"><div class="label">Total APIs</div><div class="value">16</div></div>
+      <div class="summary-card"><div class="label">Passed</div><div class="value pass">16</div></div>
+      <div class="summary-card"><div class="label">Failed</div><div class="value fail">0</div></div>
+    </div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 otp/generate (mobile)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:14:32.082
+Scenario: Final valid: 01 otp/generate (mobile) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"phoneNumber":"6281963899","purpose":"login","authMethod":"mobile_otp"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:14:32.696
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-06T09:44:32.737Z","resendBlockedUntil":null,"otpFor":"mobile","deliveryStatus":"sent","otpId":"6011d89a-3212-4a07-85f4-7ae7487568bf","otpValidTill":"2026-05-06T09:49:33.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-06T09:44:32.746Z","updatedAt":"2026-05-06T09:44:32.746Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">02. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:14:33.920
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"6011d89a-3212-4a07-85f4-7ae7487568bf","purpose":"login","otp":"880680"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:14:34.147
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4NmM4ZWNmOC03MmUxLTQ4MzYtOTE0My00MTczMzg0ZDFjYzMiLCJ0aW1lc3RhbXAiOjE3NzgwNjA2NzQxNDgsImlhdCI6MTc3ODA2MDY3NH0.7iUkyeW7907sFCurhNBvIrvEHSVBxg7Jhfp3oHDu2es","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T06:14:42.284Z","updatedAt":"2026-04-01T12:56:52.000Z","userId":"86c8ecf8-72e1-4836-9143-4173384d1cc3","username":null,"email":"gromo.qa123@gmail.com","primaryMobile":"6281963899","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":"referral","utmData":"DAOYQYQI","platform":"android","referralId":"BOS43T0C","socialId":"106434823931605171838","authPrimaryMethod":"google","lastLoginMethod":"mobile_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":3,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-03-31T14:09:33.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-01T04:28:57.000Z","zScoreLastAttemptAt":"2026-05-01T04:26:58.000Z","zScoreLastAttemptError":null},"tokenId":"772eedec-38ca-45bf-8abd-bc1c8d856ea7","expiresAt":"2027-05-06T09:44:34.151Z","tokenMetadata":null,"id":13370,"createdAt":"2026-05-06T09:44:34.152Z","updatedAt":"2026-05-06T09:44:34.152Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"g****@gmail.com","linkedEmail":"gromo.qa123@gmail.com","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">03. Final valid: 01 otp/generate (email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:14:34.151
+Scenario: Final valid: 01 otp/generate (email) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"purpose":"login","authMethod":"email_otp","email":"shaik.ali@gromo.in"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:14:34.291
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-06T09:44:34.335Z","resendBlockedUntil":null,"otpFor":"email","deliveryStatus":"sent","otpId":"dc375c99-1c30-430e-be2f-52f53e2ae277","otpValidTill":"2026-05-06T09:49:34.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-06T09:44:34.342Z","updatedAt":"2026-05-06T09:44:34.342Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">04. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:05.222
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"dc375c99-1c30-430e-be2f-52f53e2ae277","purpose":"login","otp":"614683"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:05.971
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNzAyN2M5NC05MmRhLTRmOTItYTUzMy00OGI4Y2U3OTY0ZTMiLCJ0aW1lc3RhbXAiOjE3NzgwNjA3MDU5OTMsImlhdCI6MTc3ODA2MDcwNX0.dpLh54ORV55NELdDs5sgSiHq68pp30B1ZSGLLgd7J3s","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T06:09:03.382Z","updatedAt":"2026-04-01T20:38:46.089Z","userId":"b7027c94-92da-4f92-a533-48b8ce7964e3","username":null,"email":"shaik.ali@gromo.in","primaryMobile":"","isEmailVerified":true,"isMobileVerified":false,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":null,"utmData":null,"platform":"web","referralId":"DAOYQYQI","socialId":"109924625702978997636","authPrimaryMethod":"google","lastLoginMethod":"email_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":2,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-02T12:15:29.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-06T09:32:53.000Z","zScoreLastAttemptAt":"2026-05-06T09:30:35.000Z","zScoreLastAttemptError":null},"tokenId":"dd16074f-ccd9-46bc-85db-4ce00240e979","expiresAt":"2027-05-06T09:45:05.996Z","tokenMetadata":null,"id":13371,"createdAt":"2026-05-06T09:45:05.996Z","updatedAt":"2026-05-06T09:45:05.996Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":true,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":false,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"s****@gromo.in","linkedEmail":"shaik.ali@gromo.in","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">05. Final valid: 03 tnc/user/consent-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:05.975
+Scenario: Final valid: 03 tnc/user/consent-status | api: /api/v1/tnc/user/consent-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{"channel":"web"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:06.088
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"data":{"accepted":true,"docId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25","docVersionId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25-v1-69b4eb15","contentType":"HTML","content":"&lt;html&gt;&lt;head&gt;&lt;title&gt;Terms and Conditions&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Terms and Conditions v1.0&lt;/h1&gt;&lt;p&gt;Welcome to our service. By using our platform, you agree to these terms and conditions.&lt;/p&gt;&lt;h2&gt;Key Points:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;User Responsibilities&lt;/li&gt;&lt;li&gt;Privacy Protection&lt;/li&gt;&lt;li&gt;Service Availability&lt;/li&gt;&lt;li&gt;Account Termination&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Last updated: August 20, 2025&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"},"message":"User consent status retrieved successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">06. Final valid: 04 user/settings/email-sync/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:06.090
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:06.246
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"109924625702978997636","provider":"gmail","emailId":"shaik.ali@gromo.in","lastSyncedAt":"2026-04-13T19:14:59.000Z","nextScanAt":"2026-05-13T13:45:00","createdAt":"2025-12-01T06:09:04","updatedAt":"2026-04-13T13:45:00","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">07. Final valid: 05 events/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:06.248
+Scenario: Final valid: 05 events/pending | api: /api/v1/events/pending | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:06.373
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"events":[],"count":0}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">08. Final valid: 06 profile/home/insights</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:06.375
+Scenario: Final valid: 06 profile/home/insights | api: /api/v1/profile/home/insights | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:06.834
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"insights":[{"title":"Recommendation","description":"For Niva Bupa's ReAssure policy, consider adding a top-up plan to cover the ₹1 lakh sub-limit on robotic surgeries and ensure continuous renewal to complete the 36-month PED waiting period.","cta":{"type":"POLICY_INSIGHTS","id":"484c311e-7859-4058-b4a9-42cdd524b2d1"}},{"title":"Recommendation","description":"\"Purchase a comprehensive term life insurance policy with a sum assured of at least 10x your annual income.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Recommendation","description":"\"Consider adding critical illness and accidental death riders to your new life insurance policy for enhanced protection.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Review","description":"This policy marks 'Self' for Suresh Pal Singh Rawat, but it does not match your profile (Ram Kumar). Confirm how Suresh Pal Singh Rawat is related to you so the family mapping is correct.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Review","description":"Darpan Khurana appears as 'Self' (insured/proposer) on policy 7507 but does not match your profile. Confirm who this person is and their relationship to you before adding as a family member.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Payment","description":"Your renewal for Niva Bupa Reassure is due on 25 June, 2026.","cta":{"type":"POLICY_INSIGHTS","id":"484c311e-7859-4058-b4a9-42cdd524b2d1"}},{"title":"Pending","description":"Your profile is incomplete. Complete profile now for personalised insurance advice","cta":{"type":"GO_TO_PROFILE"}}],"zScore":401,"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">09. Final valid: 07 profile/analysis-history</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:06.842
+Scenario: Final valid: 07 profile/analysis-history | api: /api/v1/profile/analysis-history | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:07.270
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"entries":[{"jobId":"336c65e5-e128-46ab-af71-257bf193ffe3","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 14:57:38","finishedAt":"2026-05-06 15:00:14","startedAt":"2026-05-06 14:57:38","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"9bed97a2-05e3-3bc1-921f-8d7bfb2f5ca2","jobType":"EMAIL_SYNC","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-13 19:14:58","finishedAt":"2026-04-13 19:15:00","startedAt":"2026-04-13 19:14:58","steps":[{"id":"scanning","label":"Reading from Gmail","status":"completed"},{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"183f2fea-350c-315f-a958-73f525de4fba","jobType":"EMAIL_SYNC","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-01 18:00:45","finishedAt":"2026-04-01 18:02:00","startedAt":"2026-04-01 18:00:45","steps":[{"id":"scanning","label":"Reading from Gmail","status":"completed"},{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"d515d772-aee0-35bd-9766-e986045d118d","jobType":"EMAIL_SYNC","jobStatusCode":"NO_POLICY_FOUND","overallStatus":"completed","failureReason":"No insurance policy documents found in scanned emails","createdAt":"2026-04-01 17:49:13","finishedAt":"2026-04-01 18:02:00","startedAt":"2026-04-01 17:49:13","steps":[{"id":"scanning","label":"Reading from Gmail","status":"completed"},{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"c99c520e-02f3-4b43-a432-080ce1f59146","jobType":"EMAIL_SYNC","jobStatusCode":"OAUTH_INVALID","overallStatus":"failed","failureReason":"Email account authorization expired - please reconnect","createdAt":"2026-02-10 14:15:03","finishedAt":null,"startedAt":"2026-02-10 14:15:03","steps":[{"id":"scanning","label":"Reading from Gmail","status":"failed"},{"id":"validation","label":"Validation In Progress","status":"pending"},{"id":"analysis","label":"Analyzing Policy","status":"pending"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">10. Final valid: 08 actions/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:07.274
+Scenario: Final valid: 08 actions/pending | api: /api/v1/actions/pending | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:07.457
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"slides":[{"id":"referral_address:5","type":"REFERRAL_REWARD_ADDRESS","priority":90,"ui":{"title":"Complete your reward","description":"Add your delivery address to receive your Care Box.","imageUrl":"https://example.com/images/care-box.jpg"},"cta":{"label":"Add address","action":{"type":"OPEN_REFERRAL_ADDRESS","rewardId":"5"}}}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">11. Final valid: 09 profile/analysis-progress</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:07.458
+Scenario: Final valid: 09 profile/analysis-progress | api: /api/v1/profile/analysis-progress | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:07.688
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"jobs":[{"jobId":"336c65e5-e128-46ab-af71-257bf193ffe3","type":"UPLOAD","fileName":"000 (10).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T09:27:38"}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">12. Final valid: 10 profile/list/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:07.691
+Scenario: Final valid: 10 profile/list/all | api: /api/v1/profile/list/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:07.762
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"details":[{"heading":"Your Details","data":[{"image":"https://fastly.picsum.photos/id/741/800/800.jpg?hmac=_wL7TULpLEfY9nHYHolqnVd3Z0xR6QKRq-dtapzx8lw","title":"Personal Details","cta":"personal-profile"},{"image":"https://fastly.picsum.photos/id/654/800/800.jpg?hmac=gi-ImBCSXApw0arnugXoCa9IJ2qcmdxleEjzIcUNHfw","title":"Health Details","cta":"health-profile"}]},{"heading":"Insurance Details","data":[{"image":"https://fastly.picsum.photos/id/723/800/800.jpg?hmac=o6MKSQPG7pqW1sxulI8DTJdvZHfus6qztbn0rffBuXU","title":"All Policies","cta":"policy-list"},{"image":"https://fastly.picsum.photos/id/921/800/800.jpg?hmac=yj41mzuAAUkiyrVna4OwSQyF6UuBgiviPPcNq4EV4UY","title":"Family Members","cta":"family-member-list"}]}],"fullName":"Ram Kumar","completionPercentage":75,"pendingVerifications":[{"title":"Financial Details","subTitle":"Add your financial details to complete your profile","cta":{"type":"FINANCIAL_DETAILS"},"type":"user-profile"}],"gender":"male","userId":"b7027c94-92da-4f92-a533-48b8ce7964e3"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">13. Final valid: 11 profile/get</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:07.766
+Scenario: Final valid: 11 profile/get | api: /api/v1/profile/get | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:07.914
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"hasBasicProfile":true,"basicProfile":{"fullName":"Ram Kumar","dob":"1994-08-26T00:00:00.000Z","age":31,"email":"shaik.ali@gromo.in","emailVerified":true,"phone":"","phoneVerified":false,"gender":"male","married":false,"pincode":"122006","panNumber":"","hasHealthInsurance":null,"hasLifeInsurance":null,"referralCode":""},"financialProfile":{"annualIncome":0,"occupation":"Business Owner"},"healthProfile":{"alcohol":true,"smoker":true,"alcoholFrequency":"frequent_in_past","smokerFrequency":"frequent_in_past","diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":true,"displayName":"Other","value":"Asthma"}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">14. Final valid: 12 profile/health</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health</div>
+  <div class="meta">Status: 201 Created</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:07.916
+Scenario: Final valid: 12 profile/health | api: /api/v1/profile/health | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{"alcohol":true,"smoker":true,"chronicDiseasesJson":["Asthma"],"smokerFrequency":"frequent_in_past","alcoholFrequency":"frequent_in_past"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:08.039
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+Status: 201 Created
+
+Body:
+&lt;empty&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">15. Final valid: 13 user/insurance/portfolio/summary/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:08.040
+Scenario: Final valid: 13 user/insurance/portfolio/summary/all | api: /api/v1/user/insurance/portfolio/summary/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...7J3s
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:08.511
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false,"passwordProtectedFiles":[],"assetCount":"-","healthCovered":"₹21.13 lakh","insuranceScore":"401/900","isZScoreGenerate":true,"zScoreUpdatedAt":"2026-05-06T09:32:52.000Z","insuredMemberCount":"3/3","lifeCovered":"-","insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"success":true,"NON_FAMILY_POLICY":{"title":"Other","count":1,"totalCoverage":"₹10 lakh","healthCoverage":"₹10 lakh","lifeCoverage":"-","insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"policies":[{"policyId":"484c311e-7859-4058-b4a9-42cdd524b2d1","updatedAt":"2026-05-06T09:30:14.000Z","insuredPersonName":"N/a","insurer":"Niva Bupa","claimRatio":91.93,"claimIncurredRatio":61.22,"product":"Reassure","policyNumber":"33232084202502","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹10 lakh","insuredMembers":["Mr. Suresh Pal Singh Rawat","Mrs. Vineeta Rawat","Mr. Kritarth Rawat"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/b7027c94-92da-4f92-a533-48b8ce7964e3/policies/Niva Bupa Health Insurance_33232084202502.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-06T09%3A40%3A08Z&amp;se=2026-05-06T10%3A45%3A08Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-06T09%3A40%3A08Z&amp;ske=2026-05-06T10%3A45%3A08Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=FqAyjvKO1NmsgYh6XlCNMenRuDmrK3SmecUfsfiGupg%3D&amp;rscd=attachment%3B%20filename%3D%22Niva%20Bupa%20Health%20Insurance_33232084202502.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":"https://zyra-insurer-documents.s3.ap-south-1.amazonaws.com/niva/Reassure/brochure.pdf"}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://rules.nivabupa.com/hospital-network/"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1860-500-8888\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:customercare@nivabupa.com"}}],"showSharePolicy":true,"familyMemberCovered":"3/3","totalSumInsured":"₹21.13 lakh","deductible":null,"policyStartDate":"2025-06-26T00:00:00.000Z","policyEndDate":"2026-06-25T00:00:00.000Z","issueDate":"2025-06-11T00:00:00.000Z","originalInceptionDate":"2023-06-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":2,"policyCoverBaseType":"familyFloater","productTypeId":"2652","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":null,"premiumCycle":null,"score":"88","rating":"4.4","verdict":"Niva Bupa's ReAssure plan offers this family excellent coverage with a high sum insured and unlimited restoration. However, a critical mismatch in declaring pre-existing diseases (diabetes, etc.) creates a major risk of claim denial. This must be rectified immediately for the policy to be effective.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Niva Bupa's ReAssure provides an excellent total sum insured of ₹21.13 lakh, which is highly adequate for a family residing in a metro city like Gurgaon.","The 'ReAssure' benefit in this Niva Bupa policy offers unlimited 100% restoration of the base sum insured, providing a crucial financial safety net for multiple claims in a year.","This ReAssure policy includes a strong 50% 'Booster Benefit' as a no-claim bonus, significantly increasing the coverage amount for every claim-free year.","The policy offers extensive pre- and post-hospitalization coverage of 60 and 180 days respectively, which is beneficial for managing recovery costs for the insured members."]},"cons":{"title":"Cons","data":["The Niva Bupa ReAssure policy has a 36-month waiting period for pre-existing diseases, which is a significant gap given the user's declared health conditions.","This ReAssure policy has a sub-limit of ₹1 lakh on certain advanced robotic surgeries, which could lead to high out-of-pocket costs for the insured.","The policy from Niva Bupa lacks any specified benefits for tele-health consultations or a lump-sum recovery benefit after hospitalization."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"The total sum insured of ₹21.13 lakh for Gurgaon (a Tier-1 city) is well above the recommended minimum of ₹15 lakh for metro areas.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"The policy offers comprehensive in-patient coverage with no caps on room rent or doctor fees, although there is a minor sub-limit on some robotic surgeries.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy provides broad disease coverage, and the 36-month PED waiting period is nearing completion for the insured members.","grade":"good"},{"title":"Restoration Benefit","subTitle":"The policy offers an excellent 'ReAssure' benefit, providing unlimited 100% restoration of the base sum insured for any illness within a policy year.","grade":"good"},{"title":"No Claim Bonus","subTitle":"The policy features a strong 'Booster Benefit' that increases the sum insured by 50% for each claim-free year, up to a maximum of 100% of the base sum insured.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"The policy guarantees lifelong renewability, ensuring coverage can be continued indefinitely regardless of the insured's age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"The insurer provides access to a vast network of over 10,000 hospitals across India, ensuring excellent availability of cashless facilities.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"The policy offers excellent coverage with 60 days for pre-hospitalization and 180 days for post-hospitalization expenses, both covered up to the sum insured.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All day-care treatments are covered up to the sum insured, which is comprehensive and meets the highest standard for this benefit.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization is covered up to the full sum insured, providing flexibility for treatment at home when hospital admission is not possible.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Expenses related to a living organ donor's hospitalization for organ harvesting are fully covered up to the sum insured.","grade":"good"},{"title":"Mental Healthcare","subTitle":"The policy provides coverage for in-patient mental healthcare as per regulatory mandates, but lacks explicit mention of out-patient benefits.","grade":"average"},{"title":"Ayush Benefits","subTitle":"The policy provides comprehensive coverage for in-patient AYUSH treatments up to the full sum insured.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"The policy offers a free health check-up annually from day one, with a generous limit of up to ₹5,000 per policy.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age profile.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Niva Bupa Health Insurance reported a Claim Settlement Ratio of 92.02% for the fiscal year 2023-24, which is a solid but average performance.","grade":"average"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹50,650 represents approximately 5.1% of the estimated annual income of ₹10 lakh for a business owner in Gurgaon, making it moderately affordable.","grade":"average"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for over 2 years.","grade":"good"},{"title":"Grace Period","subTitle":"The policy provides a 30-day grace period for premium renewal, which is the industry standard and offers good flexibility.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"The policy has a 36-month waiting period for pre-existing diseases, which is longer than the 24-month standard for specific conditions.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy contains over 8 permanent exclusions beyond the standard IRDAI list, including common items like maternity and dental treatments.","grade":"average"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no mandatory co-payment or deductible, ensuring claims are paid in full up to the sum insured.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a valuable annual health check-up benefit with a limit of up to ₹5,000, available from the first policy year.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy includes a 'Live Healthy' wellness program that provides discounts on renewal premiums based on achieving step count goals.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"The policy documentation does not mention any specific benefits for tele-health or virtual doctor consultations.","grade":"poor"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer a convalescence or recovery benefit to provide a lump-sum amount after prolonged hospitalization.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["A critical mismatch exists between the user's declared PEDs (diabetes, thyroid, asthma) and the policy document, which lists 'None'. This could lead to claim rejection by Niva Bupa.","The 36-month PED waiting period on the ReAssure policy is still active, creating a risk that any claims for declared chronic conditions in the next 7 months will be denied.","The ₹1 lakh sub-limit on certain robotic surgeries in the Niva Bupa ReAssure policy poses a financial risk of high out-of-pocket expenses for advanced treatments."]},"recommendations":{"title":"Recommendations","data":["Immediately contact Niva Bupa to rectify the policy by declaring the pre-existing diseases (diabetes, thyroid, asthma) to prevent future claim rejections under the ReAssure plan.","Request written confirmation from Niva Bupa on the exact remaining waiting period for your specific PEDs after you have updated your health declaration.","Consider purchasing a top-up plan to enhance coverage for advanced treatments, mitigating the financial risk from the ₹1 lakh sub-limit on robotic surgeries in your ReAssure policy."]},"optionalRidersAvailed":["{\"title\":\"Safeguard\",\"description\":\"Provides benefits like coverage for non-payable items, protection for the no-claim bonus, and an inflation-adjusted increase in the sum insured.\"}"]}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">16. Final valid: 14 user/insurance/upload/policy/document</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 15:15:08.559
+Scenario: Final valid: 14 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=Aso3-3xXdcewfuR0TEI-XfibcPWtbLFY
+authorization: eyJhbG...7J3s
+
+Body:
+&lt;binary body: 270068 bytes; content-type=multipart/form-data;boundary=Aso3-3xXdcewfuR0TEI-XfibcPWtbLFY&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 15:15:08.967
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}</pre></details>
+</div>
+
+  </div>
+</body>
+</html>
