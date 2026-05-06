@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase1Test API Details</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background:#1a1a2e; color:#e5edf5; font-family:'Segoe UI',Arial,sans-serif; margin:0; }
+    /* ── top bar ─────────────────────────────────────────── */
+    .topbar { background:#16213e; border-bottom:1px solid #0f3460; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:17px; font-weight:700; color:#e94560; letter-spacing:.5px; }
+    .topbar-right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .topbar-badge { background:#0f3460; color:#e0e0e0; padding:5px 14px; border-radius:999px; font-size:12px; font-weight:600; }
+    .topbar-badge.phase { background:#e94560; color:#fff; }
+    /* ── layout ──────────────────────────────────────────── */
+    .page { max-width:1400px; margin:0 auto; padding:28px 24px; }
+    /* ── stat row (Started / Ended / Passed / Failed) ────── */
+    .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    @media(max-width:900px){ .stat-row { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .stat-row { grid-template-columns:1fr; } }
+    .stat-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 20px; }
+    .stat-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.6px; }
+    .stat-card .value { font-size:22px; font-weight:700; }
+    .stat-card .value.pass { color:#4ade80; }
+    .stat-card .value.fail { color:#f87171; }
+    /* ── pie-chart dashboard ─────────────────────────────── */
+    .chart-dashboard { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px; }
+    @media(max-width:900px){ .chart-dashboard { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .chart-dashboard { grid-template-columns:1fr; } }
+    .chart-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 16px; text-align:center; }
+    .chart-card .chart-title { font-size:13px; font-weight:600; color:#9fb0c3; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+    .chart-card .chart-wrap { position:relative; width:110px; height:110px; margin:0 auto 14px; }
+    .chart-card .legend { display:flex; justify-content:center; align-items:center; gap:8px; font-size:12px; color:#9fb0c3; }
+    .chart-card .legend-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .chart-card .legend-dot.pass { background:#4ade80; }
+    .chart-card .legend-dot.fail { background:#f87171; }
+    .chart-card .stat-label { margin-top:10px; font-size:12px; color:#9fb0c3; }
+    /* ── api list header ─────────────────────────────────── */
+    .section-title { font-size:20px; font-weight:700; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid #0f3460; color:#e2e8f0; }
+    /* ── api cards ───────────────────────────────────────── */
+    .api-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px; margin-bottom:14px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+    .api-title { font-size:16px; font-weight:700; }
+    .badge { padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#14532d; color:#86efac; }
+    .badge-fail { background:#450a0a; color:#fca5a5; }
+    .meta { color:#94a3b8; font-size:13px; margin-bottom:8px; }
+    details { margin-top:10px; background:#0f1a2e; border:1px solid #1e3a5f; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:600; color:#94a3b8; font-size:13px; }
+    summary:hover { color:#e2e8f0; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#07101e; color:#cbd5e1; padding:14px; border-radius:8px; overflow:auto; font-size:12px; line-height:1.6; }
+    /* ── info grid (env, url etc) ────────────────────────── */
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:24px; }
+    .info-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:14px; }
+    .info-card .label { color:#9fb0c3; font-size:12px; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
+    .info-card .value { font-size:14px; font-weight:600; word-break:break-all; }
+    .info-card .value a { color:#60a5fa; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:13px; line-height:1.6; }
+    .pass { color:#4ade80; }
+    .fail { color:#f87171; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Referral System Automation</div>
+    <div class="topbar-right">
+      <span class="topbar-badge phase">ProdSanityRegressionPhase1Test</span>
+      <span class="topbar-badge">May 06, 2026 06:40:34 pm</span>
+    </div>
+  </div>
+  <div class="page">
+    <!-- Stat row -->
+    <div class="stat-row">
+      <div class="stat-card"><div class="label">Started</div><div class="value">2026-05-06 18:39:54.066</div></div>
+      <div class="stat-card"><div class="label">Ended</div><div class="value">2026-05-06 18:40:33.758</div></div>
+      <div class="stat-card"><div class="label">APIs Passed</div><div class="value pass">16</div></div>
+      <div class="stat-card"><div class="label">APIs Failed</div><div class="value fail">0</div></div>
+    </div>
+    <!-- Pie chart dashboard -->
+    <div class="chart-dashboard">
+      <div class="chart-card">
+        <div class="chart-title">APIs</div>
+        <div class="chart-wrap"><canvas id="ch-apis"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Status</div>
+        <div class="chart-wrap"><canvas id="ch-status"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Overview</div>
+        <div class="chart-wrap"><canvas id="ch-overview"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 passed</div>
+        <div class="stat-label">0 failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Events</div>
+        <div class="chart-wrap"><canvas id="ch-events"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 events passed</div>
+        <div class="stat-label">0 events failed, 0 others</div>
+      </div>
+    </div>
+    <!-- Env info -->
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_18-40-34_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-06_18-40-34_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <!-- API list -->
+    <div class="section-title">API Execution Details (16 APIs)</div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 otp/generate (mobile)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:39:54.066
+Scenario: Final valid: 01 otp/generate (mobile) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"phoneNumber":"6281963899","purpose":"login","authMethod":"mobile_otp"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:39:55.183
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-06T13:09:55.233Z","resendBlockedUntil":null,"otpFor":"mobile","deliveryStatus":"sent","otpId":"a2fd5572-2f7f-4c6d-96be-a46312bf5e10","otpValidTill":"2026-05-06T13:14:55.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-06T13:09:55.244Z","updatedAt":"2026-05-06T13:09:55.244Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">02. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:39:56.982
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"a2fd5572-2f7f-4c6d-96be-a46312bf5e10","purpose":"login","otp":"898536"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:39:57.237
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4NmM4ZWNmOC03MmUxLTQ4MzYtOTE0My00MTczMzg0ZDFjYzMiLCJ0aW1lc3RhbXAiOjE3NzgwNzI5OTczMDgsImlhdCI6MTc3ODA3Mjk5N30.RJgBNeW2Pk6oMnvNhXzUCLkltFlIJUnmFpr08fTR278","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T06:14:42.284Z","updatedAt":"2026-04-01T12:56:52.000Z","userId":"86c8ecf8-72e1-4836-9143-4173384d1cc3","username":null,"email":"gromo.qa123@gmail.com","primaryMobile":"6281963899","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":"referral","utmData":"DAOYQYQI","platform":"android","referralId":"BOS43T0C","socialId":"106434823931605171838","authPrimaryMethod":"google","lastLoginMethod":"mobile_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":3,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-03-31T14:09:33.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-01T04:28:57.000Z","zScoreLastAttemptAt":"2026-05-01T04:26:58.000Z","zScoreLastAttemptError":null},"tokenId":"a2263680-c487-4993-b20f-3c1a256b14e3","expiresAt":"2027-05-06T13:09:57.313Z","tokenMetadata":null,"id":13420,"createdAt":"2026-05-06T13:09:57.315Z","updatedAt":"2026-05-06T13:09:57.315Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"g****@gmail.com","linkedEmail":"gromo.qa123@gmail.com","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">03. Final valid: 01 otp/generate (email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:39:57.241
+Scenario: Final valid: 01 otp/generate (email) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"purpose":"login","authMethod":"email_otp","email":"shaikmukeshali01@gmail.com"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:39:57.522
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-06T13:09:57.565Z","resendBlockedUntil":null,"otpFor":"email","deliveryStatus":"sent","otpId":"1cb5d9f8-129f-4340-952b-370652f2a5e4","otpValidTill":"2026-05-06T13:14:58.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-06T13:09:57.571Z","updatedAt":"2026-05-06T13:09:57.571Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">04. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:28.898
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"1cb5d9f8-129f-4340-952b-370652f2a5e4","purpose":"login","otp":"583062"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:29.598
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3YmU1M2E2NC0wYWM1LTQ0ZjktYjNlZi02M2U5N2NlOTExMTgiLCJ0aW1lc3RhbXAiOjE3NzgwNzMwMjk2NjMsImlhdCI6MTc3ODA3MzAyOX0.LVDY9xTsl9XFCqoglf0YHjCQlIY6OQ8s00QLQYcNi0M","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2026-04-01T15:16:45.121Z","updatedAt":"2026-04-27T04:50:57.000Z","userId":"7be53a64-0ac5-44f9-b3ef-63e97ce91118","username":null,"email":"shaikmukeshali01@gmail.com","primaryMobile":"7702658807","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":false,"socialUserType":"google","utmSource":null,"utmData":null,"platform":"android","referralId":"HSZ76AUT","socialId":"100031180226107221029","authPrimaryMethod":"google","lastLoginMethod":"email_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":2,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-13T13:43:32.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-06T12:34:07.000Z","zScoreLastAttemptAt":"2026-05-06T12:26:55.000Z","zScoreLastAttemptError":null},"tokenId":"1d22d2c4-d853-46f3-86f7-e3ebd8f27aaf","expiresAt":"2027-05-06T13:10:29.667Z","tokenMetadata":null,"id":13421,"createdAt":"2026-05-06T13:10:29.667Z","updatedAt":"2026-05-06T13:10:29.667Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"s****@gmail.com","linkedEmail":"shaikmukeshali01@gmail.com","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">05. Final valid: 03 tnc/user/consent-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:29.603
+Scenario: Final valid: 03 tnc/user/consent-status | api: /api/v1/tnc/user/consent-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{"channel":"web"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:29.794
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"data":{"accepted":true,"docId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25","docVersionId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25-v1-69b4eb15","contentType":"HTML","content":"&lt;html&gt;&lt;head&gt;&lt;title&gt;Terms and Conditions&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Terms and Conditions v1.0&lt;/h1&gt;&lt;p&gt;Welcome to our service. By using our platform, you agree to these terms and conditions.&lt;/p&gt;&lt;h2&gt;Key Points:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;User Responsibilities&lt;/li&gt;&lt;li&gt;Privacy Protection&lt;/li&gt;&lt;li&gt;Service Availability&lt;/li&gt;&lt;li&gt;Account Termination&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Last updated: August 20, 2025&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"},"message":"User consent status retrieved successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">06. Final valid: 04 user/settings/email-sync/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:29.800
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:30.006
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"100031180226107221029","provider":"gmail","emailId":"shaikmukeshali01@gmail.com","lastSyncedAt":"2026-04-27T10:20:45.000Z","nextScanAt":"2026-05-27T04:50:47","createdAt":"2026-04-01T15:16:46","updatedAt":"2026-04-27T04:50:46","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">07. Final valid: 05 events/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:30.011
+Scenario: Final valid: 05 events/pending | api: /api/v1/events/pending | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:30.187
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"events":[],"count":0}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">08. Final valid: 06 profile/home/insights</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:30.193
+Scenario: Final valid: 06 profile/home/insights | api: /api/v1/profile/home/insights | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:30.660
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"insights":[{"title":"Recommendation","description":"For Aditya Birla Health's Activ One, increase cover from ₹5L to at least ₹10L and obtain the full policy wording to verify room-rent, PED and renewal terms for S Vahida.","cta":{"type":"POLICY_INSIGHTS","id":"04d49ee0-8609-4566-90a6-e8309d0a6957"}},{"title":"Recommendation","description":"\"Purchase a term life insurance policy with a sum assured of at least 10x your annual income (₹70 Lakhs).\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Attention","description":"The user profile lists Shaik Ali with DOB 1965-06-25, but an existing self identity candidate lists Shaik Ali with DOB 1967-05-10. Please confirm the correct date of birth.","cta":{"type":"GO_TO_FAMILY"}},{"title":"Payment","description":"Your renewal for Shriram General Shri Health Suraksha is due on 30 June, 2026.","cta":{"type":"POLICY_INSIGHTS","id":"6473d233-22b8-42ad-a753-94d75fa4f3e7"}}],"zScore":203,"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">09. Final valid: 07 profile/analysis-history</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:30.675
+Scenario: Final valid: 07 profile/analysis-history | api: /api/v1/profile/analysis-history | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:31.179
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"entries":[{"jobId":"d4654839-deec-4544-a120-73e03e0bcd04","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 17:45:50","finishedAt":"2026-05-06 17:49:05","startedAt":"2026-05-06 17:45:50","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"c48504d9-094b-4f1c-ac83-f7a67448bf95","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 17:34:21","finishedAt":"2026-05-06 17:35:19","startedAt":"2026-05-06 17:34:21","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"d01d8493-e40e-4675-8f9d-4c4b23b673d0","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 17:21:51","finishedAt":"2026-05-06 17:27:01","startedAt":"2026-05-06 17:21:51","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"370169c1-91c5-49d6-afdf-7aac9b3293c9","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 17:21:01","finishedAt":"2026-05-06 17:24:04","startedAt":"2026-05-06 17:21:01","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"b6c99914-b4be-43d9-b6e3-3a1600d749fc","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 15:25:34","finishedAt":"2026-05-06 15:28:57","startedAt":"2026-05-06 15:25:34","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">10. Final valid: 08 actions/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:31.184
+Scenario: Final valid: 08 actions/pending | api: /api/v1/actions/pending | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:31.436
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"slides":[]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">11. Final valid: 09 profile/analysis-progress</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:31.441
+Scenario: Final valid: 09 profile/analysis-progress | api: /api/v1/profile/analysis-progress | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:31.782
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"jobs":[{"jobId":"d4654839-deec-4544-a120-73e03e0bcd04","type":"UPLOAD","fileName":"000023 (1).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T12:15:50"},{"jobId":"c48504d9-094b-4f1c-ac83-f7a67448bf95","type":"UPLOAD","fileName":"000 (9).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T12:04:21"},{"jobId":"d01d8493-e40e-4675-8f9d-4c4b23b673d0","type":"UPLOAD","fileName":"000 (12).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T11:51:51"},{"jobId":"370169c1-91c5-49d6-afdf-7aac9b3293c9","type":"UPLOAD","fileName":"000 (11).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T11:51:01"},{"jobId":"b6c99914-b4be-43d9-b6e3-3a1600d749fc","type":"UPLOAD","fileName":"000 (7).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T09:55:34"},{"jobId":"fd6d1262-5ff1-47f6-ba5d-fe9d5e570d95","type":"UPLOAD","fileName":"Aditya Birla Health_31-25-0463302-00.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T08:45:51"},{"jobId":"9dfaba4e-1fd4-48f2-8c3b-94fe227b448e","type":"UPLOAD","fileName":"United India_1206812825P117272550.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T07:27:03"}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">12. Final valid: 10 profile/list/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:31.787
+Scenario: Final valid: 10 profile/list/all | api: /api/v1/profile/list/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:31.946
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"details":[{"heading":"Your Details","data":[{"image":"https://fastly.picsum.photos/id/741/800/800.jpg?hmac=_wL7TULpLEfY9nHYHolqnVd3Z0xR6QKRq-dtapzx8lw","title":"Personal Details","cta":"personal-profile"},{"image":"https://fastly.picsum.photos/id/654/800/800.jpg?hmac=gi-ImBCSXApw0arnugXoCa9IJ2qcmdxleEjzIcUNHfw","title":"Health Details","cta":"health-profile"}]},{"heading":"Insurance Details","data":[{"image":"https://fastly.picsum.photos/id/723/800/800.jpg?hmac=o6MKSQPG7pqW1sxulI8DTJdvZHfus6qztbn0rffBuXU","title":"All Policies","cta":"policy-list"},{"image":"https://fastly.picsum.photos/id/921/800/800.jpg?hmac=yj41mzuAAUkiyrVna4OwSQyF6UuBgiviPPcNq4EV4UY","title":"Family Members","cta":"family-member-list"}]}],"fullName":"Shaik Ali","completionPercentage":100,"pendingVerifications":[],"gender":"male","userId":"7be53a64-0ac5-44f9-b3ef-63e97ce91118"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">13. Final valid: 11 profile/get</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:31.952
+Scenario: Final valid: 11 profile/get | api: /api/v1/profile/get | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:32.174
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"hasBasicProfile":true,"basicProfile":{"fullName":"Shaik Ali","dob":"1965-06-25T00:00:00.000Z","age":60,"email":"shaikmukeshali01@gmail.com","emailVerified":true,"phone":"7702658807","phoneVerified":true,"gender":"male","married":true,"pincode":"248001","panNumber":"","hasHealthInsurance":false,"hasLifeInsurance":false,"referralCode":""},"financialProfile":{"annualIncome":700000,"occupation":"Retired"},"healthProfile":{"alcohol":true,"smoker":true,"alcoholFrequency":"frequent_in_past","smokerFrequency":"frequent_in_past","diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":true,"displayName":"Other","value":"Asthma"}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">14. Final valid: 12 profile/health</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health</div>
+  <div class="meta">Status: 201 Created</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:32.180
+Scenario: Final valid: 12 profile/health | api: /api/v1/profile/health | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{"alcohol":true,"smoker":true,"chronicDiseasesJson":["Asthma"],"smokerFrequency":"frequent_in_past","alcoholFrequency":"frequent_in_past"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:32.395
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+Status: 201 Created
+
+Body:
+&lt;empty&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">15. Final valid: 13 user/insurance/portfolio/summary/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:32.398
+Scenario: Final valid: 13 user/insurance/portfolio/summary/all | api: /api/v1/user/insurance/portfolio/summary/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...Ni0M
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:33.180
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false,"passwordProtectedFiles":[],"assetCount":"-","healthCovered":"₹30 lakh","insuranceScore":"203/900","isZScoreGenerate":true,"zScoreUpdatedAt":"2026-05-06T12:34:06.000Z","insuredMemberCount":"5/5","lifeCovered":"-","insuranceTypeChips":[{"title":"All","count":4},{"title":"Health","count":4}],"success":true,"FAMILY_POLICY":{"title":"My Policy","count":1,"totalCoverage":"₹5 lakh","healthCoverage":"₹5 lakh","lifeCoverage":"-","insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"policies":[{"policyId":"04d49ee0-8609-4566-90a6-e8309d0a6957","updatedAt":"2026-05-06T12:26:53.000Z","insuredPersonName":"N/a","insurer":"Aditya Birla Health","claimRatio":95.88,"claimIncurredRatio":71.5,"product":"Activ-one","policyNumber":"31-25-0086113-00","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹5 lakh","insuredMembers":["S Vahida"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Aditya Birla Health_31-25-0086113-00.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-06T13%3A05%3A32Z&amp;se=2026-05-06T14%3A10%3A32Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-06T13%3A05%3A32Z&amp;ske=2026-05-06T14%3A10%3A32Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=NhI1OqH16MRX6MHbbD%2FjKvjvhNfx3mtzKTlZAUpkRAU%3D&amp;rscd=attachment%3B%20filename%3D%22Aditya%20Birla%20Health_31-25-0086113-00.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":"https://zyra-insurer-documents.s3.ap-south-1.amazonaws.com/aditya-birla/activ-one/brochure.pdf"}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://www.adityabirlacapital.com/healthinsurance/locate-care/hospital-listing"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-270-7000\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:care.healthinsurance@adityabirlacapital.com"}}],"showSharePolicy":true,"familyMemberCovered":"1/5","totalSumInsured":"₹5 lakh","deductible":null,"policyStartDate":"2026-06-01T00:00:00.000Z","policyEndDate":"2027-05-31T00:00:00.000Z","issueDate":"2026-03-31T00:00:00.000Z","originalInceptionDate":null,"portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"2267","policyTermYears":1,"premiumPaymentTerm":null,"premiumAmount":15484,"premiumCycle":"Annual","score":"92","rating":"4.6","verdict":"For a 53-year-old in Tirupati, Aditya Birla's Activ One offers excellent features like unlimited restoration and a 500% cumulative bonus. However, the ₹5L sum insured is quite low. Upgrading the coverage amount is highly recommended for adequate protection.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts","Virtual Care And Tele Health"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Bonus: Aditya Birla's Activ One offers a Super Credit feature that provides a 100% cumulative bonus every year up to 500%, irrespective of claims.","Unlimited Restoration: The Super Reload benefit in Aditya Birla's Activ One provides unlimited 100% restoration of the sum insured from the second claim onwards.","Tele-Health Access: The availed Tele OPD rider ensures the policyholder has convenient access to expert virtual consultations with Aditya Birla.","Zero Deductions: The Claim Protect feature of Aditya Birla's Activ One covers non-medical expenses and consumables, ensuring zero deductions during hospitalization."]},"cons":{"title":"Cons","data":["Average Sum Insured: The ₹5 lakh coverage under Aditya Birla's Activ One is on the lower side and might be insufficient for major medical emergencies.","Long PED Wait: Aditya Birla's Activ One enforces a 36-month waiting period for pre-existing diseases, leaving a 24-month gap for any undisclosed conditions.","No Recovery Benefit: Aditya Birla's Activ One lacks a convalescence or recovery cash benefit to support post-hospitalization recuperation."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Total Sum insured of ₹5 lakh for Tirupati falls in the average band for non-metro cities.","grade":"average"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"In this policy, room rent is uncapped, doctor fees, diagnostics, and medicines are fully covered, and all major surgical procedures are included.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers a broad range of diseases including mental illness and HIV/AIDS, but has a 36-month PED waiting period with 24 months remaining.","grade":"good"},{"title":"Restoration Benefit","subTitle":"Provides 100% automatic sum insured restoration, unlimited times per year, from the second claim onwards.","grade":"good"},{"title":"No Claim Bonus","subTitle":"Offers an excellent 100% cumulative bonus per year up to 500% of the base sum insured, irrespective of claims.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"Policy guarantees lifetime renewability regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless facility is available at over 10,000 network hospitals across India.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"Provides an excellent 90 days pre-hospitalization and 180 days post-hospitalization coverage at actual expenses.","grade":"good"},{"title":"Day Care Treatments","subTitle":"Covers all day-care procedures without the need to meet the 24-hour minimum hospitalization requirement.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization and home healthcare are covered up to the sum insured.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Organ donor expenses are comprehensively covered up to the sum insured.","grade":"good"},{"title":"Mental Healthcare","subTitle":"Mental healthcare including in-patient treatment is covered up to the sum insured.","grade":"good"},{"title":"Ayush Benefits","subTitle":"AYUSH in-patient treatment is fully covered up to the base sum insured.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A complimentary annual health check-up is available on a cashless basis.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member's age profile.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Aditya Birla Health Insurance has a strong Claim Settlement Ratio of 95.61%, as per the IRDAI Annual Report (2023-24).","grade":"good"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹15,484 is highly affordable, representing only 2.5% of the estimated ₹6 lakh income.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for 10 months.","grade":"good"},{"title":"Grace Period","subTitle":"A standard 30-day grace period is offered for renewal premium payment.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"The policy has a standard 30-day initial wait and 24-month specific disease wait, but a longer 36-month waiting period for pre-existing diseases.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has only standard IRDAI exclusions and does not permanently exclude any common chronic conditions.","grade":"good"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no mandatory deductible or co-payment, meaning all admissible claims are paid in full.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a complimentary annual health check-up available on a cashless basis.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy includes an excellent HealthReturns program that offers up to 100% discount on renewal premiums for staying healthy.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"Virtual care and expert consultations are provided by the availed Tele OPD rider.","grade":"good"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer any convalescence or recovery cash benefit.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["Coverage Shortfall Risk: With only ₹5 lakh base coverage in Aditya Birla's Activ One, a severe medical emergency could lead to significant out-of-pocket expenses.","Waiting Period Risk: Any pre-existing disease diagnosed within the next 24 months will face claim rejection due to the active 36-month waiting period in Aditya Birla's Activ One."]},"recommendations":{"title":"Recommendations","data":["Increase Sum Insured: Consider upgrading the base coverage of your Aditya Birla Activ One policy from ₹5 lakh to at least ₹10 lakh to better protect against medical inflation.","Declare Health Conditions: Ensure all pre-existing conditions are fully disclosed to Aditya Birla to avoid claim rejections during the remaining 24-month waiting period."]},"optionalRidersAvailed":["{\"title\":\"Air Ambulance Rider\",\"description\":\"Provides coverage for emergency air ambulance transportation to an advanced medical facility.\"}","{\"title\":\"Tele OPD Rider\",\"description\":\"Provides access to virtual tele-consultations and expert medical advice from doctors.\"}"]}]},"NON_FAMILY_POLICY":{"title":"Other","count":3,"totalCoverage":"₹25 lakh","healthCoverage":"₹25 lakh","lifeCoverage":"-","insuranceTypeChips":[{"title":"All","count":3},{"title":"Health","count":3}],"policies":[{"policyId":"eb8a8f34-c163-4214-960b-282164122ef4","updatedAt":"2026-05-06T12:26:53.000Z","insuredPersonName":"N/a","insurer":"Aditya Birla Health","claimRatio":95.88,"claimIncurredRatio":71.5,"product":"Activ One","policyNumber":"31-25-0463302-00","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹10 lakh","insuredMembers":["Shivangi Jaya Patel"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Aditya Birla Health_31-25-0463302-00.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-06T13%3A05%3A32Z&amp;se=2026-05-06T14%3A10%3A32Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-06T13%3A05%3A32Z&amp;ske=2026-05-06T14%3A10%3A32Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=4xzXSDhLUsWhYgVtFlRF0IroUN0ptcHdELMwiK%2Blxok%3D&amp;rscd=attachment%3B%20filename%3D%22Aditya%20Birla%20Health_31-25-0463302-00.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":null}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://www.adityabirlacapital.com/healthinsurance/locate-care/hospital-listing"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-270-7000\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:care.healthinsurance@adityabirlacapital.com"}}],"showSharePolicy":true,"familyMemberCovered":"1/5","totalSumInsured":"₹10 lakh","deductible":null,"policyStartDate":"2026-01-11T00:00:00.000Z","policyEndDate":"2027-01-10T00:00:00.000Z","issueDate":"2026-01-11T00:00:00.000Z","originalInceptionDate":"2026-01-11T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"6484","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":6877,"premiumCycle":"Single","score":"88","rating":"4.4","verdict":"For a 26-year-old female in Dehradun, Aditya Birla's Activ One offers excellent ₹10L coverage with unlimited restoration and high bonuses. However, the complete lack of maternity benefits and a 36-month PED wait are significant drawbacks. Recommended only if maternity coverage is not a priority.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Sum Insured: Aditya Birla's Activ One provides ₹10 lakh coverage, which is highly adequate for a resident of Dehradun.","Uncapped Room Rent: The policy offers any room of choice up to the sum insured, ensuring comfortable hospitalization without out-of-pocket room expenses.","Unlimited Restoration: The Super Reload benefit provides unlimited sum insured refills from the second claim onwards, offering robust financial protection.","High No-Claim Bonus: The Super Credit feature offers a 100% cumulative bonus per year, up to 500% of the base sum insured."]},"cons":{"title":"Cons","data":["Maternity Exclusion: Aditya Birla's Activ One permanently excludes maternity expenses, which is a significant gap for a 26-year-old female.","Long PED Waiting Period: The policy imposes a 36-month waiting period for pre-existing diseases, delaying coverage for any undisclosed conditions.","Extensive Exclusions: The policy has numerous permanent exclusions beyond the standard list, including treatments for sterility and refractive errors."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Total Sum insured of ₹10 lakh meets the recommended threshold for non-metro cities like Dehradun.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"In this policy, room rent is uncapped, and doctor fees, diagnostics, medicines, and modern surgical procedures are fully covered up to the sum insured.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"While the policy covers a broad range of diseases, it imposes a standard 36-month waiting period for pre-existing conditions.","grade":"good"},{"title":"Restoration Benefit","subTitle":"Provides unlimited sum insured restoration from the second claim onwards up to the base sum insured.","grade":"good"},{"title":"No Claim Bonus","subTitle":"Offers an excellent 100% cumulative sum insured increase per year irrespective of claims, up to 500% of the base sum insured.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"Policy guarantees lifelong renewability regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless facility is available at over 10,000 network hospitals across India.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"Provides an excellent 90 days of pre-hospitalization and 180 days of post-hospitalization coverage.","grade":"good"},{"title":"Day Care Treatments","subTitle":"All day-care treatments are covered up to the sum insured.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization and home healthcare are fully covered up to the sum insured.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Organ donor expenses are comprehensively covered up to the sum insured.","grade":"good"},{"title":"Mental Healthcare","subTitle":"Mental illness hospitalization is fully covered up to the sum insured.","grade":"good"},{"title":"Ayush Benefits","subTitle":"AYUSH in-patient treatments are fully covered up to the sum insured.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A complimentary annual health check-up is provided on a cashless basis.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity expenses and related treatments are explicitly excluded from this policy's coverage.","grade":"poor"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Aditya Birla Health Insurance has a Claim Settlement Ratio of 92.97%, which falls within the average range.","grade":"average"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹6,877 is highly affordable, representing only 0.98% of the user's explicitly provided annual income of ₹7 lakh.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for approximately 4 months.","grade":"good"},{"title":"Grace Period","subTitle":"A standard 30-day grace period is offered for renewal premium payment.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"The policy has standard initial and specific disease waiting periods, but imposes a 36-month waiting period for pre-existing diseases.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has numerous permanent exclusions beyond the standard IRDAI list, including maternity, sterility, and refractive errors.","grade":"poor"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no mandatory deductible or co-payment, meaning all admissible claims are paid in full.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a complimentary annual health check-up, which is available on a cashless basis.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy features an excellent HealthReturns program that allows earning up to 100% of the premium through wellness activities.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"The policy does not explicitly provide any tele-health or online doctor consultation facilities.","grade":"poor"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer any convalescence or recovery cash benefit.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["Maternity Cost Risk: For a 26-year-old female, the complete exclusion of maternity benefits could lead to significant out-of-pocket expenses during pregnancy.","Delayed PED Coverage: Any pre-existing condition diagnosed within the next 32 months will not be covered by Aditya Birla, risking claim rejection and high medical bills."]},"recommendations":{"title":"Recommendations","data":["Consider Maternity Rider: Since maternity is excluded, look into adding a maternity rider to Aditya Birla's Activ One to cover pregnancy expenses for a 26-year-old female.","PED Waiting Period Reduction: Explore options to reduce the 36-month PED waiting period to 12 or 24 months to ensure faster coverage for future health issues.","Tele-health Supplement: Since virtual care is missing from the policy, consider a standalone tele-consultation subscription for minor health queries."]},"optionalRidersAvailed":null},{"policyId":"f8818453-086a-4078-989a-81279782c3f4","updatedAt":"2026-05-06T12:26:53.000Z","insuredPersonName":"N/a","insurer":"Icici Lombard","claimRatio":85,"claimIncurredRatio":82.24,"product":"Health Shield 360","policyNumber":"4177i/IHOME/250846435/00/000","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹10 lakh","insuredMembers":["Annaboyina Raghuram"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/ICICI Lombard_4177i/IHOME/250846435/00/000.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-06T13%3A05%3A33Z&amp;se=2026-05-06T14%3A10%3A33Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-06T13%3A05%3A33Z&amp;ske=2026-05-06T14%3A10%3A33Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=lGfeVYq05eZV8YnjxPhB%2FBQHTlMza1NaHlg82MUJwao%3D&amp;rscd=attachment%3B%20filename%3D%22000.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":null}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://www.icicilombard.com/cashless-hospitals"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-2666\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:ihealthcare@icicilombard.com"}}],"showSharePolicy":true,"familyMemberCovered":"1/5","totalSumInsured":"₹10 lakh","deductible":null,"policyStartDate":"2022-06-15T00:00:00.000Z","policyEndDate":"2027-06-14T00:00:00.000Z","issueDate":"2022-06-24T00:00:00.000Z","originalInceptionDate":"2022-06-15T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"2723","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":26100,"premiumCycle":null,"score":"85","rating":"4.3","verdict":"For a 26-year-old in Dehradun, ICICI Lombard's Health Shield 360 offers solid ₹10L coverage with uncapped room rent. However, the low 80.97% Claim Settlement Ratio and restrictive 10% No-Claim Bonus are significant drawbacks. Consider porting to a more reliable insurer.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts","Virtual Care And Tele Health"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Sum Insured: ICICI Lombard's Health Shield 360 provides ₹10 lakh coverage, which is highly adequate for healthcare costs in non-metro cities like Dehradun.","Comprehensive Hospitalization: ICICI Lombard's Health Shield 360 offers uncapped room rent and fully covers doctor fees, diagnostics, and surgeries up to the ₹10 lakh sum insured.","Elapsed Waiting Periods: Since the ICICI Lombard policy has been active for 3.9 years, all waiting periods have been successfully completed.","Affordable Premium: The ₹26,100 annual premium for ICICI Lombard's Health Shield 360 is highly affordable, representing only 3.7% of the user's ₹7 lakh annual income."]},"cons":{"title":"Cons","data":["Low Claim Settlement Ratio: ICICI Lombard has a Claim Settlement Ratio of 80.97%, which is significantly below the 90% industry benchmark.","Poor No-Claim Bonus: ICICI Lombard's Health Shield 360 offers only a 10% cumulative bonus per claim-free year, which is much lower than the 50% industry standard.","Restrictive Restoration Benefit: The unlimited reset benefit in ICICI Lombard's Health Shield 360 can only be used for future claims unrelated to the previously paid claim's illness.","Average Post-Hospitalization: ICICI Lombard's Health Shield 360 covers only 90 days of post-hospitalization expenses, falling short of the 120-day standard."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Total Sum insured of ₹10 lakh meets the recommended threshold for non-metro cities like Dehradun.","grade":"good"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"In this policy, room rent is uncapped, and doctor fees, diagnostics, medicines, and surgeries are fully covered up to the sum insured.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"Broad disease coverage is provided, and the PED waiting period has already been completed.","grade":"good"},{"title":"Restoration Benefit","subTitle":"Sum insured restores unlimited times per year but only for different illnesses.","grade":"average"},{"title":"No Claim Bonus","subTitle":"Offers only a 10% cumulative bonus per claim-free year, which is below the 20% average threshold.","grade":"poor"},{"title":"Lifelong Renewability","subTitle":"Policy guarantees lifelong renewability except on grounds of fraud or misrepresentation.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless facility is available at over 10,200 network hospitals across India.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"Provides 60 days pre-hospitalization and 90 days post-hospitalization coverage, falling short of the 120-day post-hospitalization standard.","grade":"average"},{"title":"Day Care Treatments","subTitle":"All day-care procedures requiring less than 24 hours of hospitalization are covered up to the sum insured.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary treatment is covered up to the full sum insured for conditions requiring a minimum of 3 days' hospitalization.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Organ donor expenses are comprehensively covered up to the annual sum insured.","grade":"good"},{"title":"Mental Healthcare","subTitle":"Mental healthcare, including psychiatric treatments and e-counselling, is covered under the policy.","grade":"good"},{"title":"Ayush Benefits","subTitle":"AYUSH in-patient treatment is fully covered at recognized Indian AYUSH facilities.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"Complimentary health check-ups are provided on a cashless basis at empaneled service providers.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age and gender profile.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"ICICI Lombard has a Claim Settlement Ratio of 80.97%, which is below the 90% industry benchmark (IRDAI 2023-24).","grade":"poor"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹26,100 is highly affordable, representing only 3.7% of the user's explicitly provided annual income of ₹7 lakh.","grade":"good"},{"title":"Free Lookup Period","subTitle":"Free-look period not applicable (policy active for 3.9 years).","grade":"good"},{"title":"Grace Period","subTitle":"A standard 30-day grace period is offered for renewal premium payment.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"All policy waiting periods have already been completed, as the policy has been active for 3.9 years.","grade":"good"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has only minor exclusions beyond the standard IRDAI list and does not permanently exclude any common chronic conditions.","grade":"good"},{"title":"High Deductibles Co Pays","subTitle":"Policy has no deductible or mandatory co-payment, meaning all admissible claims are paid in full.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a complimentary health check-up available on a cashless basis at network labs.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy includes the 360 Wellbeing Program, which rewards healthy behavior and lifestyle management.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"The policy provides excellent 24/7 access to unlimited tele-consultations.","grade":"good"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer any convalescence or recovery cash benefit.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["Claim Rejection Risk: ICICI Lombard's low Claim Settlement Ratio of 80.97% increases the risk of claim disputes or rejections during major medical emergencies.","Inadequate Coverage Growth: The low 10% No-Claim Bonus in ICICI Lombard's Health Shield 360 means the ₹10 lakh sum insured will not grow fast enough to combat long-term medical inflation.","Relapse Treatment Risk: If the insured suffers a relapse of the same illness within the policy year, ICICI Lombard's restoration benefit will not trigger, risking out-of-pocket expenses."]},"recommendations":{"title":"Recommendations","data":["Consider Porting: Given the low Claim Settlement Ratio, consider porting from ICICI Lombard to an insurer with a CSR above 95% for better claim reliability.","Add a Super NCB Rider: Look for an add-on or rider for ICICI Lombard's Health Shield 360 that boosts the No-Claim Bonus to 50% per year to ensure the coverage keeps pace with medical inflation.","Review Post-Hospitalization Needs: Since ICICI Lombard's Health Shield 360 only covers 90 days post-hospitalization, ensure you have an emergency fund for extended recovery periods."]},"optionalRidersAvailed":null},{"policyId":"6473d233-22b8-42ad-a753-94d75fa4f3e7","updatedAt":"2026-05-06T12:26:53.000Z","insuredPersonName":"N/a","insurer":"Shriram General","claimRatio":90.85,"claimIncurredRatio":74.55,"product":"Shri Health Suraksha","policyNumber":"334036/85/26/000023","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹5 lakh","insuredMembers":["Mr. Amzad Ali"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Shriram General_334036/85/26/000023.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-06T13%3A05%3A33Z&amp;se=2026-05-06T14%3A10%3A33Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-06T13%3A05%3A33Z&amp;ske=2026-05-06T14%3A10%3A33Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=Un2TLZoS3Xu1ruwRDR8eketEMxha9DCKIKy0BvhoAcs%3D&amp;rscd=attachment%3B%20filename%3D%22000023.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":null}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://www.shriramgi.com/list-of-hospital"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-300-3000\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:customerfirst@shriramgi.com"}}],"showSharePolicy":true,"familyMemberCovered":"1/5","totalSumInsured":"₹5 lakh","deductible":null,"policyStartDate":"2025-07-01T00:00:00.000Z","policyEndDate":"2026-06-30T00:00:00.000Z","issueDate":"2025-07-01T00:00:00.000Z","originalInceptionDate":"2025-07-01T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"2777","policyTermYears":null,"premiumPaymentTerm":null,"premiumAmount":7905,"premiumCycle":"Annual","score":"56","rating":"2.8","verdict":"For a 28-year-old in Dehradun, Shriram's Shri Health Suraksha offers affordable ₹5L coverage with a waived co-pay via add-ons. However, the undeclared Asthma condition poses a severe claim rejection risk, and the lack of restoration benefits limits overall protection. Immediate PED disclosure is crucial.","hiddenFeatures":{"title":"Hidden Features","data":[]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Highly Affordable Premium: Shriram General's Shri Health Suraksha costs only ₹7,905 annually, representing just 1.1% of the policyholder's income.","Co-Payment Waived: The availed Value Pack Add-on successfully removes the mandatory 5% co-payment, ensuring full claim admissibility.","Extensive Cashless Network: The policy provides access to over 16,000 network hospitals across India for seamless cashless treatments.","Comprehensive Day-Care: The policy covers all day-care procedures without restricting coverage to a specific list of treatments."]},"cons":{"title":"Cons","data":["PED Non-Disclosure: The user's profile indicates Asthma, but the policy schedule shows no pre-existing diseases declared, creating a severe coverage gap.","No Restoration Benefit: Shriram General's policy lacks a sum insured restoration feature, meaning the ₹5L coverage depletes permanently after a claim.","Low Claim Settlement Ratio: The insurer's CSR of 88.17% falls below the 90% industry benchmark, indicating potential hurdles during claim processing.","Poor No-Claim Bonus: The policy offers a very low 5% cumulative bonus per claim-free year, capped at a maximum of 50%."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Total Sum insured of ₹5 lakh for Dehradun (non-metro city) falls in the average band for adequate coverage.","grade":"average"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"In this policy, room rent is capped at 2% of sum insured, diagnostics are fully covered, but advanced modern treatments have a 50% sub-limit.","grade":"average"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers most diseases but enforces a standard 36-month waiting period for pre-existing conditions.","grade":"average"},{"title":"Restoration Benefit","subTitle":"The policy does not offer any sum insured restoration or recharge benefit.","grade":"poor"},{"title":"No Claim Bonus","subTitle":"Offers a very low 5% cumulative bonus per claim-free year, capped at a maximum of 50% of the base sum insured.","grade":"poor"},{"title":"Lifelong Renewability","subTitle":"The policy guarantees lifelong renewability without any maximum exit age restrictions.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless facility is available at over 16,000 network hospitals across India, providing excellent accessibility.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"The availed Value Pack Add-on extends coverage to 60 days pre-hospitalization and 90 days post-hospitalization, which falls in the average range.","grade":"average"},{"title":"Day Care Treatments","subTitle":"The policy comprehensively covers all day-care treatments without restricting coverage to a specific list of procedures.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization and home healthcare treatments are explicitly excluded from coverage.","grade":"poor"},{"title":"Organ Donor Expenses","subTitle":"The policy does not provide any coverage for organ donor expenses or transplant-related costs.","grade":"poor"},{"title":"Mental Healthcare","subTitle":"Mental healthcare and psychiatric treatments are not covered under this policy.","grade":"poor"},{"title":"Ayush Benefits","subTitle":"AYUSH in-patient treatments are fully covered up to the sum insured at any registered AYUSH hospital.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"The policy does not offer any complimentary annual health check-up benefit.","grade":"poor"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member(s)' age profile.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Shriram General Insurance has a Claim Settlement Ratio of 88.17%, which is below the 90% industry benchmark (IRDAI 2023-24).","grade":"poor"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹7,905 is highly affordable, representing only 1.1% of the user's explicitly provided annual income of ₹7 lakh.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for 10 months.","grade":"good"},{"title":"Grace Period","subTitle":"The policy offers a standard 30-day grace period for renewal premium payment.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"While the initial waiting period is standard, there is an extended 36-month waiting period for joint replacement and osteoarthritis.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has a few exclusions beyond the standard IRDAI list, such as domiciliary hospitalization and maternity, but does not permanently exclude major chronic conditions.","grade":"average"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no deductible, and the mandatory 5% co-payment is waived under the availed Value Pack Add-on.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy does not offer any complimentary annual medical check-up benefit.","grade":"poor"},{"title":"Wellness Programs And Discounts","subTitle":"The policy does not offer any wellness programs, health incentives, or related premium discounts.","grade":"poor"},{"title":"Virtual Care And Tele Health","subTitle":"The policy does not provide any tele-health or online doctor consultation facilities.","grade":"poor"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer any convalescence or recovery cash benefit.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["Claim Rejection Risk: The undeclared Asthma condition in the Shriram General policy creates a severe risk of claim rejection for any respiratory-related hospitalizations.","Coverage Exhaustion Risk: Without a restoration benefit, a single major hospitalization could exhaust the ₹5L sum insured, leaving the policyholder uninsured for the rest of the year.","Settlement Dispute Risk: Shriram General Insurance's low claim settlement ratio of 88.17% increases the probability of claim disputes or delays during medical emergencies."]},"recommendations":{"title":"Recommendations","data":["Immediately contact Shriram General Insurance to formally declare Asthma as a pre-existing disease to prevent future claim rejections due to non-disclosure.","Consider upgrading the base sum insured from ₹5L to ₹10L at the next renewal, as the policy lacks a restoration benefit to cover multiple hospitalizations.","Evaluate porting to an insurer with a Claim Settlement Ratio consistently above 90% to ensure smoother and more reliable claim processing."]},"optionalRidersAvailed":["{\"title\":\"Value Pack Add-ons\",\"description\":\"Provides enhanced room and ICU rent limits, extends pre/post-hospitalization to 60/90 days, and waives the mandatory 5% co-payment.\"}"]}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">16. Final valid: 14 user/insurance/upload/policy/document</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-06 18:40:33.267
+Scenario: Final valid: 14 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=fPskq-prnaJcIpQcPlNzj7T9GXosfHaq8
+authorization: eyJhbG...Ni0M
+
+Body:
+&lt;binary body: 170336 bytes; content-type=multipart/form-data;boundary=fPskq-prnaJcIpQcPlNzj7T9GXosfHaq8&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-06 18:40:33.758
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}</pre></details>
+</div>
+
+  </div>
+  <script>
+    (function(){
+      var passed = 16, failed = 0;
+      var green = '#4ade80', red = '#f87171', grey = '#2d3f55';
+      function mkDoughnut(id, p, f){
+        var ctx = document.getElementById(id);
+        if(!ctx) return;
+        var data = (p+f === 0) ? [1] : (f === 0 ? [p] : [p, f]);
+        var colors = (p+f === 0) ? [grey] : (f === 0 ? [green] : [green, red]);
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: { datasets: [{ data: data, backgroundColor: colors, borderWidth: 0, hoverOffset: 4 }] },
+          options: {
+            cutout: '72%',
+            plugins: { legend: { display: false }, tooltip: { enabled: true } },
+            animation: { duration: 600 }
+          }
+        });
+      }
+      mkDoughnut('ch-apis',     passed, failed);
+      mkDoughnut('ch-status',   passed, failed);
+      mkDoughnut('ch-overview', passed, failed);
+      mkDoughnut('ch-events',   passed, failed);
+    })();
+  </script>
+</body>
+</html>
