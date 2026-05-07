@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase1Test API Details</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background:#1a1a2e; color:#e5edf5; font-family:'Segoe UI',Arial,sans-serif; margin:0; }
+    /* ── top bar ─────────────────────────────────────────── */
+    .topbar { background:#16213e; border-bottom:1px solid #0f3460; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:17px; font-weight:700; color:#e94560; letter-spacing:.5px; }
+    .topbar-right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .topbar-badge { background:#0f3460; color:#e0e0e0; padding:5px 14px; border-radius:999px; font-size:12px; font-weight:600; }
+    .topbar-badge.phase { background:#e94560; color:#fff; }
+    /* ── layout ──────────────────────────────────────────── */
+    .page { max-width:1400px; margin:0 auto; padding:28px 24px; }
+    /* ── stat row (Started / Ended / Passed / Failed) ────── */
+    .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    @media(max-width:900px){ .stat-row { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .stat-row { grid-template-columns:1fr; } }
+    .stat-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 20px; }
+    .stat-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.6px; }
+    .stat-card .value { font-size:22px; font-weight:700; }
+    .stat-card .value.pass { color:#4ade80; }
+    .stat-card .value.fail { color:#f87171; }
+    /* ── pie-chart dashboard ─────────────────────────────── */
+    .chart-dashboard { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px; }
+    @media(max-width:900px){ .chart-dashboard { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .chart-dashboard { grid-template-columns:1fr; } }
+    .chart-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 16px; text-align:center; }
+    .chart-card .chart-title { font-size:13px; font-weight:600; color:#9fb0c3; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+    .chart-card .chart-wrap { position:relative; width:110px; height:110px; margin:0 auto 14px; }
+    .chart-card .legend { display:flex; justify-content:center; align-items:center; gap:8px; font-size:12px; color:#9fb0c3; }
+    .chart-card .legend-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .chart-card .legend-dot.pass { background:#4ade80; }
+    .chart-card .legend-dot.fail { background:#f87171; }
+    .chart-card .stat-label { margin-top:10px; font-size:12px; color:#9fb0c3; }
+    /* ── api list header ─────────────────────────────────── */
+    .section-title { font-size:20px; font-weight:700; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid #0f3460; color:#e2e8f0; }
+    /* ── api cards ───────────────────────────────────────── */
+    .api-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px; margin-bottom:14px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+    .api-title { font-size:16px; font-weight:700; }
+    .badge { padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#14532d; color:#86efac; }
+    .badge-fail { background:#450a0a; color:#fca5a5; }
+    .meta { color:#94a3b8; font-size:13px; margin-bottom:8px; }
+    details { margin-top:10px; background:#0f1a2e; border:1px solid #1e3a5f; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:600; color:#94a3b8; font-size:13px; }
+    summary:hover { color:#e2e8f0; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#07101e; color:#cbd5e1; padding:14px; border-radius:8px; overflow:auto; font-size:12px; line-height:1.6; }
+    /* ── info grid (env, url etc) ────────────────────────── */
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:24px; }
+    .info-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:14px; }
+    .info-card .label { color:#9fb0c3; font-size:12px; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
+    .info-card .value { font-size:14px; font-weight:600; word-break:break-all; }
+    .info-card .value a { color:#60a5fa; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:13px; line-height:1.6; }
+    .pass { color:#4ade80; }
+    .fail { color:#f87171; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Referral System Automation</div>
+    <div class="topbar-right">
+      <span class="topbar-badge phase">ProdSanityRegressionPhase1Test</span>
+      <span class="topbar-badge">May 07, 2026 10:42:00 am</span>
+    </div>
+  </div>
+  <div class="page">
+    <!-- Stat row -->
+    <div class="stat-row">
+      <div class="stat-card"><div class="label">Started</div><div class="value">2026-05-07 10:41:21.960</div></div>
+      <div class="stat-card"><div class="label">Ended</div><div class="value">2026-05-07 10:41:59.830</div></div>
+      <div class="stat-card"><div class="label">APIs Passed</div><div class="value pass">16</div></div>
+      <div class="stat-card"><div class="label">APIs Failed</div><div class="value fail">0</div></div>
+    </div>
+    <!-- Pie chart dashboard -->
+    <div class="chart-dashboard">
+      <div class="chart-card">
+        <div class="chart-title">APIs</div>
+        <div class="chart-wrap"><canvas id="ch-apis"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Status</div>
+        <div class="chart-wrap"><canvas id="ch-status"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Overview</div>
+        <div class="chart-wrap"><canvas id="ch-overview"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 passed</div>
+        <div class="stat-label">0 failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Events</div>
+        <div class="chart-wrap"><canvas id="ch-events"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">16 events passed</div>
+        <div class="stat-label">0 events failed, 0 others</div>
+      </div>
+    </div>
+    <!-- Env info -->
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-07_10-42-00_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-07_10-42-00_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <!-- API list -->
+    <div class="section-title">API Execution Details (16 APIs)</div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 otp/generate (mobile)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:21.960
+Scenario: Final valid: 01 otp/generate (mobile) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"phoneNumber":"7702658807","purpose":"login","authMethod":"mobile_otp"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:22.486
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-07T05:11:22.616Z","resendBlockedUntil":null,"otpFor":"mobile","deliveryStatus":"sent","otpId":"b9e92cda-6bd4-4047-b508-11b9884f61c0","otpValidTill":"2026-05-07T05:16:23.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-07T05:11:22.621Z","updatedAt":"2026-05-07T05:11:22.621Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">02. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:23.456
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"b9e92cda-6bd4-4047-b508-11b9884f61c0","purpose":"login","otp":"929388"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:23.665
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3YmU1M2E2NC0wYWM1LTQ0ZjktYjNlZi02M2U5N2NlOTExMTgiLCJ0aW1lc3RhbXAiOjE3NzgxMzA2ODM3NjgsImlhdCI6MTc3ODEzMDY4M30.gxI7gFaSBm7ylk1bq-J4xtyrDAxyjmE7xa9qG7ZjJO0","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2026-04-01T15:16:45.121Z","updatedAt":"2026-04-27T04:50:57.000Z","userId":"7be53a64-0ac5-44f9-b3ef-63e97ce91118","username":null,"email":"shaikmukeshali01@gmail.com","primaryMobile":"7702658807","isEmailVerified":true,"isMobileVerified":true,"status":"active","userMetadata":null,"isSocialUser":false,"socialUserType":"google","utmSource":null,"utmData":null,"platform":"android","referralId":"HSZ76AUT","socialId":"100031180226107221029","authPrimaryMethod":"google","lastLoginMethod":"mobile_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":2,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-13T13:43:32.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"generated","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-06T18:03:36.000Z","zScoreLastAttemptAt":"2026-05-06T18:01:03.000Z","zScoreLastAttemptError":null},"tokenId":"69dcc499-532b-4c7a-8bb5-b4ce85f9dbb7","expiresAt":"2027-05-07T05:11:23.770Z","tokenMetadata":null,"id":13610,"createdAt":"2026-05-07T05:11:23.770Z","updatedAt":"2026-05-07T05:11:23.770Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":false,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":true,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"s****@gmail.com","linkedEmail":"shaikmukeshali01@gmail.com","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">03. Final valid: 01 otp/generate (email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:23.669
+Scenario: Final valid: 01 otp/generate (email) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"purpose":"login","authMethod":"email_otp","email":"shaik.ali@gromo.in"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:23.889
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-07T05:11:23.969Z","resendBlockedUntil":null,"otpFor":"email","deliveryStatus":"sent","otpId":"5d32375c-9481-4f92-8f52-ce2f8eb78d92","otpValidTill":"2026-05-07T05:16:24.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-07T05:11:23.975Z","updatedAt":"2026-05-07T05:11:23.975Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">04. Final valid: 02 otp/submit (mobile/email)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:55.285
+Scenario: Final valid: 02 otp/submit (mobile/email) | api: /api/v1/auth/otp/submit | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"otpId":"5d32375c-9481-4f92-8f52-ce2f8eb78d92","purpose":"login","otp":"734163"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:55.897
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/submit
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNzAyN2M5NC05MmRhLTRmOTItYTUzMy00OGI4Y2U3OTY0ZTMiLCJ0aW1lc3RhbXAiOjE3NzgxMzA3MTU5MDksImlhdCI6MTc3ODEzMDcxNX0.EGCVTU-g4gkJGTpfpgllKpjMvqnFxB53HZVfySEI-Qs","domainApplication":{"createdAt":"2025-07-15T12:35:56.104Z","updatedAt":"2025-07-17T12:13:57.105Z","applicationId":"01996fd9-f827-72b4-a130-0fd18bf6deb8","applicationName":"zyra","applicationKey":"e2ad819d-9ac8-44d0-90d4-f2a877f89b5b","applicationStatus":"ACTIVE","isPublicSignupAllowed":true,"isHierarchySupported":false,"sessionDuration":31536000,"domain":{"createdAt":"2025-07-15T12:35:22.691Z","updatedAt":"2025-09-22T05:18:23.163Z","domainId":"39a3583c-378d-4659-bf80-b01a1f0af553","domainName":"zyra","domainStatus":"active"}},"user":{"createdAt":"2025-12-01T06:09:03.382Z","updatedAt":"2026-04-01T20:38:46.089Z","userId":"b7027c94-92da-4f92-a533-48b8ce7964e3","username":null,"email":"shaik.ali@gromo.in","primaryMobile":"","isEmailVerified":true,"isMobileVerified":false,"status":"active","userMetadata":null,"isSocialUser":true,"socialUserType":"google","utmSource":null,"utmData":null,"platform":"web","referralId":"DAOYQYQI","socialId":"109924625702978997636","authPrimaryMethod":"google","lastLoginMethod":"email_otp","onboardingStage":"profile_completed","insuranceSegment":null,"mobileVerificationSkipsUsed":2,"mobileVerificationSkipLimit":3,"mobileVerifySkipsResetAt":"2026-04-02T12:15:29.000Z","mergedIntoUserId":null,"mergedAt":null,"archivedReason":null,"language":"en","zScoreStatus":"no_policy","zScoreSyncStatus":"succeeded","zScoreLastGeneratedAt":"2026-05-06T18:28:30.000Z","zScoreLastAttemptAt":"2026-05-06T18:28:08.000Z","zScoreLastAttemptError":null},"tokenId":"ac3433e3-862a-4788-bd72-420c2862f669","expiresAt":"2027-05-07T05:11:55.912Z","tokenMetadata":null,"id":13637,"createdAt":"2026-05-07T05:11:55.912Z","updatedAt":"2026-05-07T05:11:55.912Z","deletedAt":null,"revoked":false,"isNewUser":false,"onboardingStage":"profile_completed","mobileVerification":{"required":true,"mobileAlreadyVerified":false,"hasMobile":true,"hasVerifiedMobile":false,"existingUnverifiedMobile":null,"skipAllowed":true,"skipsUsed":0,"skipLimit":3,"noSkipReason":null,"linkedEmailMasked":"s****@gromo.in","linkedEmail":"shaik.ali@gromo.in","linkedAccountUserId":null,"linkedAccountAuthMethod":"google","linkedAccounts":[]},"nextOnboardingScreen":"home"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">05. Final valid: 03 tnc/user/consent-status</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:55.903
+Scenario: Final valid: 03 tnc/user/consent-status | api: /api/v1/tnc/user/consent-status | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{"channel":"web"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:56.092
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/tnc/user/consent-status
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"data":{"accepted":true,"docId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25","docVersionId":"tnc-web-c020af41-17c1-4d13-b965-d519cffc9e25-v1-69b4eb15","contentType":"HTML","content":"&lt;html&gt;&lt;head&gt;&lt;title&gt;Terms and Conditions&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Terms and Conditions v1.0&lt;/h1&gt;&lt;p&gt;Welcome to our service. By using our platform, you agree to these terms and conditions.&lt;/p&gt;&lt;h2&gt;Key Points:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;User Responsibilities&lt;/li&gt;&lt;li&gt;Privacy Protection&lt;/li&gt;&lt;li&gt;Service Availability&lt;/li&gt;&lt;li&gt;Account Termination&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Last updated: August 20, 2025&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"},"message":"User consent status retrieved successfully"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">06. Final valid: 04 user/settings/email-sync/list</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:56.096
+Scenario: Final valid: 04 user/settings/email-sync/list | api: /api/v1/user/settings/email-sync/list | request: POST | method-check: expected POST/GET, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:56.243
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/settings/email-sync/list
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"success":true,"isError":false,"message":"Accounts retrieved successfully","errorCode":null,"accounts":[{"accountId":"100031180226107221029","provider":"gmail","emailId":"shaikmukeshali01@gmail.com","lastSyncedAt":"2026-04-27T10:20:45.000Z","nextScanAt":"2026-05-27T04:50:47","createdAt":"2026-04-01T15:16:46","updatedAt":"2026-04-27T04:50:46","periodicEnabled":true,"errorCount":0,"isAuthenticated":true,"dailyLimitExceeded":false,"scanRunning":false,"isError":false,"errorMessage":null}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">07. Final valid: 05 events/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:56.245
+Scenario: Final valid: 05 events/pending | api: /api/v1/events/pending | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:56.427
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/events/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"events":[],"count":0}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">08. Final valid: 06 profile/home/insights</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:56.433
+Scenario: Final valid: 06 profile/home/insights | api: /api/v1/profile/home/insights | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:56.805
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/home/insights
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"insights":[{"title":"Recommendation","description":"For Aditya Birla's Activ One policy, consider upgrading the base coverage from ₹5 lakh to at least ₹10 lakh to better protect against medical inflation.","cta":{"type":"POLICY_INSIGHTS","id":"04d49ee0-8609-4566-90a6-e8309d0a6957"}},{"title":"Recommendation","description":"For Bajaj Allianz Life iSecure II, consider adding a standalone critical illness policy to cover major medical expenses not included in the base plan.","cta":{"type":"POLICY_INSIGHTS","id":"98bff104-0a56-4adf-9219-9ca42a0aa8c5"}},{"title":"Recommendation","description":"\"Purchase a standalone critical illness policy with at least ₹25-30 lakhs coverage to bridge the living benefits gap.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Recommendation","description":"\"Consider adding a standalone personal accident policy to enhance the accidental death payout.\"","cta":{"type":"VIEW_INSURANCE_SCORE"}},{"title":"Attention","description":"The user profile lists Shaik Ali with DOB 1965-06-25, but an existing self identity candidate lists Shaik Ali with DOB 1967-05-10. Please confirm the correct date of birth.","cta":{"type":"GO_TO_FAMILY"}}],"zScore":738,"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">09. Final valid: 07 profile/analysis-history</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:56.816
+Scenario: Final valid: 07 profile/analysis-history | api: /api/v1/profile/analysis-history | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:57.328
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-history?limit=5
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"entries":[{"jobId":"86323915-3f10-47c2-9356-da4dd2d96dd0","jobType":"UPLOAD","fileName":"20260107_135838_Premium_Acknowledgement_Receipt_1.PDF","jobStatusCode":"FAILED","overallStatus":"failed","failureReason":"Job failed due to errors in 1 item(s): 20260107_135838_Premium_Acknowledgement_Receipt_1.PDF: Missing required fields: policyNumber","createdAt":"2026-05-07 10:11:20","finishedAt":"2026-05-07 10:12:02","startedAt":"2026-05-07 10:11:20","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"failed"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"f24bca00-fcdb-4813-a5b4-8bd714744f27","jobType":"UPLOAD","fileName":"20260106_141735_ENDTSCH_11250895596609_SL001_V1.0.pdf","jobStatusCode":"FAILED","overallStatus":"failed","failureReason":"Job failed due to errors in 1 item(s): 20260106_141735_ENDTSCH_11250895596609_SL001_V1.0.pdf: Missing required fields: sumInsured","createdAt":"2026-05-06 23:43:52","finishedAt":"2026-05-06 23:44:18","startedAt":"2026-05-06 23:43:52","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"failed"},{"id":"classifying","label":"Classifying Family Members","status":"pending"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"pending"}],"hasZScoreStep":false,"steps34HasTimestamps":false},{"jobId":"00675ab3-9ba7-45fe-ab23-e295c41e22c7","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 23:26:40","finishedAt":"2026-05-06 23:28:59","startedAt":"2026-05-06 23:26:40","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"d0a65734-5e56-4ade-8383-5978d2a13562","jobType":"UPLOAD","jobStatusCode":"COMPLETED","overallStatus":"completed","createdAt":"2026-05-06 23:15:47","finishedAt":"2026-05-06 23:18:01","startedAt":"2026-05-06 23:15:47","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":true,"steps34HasTimestamps":false},{"jobId":"0d43797f-f4a4-4be7-a6aa-c1319a48e2bd","jobType":"UPLOAD","fileName":"1514_6068065926_1706964350236_1765961687156.pdf","jobStatusCode":"COMPLETED","overallStatus":"completed","failureReason":"All files processed successfully","createdAt":"2026-05-06 22:14:27","finishedAt":"2026-05-06 22:15:12","startedAt":"2026-05-06 22:14:27","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"hasZScoreStep":false,"steps34HasTimestamps":false}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">10. Final valid: 08 actions/pending</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:57.331
+Scenario: Final valid: 08 actions/pending | api: /api/v1/actions/pending | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:57.589
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/actions/pending
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"slides":[]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">11. Final valid: 09 profile/analysis-progress</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:57.593
+Scenario: Final valid: 09 profile/analysis-progress | api: /api/v1/profile/analysis-progress | request: GET | method-check: expected GET, sent GET (valid method) | expectation: valid flow should return 2xx
+Request: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;empty&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:57.944
+Response: GET https://zyra-facade.heyzyra.ai/api/v1/profile/analysis-progress
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"jobs":[{"jobId":"00675ab3-9ba7-45fe-ab23-e295c41e22c7","type":"UPLOAD","fileName":"20251224_232329_PolicySoftCopy_824194637.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T17:56:40"},{"jobId":"d0a65734-5e56-4ade-8383-5978d2a13562","type":"UPLOAD","fileName":"20251224_232315_downloadDoc.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T17:45:47"},{"jobId":"43913dbd-5b28-452d-9fa5-85c63c4da3db","type":"UPLOAD","fileName":"0588402095_policy_bond_1765961754046.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T16:43:46"},{"jobId":"2e09c8e8-230b-4006-bfb3-535cf16735cc","type":"UPLOAD","fileName":"0588402095_1736231270925_1765961677124.pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T14:29:42"},{"jobId":"ec7be1e1-4ec1-4b8d-8ddf-32db44168d4c","type":"UPLOAD","fileName":"002 (3).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T14:18:53"},{"jobId":"5c5d1d65-6049-4abf-960d-5bbd305b1b1c","type":"UPLOAD","fileName":"001 (7).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T13:21:36"},{"jobId":"fd93f519-1162-4ce3-b02e-9440eca07ca1","type":"UPLOAD","fileName":"001 (6).pdf","steps":[{"id":"validation","label":"Validation In Progress","status":"completed"},{"id":"analysis","label":"Analyzing Policy","status":"completed"},{"id":"classifying","label":"Classifying Family Members","status":"completed"},{"id":"recommendations","label":"Generating Recommendations &amp; Z-Score","status":"completed"}],"completedPoints":4,"totalPoints":4,"currentStepLabel":"Generating Recommendations &amp; Z-Score","startedAt":"2026-05-06T13:10:34"}]}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">12. Final valid: 10 profile/list/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:57.948
+Scenario: Final valid: 10 profile/list/all | api: /api/v1/profile/list/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:58.123
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/list/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"details":[{"heading":"Your Details","data":[{"image":"https://fastly.picsum.photos/id/741/800/800.jpg?hmac=_wL7TULpLEfY9nHYHolqnVd3Z0xR6QKRq-dtapzx8lw","title":"Personal Details","cta":"personal-profile"},{"image":"https://fastly.picsum.photos/id/654/800/800.jpg?hmac=gi-ImBCSXApw0arnugXoCa9IJ2qcmdxleEjzIcUNHfw","title":"Health Details","cta":"health-profile"}]},{"heading":"Insurance Details","data":[{"image":"https://fastly.picsum.photos/id/723/800/800.jpg?hmac=o6MKSQPG7pqW1sxulI8DTJdvZHfus6qztbn0rffBuXU","title":"All Policies","cta":"policy-list"},{"image":"https://fastly.picsum.photos/id/921/800/800.jpg?hmac=yj41mzuAAUkiyrVna4OwSQyF6UuBgiviPPcNq4EV4UY","title":"Family Members","cta":"family-member-list"}]}],"fullName":"Shaik Ali","completionPercentage":100,"pendingVerifications":[],"gender":"male","userId":"7be53a64-0ac5-44f9-b3ef-63e97ce91118"}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">13. Final valid: 11 profile/get</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:58.126
+Scenario: Final valid: 11 profile/get | api: /api/v1/profile/get | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:58.252
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/get
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"hasBasicProfile":true,"basicProfile":{"fullName":"Shaik Ali","dob":"1965-06-25T00:00:00.000Z","age":60,"email":"shaikmukeshali01@gmail.com","emailVerified":true,"phone":"7702658807","phoneVerified":true,"gender":"male","married":true,"pincode":"248001","panNumber":"","hasHealthInsurance":false,"hasLifeInsurance":false,"referralCode":""},"financialProfile":{"annualIncome":700000,"occupation":"Retired"},"healthProfile":{"alcohol":true,"smoker":true,"alcoholFrequency":"frequent_in_past","smokerFrequency":"frequent_in_past","diseases":[{"name":"diabetes","active":false,"displayName":"Diabetes"},{"name":"hypertension","active":false,"displayName":"Hypertension"},{"name":"asthma","active":false,"displayName":"Asthma"},{"name":"heart_disease","active":false,"displayName":"Heart Disease"},{"name":"thyroid","active":false,"displayName":"Thyroid"},{"name":"cancer","active":false,"displayName":"Cancer"},{"name":"other","active":true,"displayName":"Other","value":"Asthma"}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">14. Final valid: 12 profile/health</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health</div>
+  <div class="meta">Status: 201 Created</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:58.256
+Scenario: Final valid: 12 profile/health | api: /api/v1/profile/health | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{"alcohol":true,"smoker":true,"chronicDiseasesJson":["Asthma"],"smokerFrequency":"frequent_in_past","alcoholFrequency":"frequent_in_past"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:58.415
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/profile/health
+Status: 201 Created
+
+Body:
+&lt;empty&gt;</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">15. Final valid: 13 user/insurance/portfolio/summary/all</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:58.419
+Scenario: Final valid: 13 user/insurance/portfolio/summary/all | api: /api/v1/user/insurance/portfolio/summary/all | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+
+Headers:
+Content-Type: application/json
+authorization: eyJhbG...jJO0
+
+Body:
+{}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:59.028
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/portfolio/summary/all
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"zScoreStatus":"generated","zScoreSyncStatus":"succeeded","isScanning":false,"passwordProtectedFiles":[],"assetCount":"-","healthCovered":"₹5 lakh","insuranceScore":"738/900","isZScoreGenerate":true,"zScoreUpdatedAt":"2026-05-06T18:03:36.000Z","insuredMemberCount":"4/4","lifeCovered":"₹3.25 crore","insuranceTypeChips":[{"title":"All","count":3},{"title":"Health","count":1},{"title":"Life","count":2}],"success":true,"FAMILY_POLICY":{"title":"My Policy","count":1,"totalCoverage":"₹5 lakh","healthCoverage":"₹5 lakh","lifeCoverage":"-","insuranceTypeChips":[{"title":"All","count":1},{"title":"Health","count":1}],"policies":[{"policyId":"04d49ee0-8609-4566-90a6-e8309d0a6957","updatedAt":"2026-05-06T18:01:02.000Z","insuredPersonName":"N/a","insurer":"Aditya Birla Health","claimRatio":95.88,"claimIncurredRatio":71.5,"product":"Activ-one","policyNumber":"31-25-0086113-00","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹5 lakh","insuredMembers":["S Vahida"],"insuranceType":"Health","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Aditya Birla Health_31-25-0086113-00.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-07T05%3A06%3A58Z&amp;se=2026-05-07T06%3A11%3A58Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-07T05%3A06%3A58Z&amp;ske=2026-05-07T06%3A11%3A58Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=YyOZduIgmCIlLtmhGnm8cuWpdaAHtweNxBi0HrNYg2w%3D&amp;rscd=attachment%3B%20filename%3D%22Aditya%20Birla%20Health_31-25-0086113-00.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":"https://zyra-insurer-documents.s3.ap-south-1.amazonaws.com/aditya-birla/activ-one/brochure.pdf"}},{"title":"Network Hospitals","action":{"type":"OPEN_URL","url":"https://www.adityabirlacapital.com/healthinsurance/locate-care/hospital-listing"}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-270-7000\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:care.healthinsurance@adityabirlacapital.com"}}],"showSharePolicy":true,"familyMemberCovered":"1/4","totalSumInsured":"₹5 lakh","deductible":null,"policyStartDate":"2026-06-01T00:00:00.000Z","policyEndDate":"2027-05-31T00:00:00.000Z","issueDate":"2026-03-31T00:00:00.000Z","originalInceptionDate":null,"portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"2267","policyTermYears":1,"premiumPaymentTerm":null,"premiumAmount":15484,"premiumCycle":"Annual","score":"92","rating":"4.6","verdict":"For a 53-year-old in Tirupati, Aditya Birla's Activ One offers excellent features like unlimited restoration and a 500% cumulative bonus. However, the ₹5L sum insured is quite low. Upgrading the coverage amount is highly recommended for adequate protection.","hiddenFeatures":{"title":"Hidden Features","data":["Free Annual Medical Checkup","Wellness Programs And Discounts","Virtual Care And Tele Health"]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Bonus: Aditya Birla's Activ One offers a Super Credit feature that provides a 100% cumulative bonus every year up to 500%, irrespective of claims.","Unlimited Restoration: The Super Reload benefit in Aditya Birla's Activ One provides unlimited 100% restoration of the sum insured from the second claim onwards.","Tele-Health Access: The availed Tele OPD rider ensures the policyholder has convenient access to expert virtual consultations with Aditya Birla.","Zero Deductions: The Claim Protect feature of Aditya Birla's Activ One covers non-medical expenses and consumables, ensuring zero deductions during hospitalization."]},"cons":{"title":"Cons","data":["Average Sum Insured: The ₹5 lakh coverage under Aditya Birla's Activ One is on the lower side and might be insufficient for major medical emergencies.","Long PED Wait: Aditya Birla's Activ One enforces a 36-month waiting period for pre-existing diseases, leaving a 24-month gap for any undisclosed conditions.","No Recovery Benefit: Aditya Birla's Activ One lacks a convalescence or recovery cash benefit to support post-hospitalization recuperation."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Insured Adequacy Coverage","subTitle":"Total Sum insured of ₹5 lakh for Tirupati falls in the average band for non-metro cities.","grade":"average"},{"title":"In Patient Hospitalisation Comprehensiveness Coverage","subTitle":"In this policy, room rent is uncapped, doctor fees, diagnostics, and medicines are fully covered, and all major surgical procedures are included.","grade":"good"},{"title":"Pre Existing Disease Ped Coverage","subTitle":"The policy covers a broad range of diseases including mental illness and HIV/AIDS, but has a 36-month PED waiting period with 24 months remaining.","grade":"good"},{"title":"Restoration Benefit","subTitle":"Provides 100% automatic sum insured restoration, unlimited times per year, from the second claim onwards.","grade":"good"},{"title":"No Claim Bonus","subTitle":"Offers an excellent 100% cumulative bonus per year up to 500% of the base sum insured, irrespective of claims.","grade":"good"},{"title":"Lifelong Renewability","subTitle":"Policy guarantees lifetime renewability regardless of age or claims history.","grade":"good"}]},{"title":"Value Added Benefits And Convenience","data":[{"title":"Cashless Network Facilities","subTitle":"Cashless facility is available at over 10,000 network hospitals across India.","grade":"good"},{"title":"Pre Post Hospitalization","subTitle":"Provides an excellent 90 days pre-hospitalization and 180 days post-hospitalization coverage at actual expenses.","grade":"good"},{"title":"Day Care Treatments","subTitle":"Covers all day-care procedures without the need to meet the 24-hour minimum hospitalization requirement.","grade":"good"},{"title":"Domiciliary Hospitalization Home Healthcare","subTitle":"Domiciliary hospitalization and home healthcare are covered up to the sum insured.","grade":"good"},{"title":"Organ Donor Expenses","subTitle":"Organ donor expenses are comprehensively covered up to the sum insured.","grade":"good"},{"title":"Mental Healthcare","subTitle":"Mental healthcare including in-patient treatment is covered up to the sum insured.","grade":"good"},{"title":"Ayush Benefits","subTitle":"AYUSH in-patient treatment is fully covered up to the base sum insured.","grade":"good"},{"title":"Free Renewal Health Checkups","subTitle":"A complimentary annual health check-up is available on a cashless basis.","grade":"good"},{"title":"Maternity Benefits","subTitle":"Maternity benefit is not applicable for the insured member's age profile.","grade":"good"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Claim Settlement Ratio Csr","subTitle":"Aditya Birla Health Insurance has a strong Claim Settlement Ratio of 95.61%, as per the IRDAI Annual Report (2023-24).","grade":"good"},{"title":"Insurance Premium Affordability","subTitle":"The annual premium of ₹15,484 is highly affordable, representing only 2.5% of the estimated ₹6 lakh income.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The free-look period is no longer applicable as the policy has been active for 10 months.","grade":"good"},{"title":"Grace Period","subTitle":"A standard 30-day grace period is offered for renewal premium payment.","grade":"good"}]},{"title":"Exclusions And Limitations","data":[{"title":"Longer Waiting Periods","subTitle":"The policy has a standard 30-day initial wait and 24-month specific disease wait, but a longer 36-month waiting period for pre-existing diseases.","grade":"average"},{"title":"Extensive Permanent Exclusions","subTitle":"The policy has only standard IRDAI exclusions and does not permanently exclude any common chronic conditions.","grade":"good"},{"title":"High Deductibles Co Pays","subTitle":"The policy has no mandatory deductible or co-payment, meaning all admissible claims are paid in full.","grade":"good"}]},{"title":"Hidden Benefits","data":[{"title":"Free Annual Medical Checkup","subTitle":"The policy includes a complimentary annual health check-up available on a cashless basis.","grade":"good"},{"title":"Wellness Programs And Discounts","subTitle":"The policy includes an excellent HealthReturns program that offers up to 100% discount on renewal premiums for staying healthy.","grade":"good"},{"title":"Virtual Care And Tele Health","subTitle":"Virtual care and expert consultations are provided by the availed Tele OPD rider.","grade":"good"},{"title":"Recovery Benefits Convalescence","subTitle":"The policy does not offer any convalescence or recovery cash benefit.","grade":"poor"}]}]},"risks":{"title":"Risks","data":["Coverage Shortfall Risk: With only ₹5 lakh base coverage in Aditya Birla's Activ One, a severe medical emergency could lead to significant out-of-pocket expenses.","Waiting Period Risk: Any pre-existing disease diagnosed within the next 24 months will face claim rejection due to the active 36-month waiting period in Aditya Birla's Activ One."]},"recommendations":{"title":"Recommendations","data":["Increase Sum Insured: Consider upgrading the base coverage of your Aditya Birla Activ One policy from ₹5 lakh to at least ₹10 lakh to better protect against medical inflation.","Declare Health Conditions: Ensure all pre-existing conditions are fully disclosed to Aditya Birla to avoid claim rejections during the remaining 24-month waiting period."]},"optionalRidersAvailed":["{\"title\":\"Air Ambulance Rider\",\"description\":\"Provides coverage for emergency air ambulance transportation to an advanced medical facility.\"}","{\"title\":\"Tele OPD Rider\",\"description\":\"Provides access to virtual tele-consultations and expert medical advice from doctors.\"}"]}]},"NON_FAMILY_POLICY":{"title":"Other","count":2,"totalCoverage":"₹2 crore","healthCoverage":"-","lifeCoverage":"₹2 crore","insuranceTypeChips":[{"title":"All","count":2},{"title":"Life","count":2}],"policies":[{"policyId":"98bff104-0a56-4adf-9219-9ca42a0aa8c5","updatedAt":"2026-05-06T18:01:02.000Z","insuredPersonName":"N/a","insurer":"Bajaj Life","claimRatio":99.23,"claimIncurredRatio":null,"product":"Bajaj Allianz Life Isecure Ii","policyNumber":"0628254100","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹1 crore","insuredMembers":["Mr Chetan Dinesh Jaiswal"],"insuranceType":"Life","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Bajaj Life_0628254100.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-07T05%3A06%3A58Z&amp;se=2026-05-07T06%3A11%3A58Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-07T05%3A06%3A58Z&amp;ske=2026-05-07T06%3A11%3A58Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=oaiwYeFSyHBIBy1RL4%2BdgkQm3wtWkCWd3pQ2b1S3Ovc%3D&amp;rscd=attachment%3B%20filename%3D%22Bajaj%20Life_0628254100.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":null}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-209-7272\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:life.claims@bajajallianz.co.in"}}],"showSharePolicy":true,"familyMemberCovered":"1/4","totalSumInsured":"₹2 crore","deductible":null,"policyStartDate":"2025-06-27T00:00:00.000Z","policyEndDate":"2062-06-27T00:00:00.000Z","issueDate":"2025-07-07T00:00:00.000Z","originalInceptionDate":"2025-06-27T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":null,"policyCoverBaseType":"individual","productTypeId":"2735","policyTermYears":37,"premiumPaymentTerm":37,"premiumAmount":25181,"premiumCycle":"Annual","score":"81","rating":"4.0","verdict":"Bajaj Allianz Life iSecure II offers a robust ₹1 crore death benefit at an affordable ₹25,181 annual premium with an excellent 99.23% claim settlement ratio. However, the absence of critical illness, terminal illness, and premium waiver riders leaves significant gaps in living benefits.","hiddenFeatures":{"title":"Hidden Features","data":[]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Sum Assured: Bajaj Allianz Life iSecure II provides a substantial ₹1 crore coverage, which is over 14 times the user's annual income, ensuring strong financial protection.","Long Coverage Duration: The policy offers a comprehensive 37-year term, protecting the life assured up to the age of 71 years.","High Claim Settlement Ratio: Bajaj Allianz Life Insurance boasts an excellent claim settlement ratio of 99.23% for FY 2023-24, indicating high reliability in claim payouts.","Affordable Premiums: The annual premium of ₹25,181 is highly affordable, taking up only about 3.6% of the user's ₹7 lakh annual income."]},"cons":{"title":"Cons","data":["Missing Critical Illness Coverage: Bajaj Allianz Life iSecure II lacks a critical illness rider, leaving the policyholder exposed to high medical treatment costs for major diseases.","No Premium Waiver Benefit: The policy does not include a premium waiver rider, meaning the ₹25,181 annual premium must still be paid even if the life assured suffers a critical illness or disability.","Absence of Terminal Illness Benefit: Bajaj Allianz Life's plan does not offer an accelerated death benefit for terminal illness, preventing early access to the ₹1 crore sum assured upon a terminal diagnosis."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Assured","subTitle":"Bajaj Allianz Life iSecure II provides a base sum assured of ₹1 crore, which is over 14 times the user's annual income of ₹7 lakhs.","grade":"good"},{"title":"Policy Term And Coverage Duration","subTitle":"The policy offers a comprehensive term of 37 years, providing coverage until the life assured reaches 71 years of age.","grade":"good"}]},{"title":"Riders And Additional Benefits","data":[{"title":"Accidental Death Coverage","subTitle":"The policy includes an Accidental Death Benefit rider of ₹50 lakhs, which provides an additional 50% of the base sum assured.","grade":"average"},{"title":"Critical Illness Coverage","subTitle":"The policy document indicates that the Critical Illness Benefit rider was not opted for.","grade":"poor"},{"title":"Premium Waiver Rider","subTitle":"The policy lacks a premium waiver rider, meaning premiums must still be paid during severe health events.","grade":"poor"},{"title":"Income Benefit Rider","subTitle":"There is no family income benefit rider included in the policy documentation.","grade":"poor"},{"title":"Permanent And Partial Disability Rider","subTitle":"The policy includes a disability rider covering both total and partial disability, but the maximum payout is limited to ₹50 lakhs (50% of the base sum assured).","grade":"average"},{"title":"Terminal Illness Rider","subTitle":"The policy does not provide an accelerated death benefit for a terminal illness diagnosis.","grade":"poor"},{"title":"Child Term Rider","subTitle":"The policy does not include a child term insurance rider.","grade":"poor"},{"title":"Hospital Care Rider","subTitle":"There is no hospital care or daily hospital cash benefit rider included in the policy.","grade":"poor"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Insurers Claim Settlement Ratio","subTitle":"Bajaj Allianz Life Insurance boasts an excellent individual death claim settlement ratio of 99.23% for FY 2023-2024.","grade":"good"},{"title":"Premium Affordability","subTitle":"The annual premium of ₹25,181 is highly affordable, representing approximately 3.6% of the user's annual income of ₹7 lakhs.","grade":"good"}]},{"title":"Other Factors","data":[{"title":"Tax Benefits Comprehensiveness","subTitle":"The premiums qualify for tax deductions under Section 80C, and the ₹1 crore death benefit is tax-exempt under Section 10(10D).","grade":"good"},{"title":"Grace Period","subTitle":"The policy offers a standard 30-day grace period for annual premium payments.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The policy provides a comprehensive 30-day free-look period to review the terms and conditions.","grade":"good"}]}]},"risks":{"title":"Risks","data":["Medical Bankruptcy Risk: Without critical illness coverage in the Bajaj Allianz Life iSecure II plan, a major diagnosis like cancer could drain ₹15-20 lakhs in out-of-pocket treatment costs.","Policy Lapse Risk: The lack of a premium waiver benefit means that if a severe disability causes a loss of income, the user might struggle to pay the ₹25,181 annual premium, risking a policy lapse when protection is needed most."]},"recommendations":{"title":"Recommendations","data":["Add a Standalone Critical Illness Policy: Since Bajaj Allianz Life iSecure II lacks this rider, purchase a separate critical illness policy with at least ₹15-20 lakhs coverage to protect against major medical expenses.","Consider an Income Protection Plan: Supplement the base policy with a standalone disability or income protection plan that includes a premium waiver feature to secure the ₹25,181 annual premium in case of loss of income.","Build an Emergency Medical Fund: Maintain a liquid emergency fund of at least ₹5-10 lakhs to cover immediate treatment costs for terminal or critical illnesses not covered by the Bajaj Allianz Life policy."]},"optionalRidersAvailed":null},{"policyId":"9d5321ce-1ac0-406a-a28d-94f840ec2048","updatedAt":"2026-05-06T18:01:02.000Z","insuredPersonName":"N/a","insurer":"Bajaj Life","claimRatio":99.23,"claimIncurredRatio":null,"product":"Bajaj Allianz Life Isecure Ii","policyNumber":"0623613576","sharedPolicyName":[],"sharedUsers":[],"suminsured":"₹1 crore","insuredMembers":["Mr Suresh Suresh"],"insuranceType":"Life","status":"ACTIVE","ctas":[{"title":"Download Policy","action":{"type":"OPEN_URL","url":"https://heyzyraprodsa.blob.core.windows.net/insurance-vault-bucket-prod/7be53a64-0ac5-44f9-b3ef-63e97ce91118/policies/Bajaj Life_0623613576.pdf?sv=2026-02-06&amp;spr=https&amp;st=2026-05-07T05%3A06%3A58Z&amp;se=2026-05-07T06%3A11%3A58Z&amp;skoid=c27f93b7-d505-4c21-a8fe-15419f4ad085&amp;sktid=3ca242f2-0569-4a23-b640-4e522514a9a5&amp;skt=2026-05-07T05%3A06%3A58Z&amp;ske=2026-05-07T06%3A11%3A58Z&amp;sks=b&amp;skv=2026-02-06&amp;sr=b&amp;sp=r&amp;sig=29AgfSgCFRmWV6dAofe9mxpOqF2Lh%2BfKFYTyABo575E%3D&amp;rscd=attachment%3B%20filename%3D%22Bajaj%20Life_0623613576.pdf%22"}},{"title":"Policy Brochure","action":{"type":"OPEN_URL","url":null}},{"title":"Contact Insurer","action":{"type":"OPEN_URL","url":"tel:1800-209-7272\t"}},{"title":"RAISE Claim","action":{"type":"OPEN_URL","url":"mailto:life.claims@bajajallianz.co.in"}}],"showSharePolicy":true,"familyMemberCovered":"1/4","totalSumInsured":"₹1.25 crore","deductible":null,"policyStartDate":"2025-04-26T00:00:00.000Z","policyEndDate":"2069-04-26T00:00:00.000Z","issueDate":"2025-04-30T00:00:00.000Z","originalInceptionDate":"2025-04-26T00:00:00.000Z","portabilityFromInsurerId":null,"continuityYears":1,"policyCoverBaseType":"individual","productTypeId":"2735","policyTermYears":44,"premiumPaymentTerm":15,"premiumAmount":31428,"premiumCycle":"Monthly","score":"76","rating":"3.8","verdict":"Bajaj Allianz Life iSecure II offers an excellent ₹1 crore death benefit and a long 44-year term at an affordable premium. However, the lack of critical illness and premium waiver riders leaves significant living benefit gaps. It is a solid pure-protection plan but requires supplemental health covers.","hiddenFeatures":{"title":"Hidden Features","data":[]},"prosCons":{"title":"Pros &amp; Cons","pros":{"title":"Pros","data":["Excellent Sum Assured: Bajaj Allianz Life iSecure II provides a robust ₹1 crore base coverage, which is over 14 times the user's annual income.","Long Coverage Duration: The policy offers a substantial 44-year term, ensuring life cover up to the age of 70 years.","High Claim Settlement Ratio: Bajaj Allianz Life demonstrates strong reliability with a 99.23% claim settlement ratio for FY 2023-2024.","Affordable Premiums: The annualized premium of ₹28,748 is highly affordable, taking up only 4.1% of the user's annual income."]},"cons":{"title":"Cons","data":["Missing Critical Illness Cover: Bajaj Allianz Life iSecure II lacks a critical illness rider, leaving the policyholder exposed to high medical treatment costs.","No Accidental Death Benefit: The policy does not include an accidental death rider to provide additional payout in case of fatal accidents.","Limited Disability Coverage: The included Accidental Permanent Total/Partial Disability Rider is capped at ₹25 lakhs, which is only 25% of the base sum assured.","No Premium Waiver: The plan lacks a waiver of premium benefit, meaning premiums must still be paid even if the life assured suffers a severe disability."]}},"detailedAnalysis":{"title":"Detailed Analysis","data":[{"title":"Core Coverage","data":[{"title":"Sum Assured","subTitle":"The policy provides a base sum assured of ₹1 crore, which is over 14 times the user's annual income of ₹7 lakhs.","grade":"good"},{"title":"Policy Term And Coverage Duration","subTitle":"The policy offers a term of 44 years, providing coverage until the life assured reaches 70 years of age.","grade":"good"}]},{"title":"Riders And Additional Benefits","data":[{"title":"Accidental Death Coverage","subTitle":"The policy does not include an accidental death benefit rider.","grade":"poor"},{"title":"Critical Illness Coverage","subTitle":"The policy lacks a critical illness rider to cover major diseases.","grade":"poor"},{"title":"Premium Waiver Rider","subTitle":"The policy does not include a premium waiver rider for critical illness or disability.","grade":"poor"},{"title":"Income Benefit Rider","subTitle":"There is no income benefit rider included in the policy documentation.","grade":"poor"},{"title":"Permanent And Partial Disability Rider","subTitle":"The policy includes a disability rider, but the coverage is limited to ₹25 lakhs, which is only 25% of the base sum assured.","grade":"poor"},{"title":"Terminal Illness Rider","subTitle":"The policy does not provide an accelerated death benefit for terminal illness.","grade":"poor"},{"title":"Child Term Rider","subTitle":"The policy does not include a child term insurance rider.","grade":"poor"},{"title":"Hospital Care Rider","subTitle":"The policy does not feature a daily hospital cash benefit rider.","grade":"poor"}]},{"title":"Insurer Reliability And Policy Terms","data":[{"title":"Insurers Claim Settlement Ratio","subTitle":"Bajaj Allianz Life boasts an excellent claim settlement ratio of 99.23% for FY 2023-2024.","grade":"good"},{"title":"Premium Affordability","subTitle":"The annualized premium of ₹28,748 is highly affordable, representing approximately 4.1% of the user's estimated annual income.","grade":"good"}]},{"title":"Other Factors","data":[{"title":"Tax Benefits Comprehensiveness","subTitle":"The premiums paid and the death benefit received are eligible for tax exemptions under Section 80C and Section 10(10D) of the Income Tax Act.","grade":"good"},{"title":"Grace Period","subTitle":"The policy provides a standard grace period of 15 days for monthly premium payments.","grade":"good"},{"title":"Free Lookup Period","subTitle":"The policy offers a comprehensive 30-day free-look period to review the terms and conditions.","grade":"good"}]}]},"risks":{"title":"Risks","data":["Medical Bankruptcy Risk: Without a critical illness rider in the Bajaj Allianz Life iSecure II plan, a major diagnosis like cancer could drain savings for treatment.","Policy Lapse Risk: The absence of a premium waiver benefit means a severe disability could lead to loss of income, making it difficult to pay the ₹28,748 annual premium and risking policy lapse."]},"recommendations":{"title":"Recommendations","data":["Add Critical Illness Coverage: Purchase a standalone critical illness policy of at least ₹25-30 lakhs to supplement the Bajaj Allianz Life iSecure II plan.","Enhance Disability Cover: Consider a standalone personal accident policy to increase disability coverage beyond the limited ₹25 lakhs provided by the current rider.","Review Accidental Death Needs: Evaluate if an additional accidental death benefit is necessary based on occupational hazards or frequent travel."]},"optionalRidersAvailed":null}]}}}</pre></details>
+</div>
+<div class="api-card">
+  <div class="api-head">
+    <div class="api-title">16. Final valid: 14 user/insurance/upload/policy/document</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-07 10:41:59.094
+Scenario: Final valid: 14 user/insurance/upload/policy/document | api: /api/v1/user/insurance/upload/policy/document | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+
+Headers:
+Content-Type: multipart/form-data;boundary=fNpsN4XSN4QkHtWTeRKyqBcdXMBKX7RsVFsf
+authorization: eyJhbG...jJO0
+
+Body:
+&lt;binary body: 732611 bytes; content-type=multipart/form-data;boundary=fNpsN4XSN4QkHtWTeRKyqBcdXMBKX7RsVFsf&gt;</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-07 10:41:59.830
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/user/insurance/upload/policy/document
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"status":"ACCEPTED","message":"File accepted and upload started"}}</pre></details>
+</div>
+
+  </div>
+  <script>
+    (function(){
+      var passed = 16, failed = 0;
+      var green = '#4ade80', red = '#f87171', grey = '#2d3f55';
+      function mkDoughnut(id, p, f){
+        var ctx = document.getElementById(id);
+        if(!ctx) return;
+        var data = (p+f === 0) ? [1] : (f === 0 ? [p] : [p, f]);
+        var colors = (p+f === 0) ? [grey] : (f === 0 ? [green] : [green, red]);
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: { datasets: [{ data: data, backgroundColor: colors, borderWidth: 0, hoverOffset: 4 }] },
+          options: {
+            cutout: '72%',
+            plugins: { legend: { display: false }, tooltip: { enabled: true } },
+            animation: { duration: 600 }
+          }
+        });
+      }
+      mkDoughnut('ch-apis',     passed, failed);
+      mkDoughnut('ch-status',   passed, failed);
+      mkDoughnut('ch-overview', passed, failed);
+      mkDoughnut('ch-events',   passed, failed);
+    })();
+  </script>
+</body>
+</html>
