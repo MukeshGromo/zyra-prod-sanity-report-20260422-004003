@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdSanityRegressionPhase1Test API Details</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background:#1a1a2e; color:#e5edf5; font-family:'Segoe UI',Arial,sans-serif; margin:0; }
+    /* ── top bar ─────────────────────────────────────────── */
+    .topbar { background:#16213e; border-bottom:1px solid #0f3460; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:17px; font-weight:700; color:#e94560; letter-spacing:.5px; }
+    .topbar-right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .topbar-badge { background:#0f3460; color:#e0e0e0; padding:5px 14px; border-radius:999px; font-size:12px; font-weight:600; }
+    .topbar-badge.phase { background:#e94560; color:#fff; }
+    /* ── layout ──────────────────────────────────────────── */
+    .page { max-width:1400px; margin:0 auto; padding:28px 24px; }
+    /* ── stat row (Started / Ended / Passed / Failed) ────── */
+    .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    @media(max-width:900px){ .stat-row { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .stat-row { grid-template-columns:1fr; } }
+    .stat-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 20px; }
+    .stat-card .label { color:#9fb0c3; font-size:13px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.6px; }
+    .stat-card .value { font-size:22px; font-weight:700; }
+    .stat-card .value.pass { color:#4ade80; }
+    .stat-card .value.fail { color:#f87171; }
+    /* ── pie-chart dashboard ─────────────────────────────── */
+    .chart-dashboard { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px; }
+    @media(max-width:900px){ .chart-dashboard { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px){ .chart-dashboard { grid-template-columns:1fr; } }
+    .chart-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px 16px; text-align:center; }
+    .chart-card .chart-title { font-size:13px; font-weight:600; color:#9fb0c3; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+    .chart-card .chart-wrap { position:relative; width:110px; height:110px; margin:0 auto 14px; }
+    .chart-card .legend { display:flex; justify-content:center; align-items:center; gap:8px; font-size:12px; color:#9fb0c3; }
+    .chart-card .legend-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .chart-card .legend-dot.pass { background:#4ade80; }
+    .chart-card .legend-dot.fail { background:#f87171; }
+    .chart-card .stat-label { margin-top:10px; font-size:12px; color:#9fb0c3; }
+    /* ── api list header ─────────────────────────────────── */
+    .section-title { font-size:20px; font-weight:700; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid #0f3460; color:#e2e8f0; }
+    /* ── api cards ───────────────────────────────────────── */
+    .api-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:18px; margin-bottom:14px; }
+    .api-head { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+    .api-title { font-size:16px; font-weight:700; }
+    .badge { padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge-pass { background:#14532d; color:#86efac; }
+    .badge-fail { background:#450a0a; color:#fca5a5; }
+    .meta { color:#94a3b8; font-size:13px; margin-bottom:8px; }
+    details { margin-top:10px; background:#0f1a2e; border:1px solid #1e3a5f; border-radius:8px; padding:12px; }
+    summary { cursor:pointer; font-weight:600; color:#94a3b8; font-size:13px; }
+    summary:hover { color:#e2e8f0; }
+    pre { white-space:pre-wrap; word-break:break-word; margin:12px 0 0; background:#07101e; color:#cbd5e1; padding:14px; border-radius:8px; overflow:auto; font-size:12px; line-height:1.6; }
+    /* ── info grid (env, url etc) ────────────────────────── */
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:24px; }
+    .info-card { background:#16213e; border:1px solid #0f3460; border-radius:10px; padding:14px; }
+    .info-card .label { color:#9fb0c3; font-size:12px; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
+    .info-card .value { font-size:14px; font-weight:600; word-break:break-all; }
+    .info-card .value a { color:#60a5fa; text-decoration:none; }
+    .info-card .value a:hover { text-decoration:underline; }
+    .public-link { font-size:13px; line-height:1.6; }
+    .pass { color:#4ade80; }
+    .fail { color:#f87171; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Zyra Referral System Automation</div>
+    <div class="topbar-right">
+      <span class="topbar-badge phase">ProdSanityRegressionPhase1Test</span>
+      <span class="topbar-badge">May 08, 2026 11:42:33 am</span>
+    </div>
+  </div>
+  <div class="page">
+    <!-- Stat row -->
+    <div class="stat-row">
+      <div class="stat-card"><div class="label">Started</div><div class="value">2026-05-08 11:42:22.045</div></div>
+      <div class="stat-card"><div class="label">Ended</div><div class="value">2026-05-08 11:42:22.751</div></div>
+      <div class="stat-card"><div class="label">APIs Passed</div><div class="value pass">1</div></div>
+      <div class="stat-card"><div class="label">APIs Failed</div><div class="value fail">0</div></div>
+    </div>
+    <!-- Pie chart dashboard -->
+    <div class="chart-dashboard">
+      <div class="chart-card">
+        <div class="chart-title">APIs</div>
+        <div class="chart-wrap"><canvas id="ch-apis"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">1 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Status</div>
+        <div class="chart-wrap"><canvas id="ch-status"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">1 APIs passed</div>
+        <div class="stat-label">0 APIs failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Overview</div>
+        <div class="chart-wrap"><canvas id="ch-overview"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">1 passed</div>
+        <div class="stat-label">0 failed, 0 skipped, 0 others</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">API Events</div>
+        <div class="chart-wrap"><canvas id="ch-events"></canvas></div>
+        <div class="legend"><span class="legend-dot pass"></span> Pass</div>
+        <div class="stat-label">1 events passed</div>
+        <div class="stat-label">0 events failed, 0 others</div>
+      </div>
+    </div>
+    <!-- Env info -->
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Environment</div><div class="value">Production</div></div>
+      <div class="info-card"><div class="label">Base URL</div><div class="value">https://zyra-facade.heyzyra.ai</div></div>
+      <div class="info-card"><div class="label">Report Type</div><div class="value">API-Level Execution Details</div></div>
+      <div class="info-card">
+  <div class="label">Public Report URL</div>
+  <div class="value public-link"><a href="https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-08_11-42-33_ApiDetails.html" target="_blank" rel="noopener">https://mukeshgromo.github.io/zyra-prod-sanity-report-20260422-004003/phase1/api-details/ProdSanityRegressionPhase1Test_2026-05-08_11-42-33_ApiDetails.html</a></div>
+</div>
+
+    </div>
+    <!-- API list -->
+    <div class="section-title">API Execution Details (1 APIs)</div>
+    <div class="api-card">
+  <div class="api-head">
+    <div class="api-title">01. Final valid: 01 otp/generate (mobile)</div>
+    <div class="badge badge-pass">PASSED</div>
+  </div>
+  <div class="meta">Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate</div>
+  <div class="meta">Status: 200 OK</div>
+  <details><summary>Show Request</summary><pre>Timestamp: 2026-05-08 11:42:22.045
+Scenario: Final valid: 01 otp/generate (mobile) | api: /api/v1/auth/otp/generate | request: POST | method-check: expected POST, sent POST (valid method) | expectation: valid flow should return 2xx
+Request: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+
+Headers:
+Content-Type: application/json
+authorization:
+
+Body:
+{"phoneNumber":"6281963899","purpose":"login","authMethod":"mobile_otp"}</pre></details>
+  <details><summary>Show Response</summary><pre>Timestamp: 2026-05-08 11:42:22.751
+Response: POST https://zyra-facade.heyzyra.ai/api/v1/auth/otp/generate
+Status: 200 OK
+
+Body:
+{"status":"success","statusCode":200,"data":{"message":"OTP Generated Successfully","details":{"otpPurpose":"login","resendCount":1,"maxResendCount":3,"resendWindowStartedAt":"2026-05-08T06:12:22.926Z","resendBlockedUntil":null,"otpFor":"mobile","deliveryStatus":"sent","otpId":"b26877fd-2433-4794-a804-d715d5917490","otpValidTill":"2026-05-08T06:17:23.000Z","deliveryError":null,"consumedAt":null,"createdAt":"2026-05-08T06:12:22.933Z","updatedAt":"2026-05-08T06:12:22.933Z","otpStatus":"active","invalidAttemptsCount":0,"maxInvalidAttemptsCount":3,"retryAfterSeconds":0,"isResendBlocked":false}}}</pre></details>
+</div>
+
+  </div>
+  <script>
+    (function(){
+      var passed = 1, failed = 0;
+      var green = '#4ade80', red = '#f87171', grey = '#2d3f55';
+      function mkDoughnut(id, p, f){
+        var ctx = document.getElementById(id);
+        if(!ctx) return;
+        var data = (p+f === 0) ? [1] : (f === 0 ? [p] : [p, f]);
+        var colors = (p+f === 0) ? [grey] : (f === 0 ? [green] : [green, red]);
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: { datasets: [{ data: data, backgroundColor: colors, borderWidth: 0, hoverOffset: 4 }] },
+          options: {
+            cutout: '72%',
+            plugins: { legend: { display: false }, tooltip: { enabled: true } },
+            animation: { duration: 600 }
+          }
+        });
+      }
+      mkDoughnut('ch-apis',     passed, failed);
+      mkDoughnut('ch-status',   passed, failed);
+      mkDoughnut('ch-overview', passed, failed);
+      mkDoughnut('ch-events',   passed, failed);
+    })();
+  </script>
+</body>
+</html>
